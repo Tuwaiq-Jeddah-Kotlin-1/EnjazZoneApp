@@ -1,0 +1,75 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.tuwaiq.enjazzoneapp"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="23"
+8-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="31" />
+9-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml
+10
+11    <application
+11-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:5:5-22:19
+12        android:allowBackup="true"
+12-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:6:9-35
+13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+13-->[androidx.core:core:1.7.0] C:\Users\Hp\.gradle\caches\transforms-3\ae3d7ae4493d11c21b25c5d58a0c4179\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
+14        android:debuggable="true"
+15        android:extractNativeLibs="false"
+16        android:icon="@mipmap/ic_launcher"
+16-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:7:9-43
+17        android:label="@string/app_name"
+17-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:8:9-41
+18        android:roundIcon="@mipmap/ic_launcher_round"
+18-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:9:9-54
+19        android:supportsRtl="true"
+19-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:10:9-35
+20        android:testOnly="true"
+21        android:theme="@style/Theme.EnjazZoneApp" >
+21-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:11:9-50
+22        <activity
+22-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:12:9-21:20
+23            android:name="com.tuwaiq.enjazzoneapp.MainActivity"
+23-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:13:13-41
+24            android:exported="true"
+24-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:14:13-36
+25            android:label="@string/launcher_name" >
+25-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:15:13-50
+26            <intent-filter>
+26-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:16:13-20:29
+27                <action android:name="android.intent.action.MAIN" />
+27-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:17:17-69
+27-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:17:25-66
+28
+29                <category android:name="android.intent.category.LAUNCHER" />
+29-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:19:17-77
+29-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:19:27-74
+30            </intent-filter>
+31        </activity>
+32
+33        <provider
+33-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Hp\.gradle\caches\transforms-3\3d24b7c5ded344cd4260b8f2ad9ed030\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+34            android:name="androidx.startup.InitializationProvider"
+34-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Hp\.gradle\caches\transforms-3\3d24b7c5ded344cd4260b8f2ad9ed030\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:27:13-67
+35            android:authorities="com.tuwaiq.enjazzoneapp.androidx-startup"
+35-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Hp\.gradle\caches\transforms-3\3d24b7c5ded344cd4260b8f2ad9ed030\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:28:13-68
+36            android:exported="false" >
+36-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Hp\.gradle\caches\transforms-3\3d24b7c5ded344cd4260b8f2ad9ed030\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:29:13-37
+37            <meta-data
+37-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Hp\.gradle\caches\transforms-3\3d24b7c5ded344cd4260b8f2ad9ed030\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+38                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+38-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Hp\.gradle\caches\transforms-3\3d24b7c5ded344cd4260b8f2ad9ed030\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:32:17-75
+39                android:value="androidx.startup" />
+39-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Hp\.gradle\caches\transforms-3\3d24b7c5ded344cd4260b8f2ad9ed030\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:33:17-49
+40            <meta-data
+40-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\Hp\.gradle\caches\transforms-3\c55501271c534953631a61ceacf50e00\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+41                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+41-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\Hp\.gradle\caches\transforms-3\c55501271c534953631a61ceacf50e00\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+42                android:value="androidx.startup" />
+42-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\Hp\.gradle\caches\transforms-3\c55501271c534953631a61ceacf50e00\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+43        </provider>
+44    </application>
+45
+46</manifest>

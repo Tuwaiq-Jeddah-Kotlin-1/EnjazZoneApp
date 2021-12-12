@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <item
+        android:id="@+id/navigation_appointments"
+        android:icon="@drawable/ic_baseline_calendar_month_24"
+        android:title="@string/calendar_view" />
+
+    <item
+        android:id="@+id/navigation_ToDo"
+        android:icon="@drawable/ic_baseline_format_list_numbered_24"
+        android:title="@string/to_do" />
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="@string/enjaz_zone" />
+
+</menu>

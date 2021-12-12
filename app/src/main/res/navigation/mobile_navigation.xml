@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_ToDo">
+
+    <fragment
+        android:id="@+id/navigation_ToDo"
+        android:name="com.tuwaiq.enjazzoneapp.ui.todo.ToDoFragment"
+        android:label="@string/to_do"
+        tools:layout="@layout/fragment_to_do" />
+
+    <fragment
+        android:id="@+id/navigation_appointments"
+        android:name="com.tuwaiq.enjazzoneapp.ui.calendar_view.CalendarFragment"
+        android:label="@string/calendar_appointments_later_tasks"
+        tools:layout="@layout/fragment_calendar_view" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.tuwaiq.enjazzoneapp.ui.profile.ProfileFragment"
+        android:label="@string/enjaz_zone"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

@@ -1,0 +1,72 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\src\\main\\res\\values-night\\strings.xml",
+                    "from": {
+                        "startLines": "-1,7,-1,-1,-1,-1,-1",
+                        "startColumns": "-1,4,-1,-1,-1,-1,-1",
+                        "startOffsets": "-1,377,-1,-1,-1,-1,-1",
+                        "endColumns": "-1,45,-1,-1,-1,-1,-1",
+                        "endOffsets": "-1,418,-1,-1,-1,-1,-1"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "100,150,196,300,360,404,465",
+                        "endColumns": "49,45,103,59,43,60,39",
+                        "endOffsets": "145,191,295,355,399,460,500"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\a3ac3e09c2eac1a7e99912ab6a7cac93\\transformed\\appcompat-1.4.0\\res\\values-night-v8\\values-night-v8.xml",
+                    "from": {
+                        "startLines": "-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1,-1"
+                    },
+                    "to": {
+                        "startLines": "9,10,11,12,13,14,15,45",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "505,575,659,743,839,941,1043,3602",
+                        "endColumns": "69,83,83,95,101,101,93,88",
+                        "endOffsets": "570,654,738,834,936,1038,1132,3686"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\d754e7ce487b25c354202c6c0ee944ea\\transformed\\material-1.4.0\\res\\values-night-v8\\values-night-v8.xml",
+                    "from": {
+                        "startLines": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1"
+                    },
+                    "to": {
+                        "startLines": "29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,46,47,48,49,50,51,52",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1740,1828,1952,2054,2156,2272,2374,2488,2616,2732,2854,2990,3110,3244,3364,3476,3691,3815,3945,4067,4205,4339,4455",
+                        "endColumns": "87,123,101,101,115,101,113,127,115,121,135,119,133,119,111,125,123,129,121,137,133,115,119",
+                        "endOffsets": "1823,1947,2049,2151,2267,2369,2483,2611,2727,2849,2985,3105,3239,3359,3471,3597,3810,3940,4062,4200,4334,4450,4570"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\src\\main\\res\\values-night\\themes.xml",
+                    "from": {
+                        "startLines": "-1",
+                        "startColumns": "-1",
+                        "startOffsets": "-1"
+                    },
+                    "to": {
+                        "startLines": "16",
+                        "startColumns": "4",
+                        "startOffsets": "1137",
+                        "endLines": "28",
+                        "endColumns": "12",
+                        "endOffsets": "1735"
+                    }
+                }
+            ]
+        }
+    ]
+}

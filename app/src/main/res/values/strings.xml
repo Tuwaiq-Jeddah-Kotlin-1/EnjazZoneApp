@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">EnjazZoneApp</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="launcher_name">Sam\'s To-do List</string>
+    <string name="to_do">To-Do</string>
+    <string name="to_do_list">To-Do Lists</string>
+    <string name="calendar_appointments_later_tasks">Calendar(Appointments &amp; Later Tasks)</string>
+    <string name="calendar">Calendar</string>
+    <string name="calendar_view">Calendar View</string>
+    <string name="enjaz_zone">Enjaz Zone</string>
+</resources>
