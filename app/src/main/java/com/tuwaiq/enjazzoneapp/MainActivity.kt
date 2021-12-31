@@ -1,35 +1,120 @@
 package com.tuwaiq.enjazzoneapp
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
+import android.view.MenuItem
+import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.FragmentManager
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.tuwaiq.enjazzoneapp.databinding.ActivityMainBinding
+import androidx.navigation.ui.*
+import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
+
+const val sharedPrefFile:String = "SHARED_PREF"
+lateinit var sharedPreferences: SharedPreferences
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var appBarConfiguration:AppBarConfiguration
+    private lateinit var navController: NavController
+    private lateinit var bottomNavView: BottomNavigationView
+    private lateinit var navView: NavigationView
+    lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var drawerLayout:DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        sharedPreferences = getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        drawerLayout = findViewById(R.id.activity_main_container)
+        navView = findViewById(R.id.nav_view)
+        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
 
-        val navView: BottomNavigationView = binding.navView
+/*        navView.setOnClickListener {
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
+        }*/
+        navView.setNavigationItemSelectedListener {
+            Log.e("Inside Listener OUTSIDE when of Nav View", "${it.itemId} BEEN PRESSED")
+            when(it.itemId) {
+
+                R.id.btnLogout -> {
+                    Log.e("Inside when of Nav View", "${it.itemId} BEEN PRESSED")
+                    Toast.makeText(this, "Logout has been pressed", Toast.LENGTH_LONG).show()
+                    FirebaseAuth.getInstance().signOut()
+                    navController.navigate(R.id.navigation_login)
+                    println("HELLO !!! \nLogout been clicked.")
+                }else -> Log.e("else", "ELSE NAV VIEW")
+
+            }
+            true
+        }
+        bottomNavView = findViewById(R.id.bottom_nav_view)
+        navController = findNavController(R.id.nav_host_fragment_activity_main)
+/*        appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_ToDo, R.id.navigation_appointments, R.id.navigation_profile
+                R.id.navigation_ToDo, R.id.navigation_calender_view, R.id.navigation_enjaz_zone
             )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        )*/
+        //setupActionBarWithNavController(navController, appBarConfiguration)
+        //setupActionBarWithNavController(navController, drawerLayout)
+        bottomNavView.setupWithNavController(navController)
+        //navView.setupWithNavController(navController)
+
+/*        when(navController.currentDestination?.id) {
+            R.id.navigation_ToDo -> bottomNavView.visibility = View.GONE
+        }*/
+
+        //navController.removeOnDestinationChangedListener { controller, destination, arguments ->  }
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when(destination.id) {
+                R.id.navigation_login-> {
+                    bottomNavView.visibility = View.GONE
+                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                    drawerLayout.close()
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                }
+                R.id.navigation_signup-> {
+                    bottomNavView.visibility = View.GONE
+                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                    drawerLayout.close()
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                }
+                else -> {
+                    bottomNavView.visibility = View.VISIBLE
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                }
+            }
+            //navController.saveState()
+        }
+        //navView.lis
+
+        //onBackPressed()
+        //navController.graph.startDestination
+
+    } // fun onCreate()
+
+    override fun onBackPressed() {
+        when(navController.currentDestination?.id) {
+            R.id.navigation_ToDo -> finish()
+            R.id.navigation_calender_view -> navController.navigate(R.id.navigation_ToDo)
+            R.id.navigation_enjaz_zone -> navController.navigate(R.id.navigation_ToDo)
+            else -> super.onBackPressed()
+        } // when() {}
+    } //fun onBackPressed()
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)) return true
+        return super.onOptionsItemSelected(item)
     }
 }

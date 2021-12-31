@@ -6,39 +6,26 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.tuwaiq.enjazzoneapp.databinding.FragmentCalendarViewBinding
+import com.tuwaiq.enjazzoneapp.R
 
 class CalendarFragment : Fragment() {
 
     private lateinit var calendarViewModel: CalendarViewModel
-    private var _binding: FragmentCalendarViewBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var tvWelcomeMessage: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val view = inflater.inflate(R.layout.fragment_calendar_view, container, false)
         calendarViewModel =
             ViewModelProvider(this).get(CalendarViewModel::class.java)
-
-        _binding = FragmentCalendarViewBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textDashboard
-        calendarViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+        return view
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        tvWelcomeMessage = view.findViewById(R.id.text_calendar_view)
     }
 }

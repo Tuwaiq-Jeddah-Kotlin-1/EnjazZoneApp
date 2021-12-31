@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 
 class CalendarViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
+/*    private val _text = MutableLiveData<String>().apply {
         value = "This is Calendar (Appointments & Later Tasks) Fragment"
     }
-    val text: LiveData<String> = _text
+    val text: LiveData<String> = _text*/
 }

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <TextView
+                android:id="@+id/tvTodoRow"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:hint="Empty Task Row"
+                android:autoSizeMaxTextSize="40sp"
+
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/editIB" />
+        <!--        android:hintTextColor="#78909C"-->
+
+        <EditText
+                android:id="@+id/etTodoRow"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="13"
+                android:inputType="text"
+                android:text=""
+                android:hint="Edit Task Row"
+                android:visibility="invisible"
+                android:textAlignment="gravity"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/editCheckIB"
+                android:layout_marginEnd="7dp" />
+
+        <ImageButton
+                android:id="@+id/editIB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="48dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.529"
+                app:srcCompat="@drawable/pencil_24" />
+
+        <ImageButton
+                android:id="@+id/editCheckIB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="48dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.529"
+                app:srcCompat="@drawable/ic_baseline_check_circle_24" />
+
+        <ImageButton
+                android:id="@+id/deleteIB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.529"
+                app:srcCompat="@drawable/trash_delete_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

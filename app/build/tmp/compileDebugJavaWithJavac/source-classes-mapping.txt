@@ -1,10 +1,2 @@
-com/tuwaiq/enjazzoneapp/databinding/FragmentToDoBinding.java
- com.tuwaiq.enjazzoneapp.databinding.FragmentToDoBinding
 com/tuwaiq/enjazzoneapp/BuildConfig.java
  com.tuwaiq.enjazzoneapp.BuildConfig
-com/tuwaiq/enjazzoneapp/databinding/ActivityMainBinding.java
- com.tuwaiq.enjazzoneapp.databinding.ActivityMainBinding
-com/tuwaiq/enjazzoneapp/databinding/FragmentProfileBinding.java
- com.tuwaiq.enjazzoneapp.databinding.FragmentProfileBinding
-com/tuwaiq/enjazzoneapp/databinding/FragmentCalendarViewBinding.java
- com.tuwaiq.enjazzoneapp.databinding.FragmentCalendarViewBinding
