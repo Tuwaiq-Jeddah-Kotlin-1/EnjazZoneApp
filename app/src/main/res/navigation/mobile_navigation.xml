@@ -3,23 +3,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_ToDo">
+        app:startDestination="@id/navigation_login">
 
     <fragment
         android:id="@+id/navigation_ToDo"
         android:name="com.tuwaiq.enjazzoneapp.ui.todo.ToDoFragment"
         android:label="@string/to_do"
-        tools:layout="@layout/fragment_to_do" />
+        tools:layout="@layout/fragment_to_do" >
+        <action
+                android:id="@+id/action_navigation_ToDo_to_navigation_login"
+                app:destination="@id/navigation_login" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_appointments"
+        android:id="@+id/navigation_calender_view"
         android:name="com.tuwaiq.enjazzoneapp.ui.calendar_view.CalendarFragment"
         android:label="@string/calendar_appointments_later_tasks"
         tools:layout="@layout/fragment_calendar_view" />
 
     <fragment
-        android:id="@+id/navigation_profile"
-        android:name="com.tuwaiq.enjazzoneapp.ui.profile.ProfileFragment"
+        android:id="@+id/navigation_enjaz_zone"
+        android:name="com.tuwaiq.enjazzoneapp.ui.enjaz_zone.EnjazZoneFragment"
         android:label="@string/enjaz_zone"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_enjaz_zone"
+            />
+    <fragment
+            android:id="@+id/navigation_login"
+            android:name="com.tuwaiq.enjazzoneapp.ui.login.LoginFragment"
+            android:label="fragment_login"
+            tools:layout="@layout/fragment_login" >
+        <action
+                android:id="@+id/action_loginFragment_to_navigation_ToDo"
+                app:destination="@id/navigation_ToDo"
+                app:popUpTo="@id/mobile_navigation" />
+        <action
+                android:id="@+id/action_loginFragment_to_signupFragment"
+                app:destination="@id/navigation_signup" />
+    </fragment>
+    <fragment
+            android:id="@+id/navigation_signup"
+            android:name="com.tuwaiq.enjazzoneapp.ui.signup.SignupFragment"
+            android:label="fragment_signup"
+            tools:layout="@layout/fragment_signup" >
+        <action
+                android:id="@+id/action_signupFragment_to_loginFragment"
+                app:destination="@id/navigation_login" />
+    </fragment>
 </navigation>

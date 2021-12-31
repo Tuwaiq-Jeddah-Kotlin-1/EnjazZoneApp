@@ -3,17 +3,46 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/baseline_logout_24.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/ic_baseline_calendar_month_24.xml" value="0.15925925925925927" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/ic_baseline_format_list_bulleted_24.xml" value="0.15925925925925927" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/ic_baseline_format_list_numbered_24.xml" value="0.15925925925925927" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/ic_baseline_list_alt_24.xml" value="0.15925925925925927" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.15925925925925927" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.15925925925925927" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/paper-plane_24 - blue.xml" value="0.11388888888888889" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/paper_plane_24.xml" value="0.136" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/paper_plane_24_blue.xml" value="0.8" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/pencil_24.xml" value="0.14791666666666667" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/trash_delete_24.xml" value="0.15462962962962962" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/trophy_24.xml" value="0.1425925925925926" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout-v26/todo_r_v_item_row.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/activity_main2.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/activity_second.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.16983695652173914" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/drawer_layout_and_nav_view.xml" value="0.2554347826086957" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/fragment_appointments.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/fragment_calendar_view.xml" value="0.2159090909090909" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/fragment_enjaz_zone.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/fragment_login.xml" value="0.264" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/fragment_profile.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/fragment_to_do.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/fragment_signup.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/fragment_to_do.xml" value="0.1" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/main_constraint_layout_and_bottom_nav_view.xml" value="0.1" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/nav_header.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/todo_r_v_item_row.xml" value="0.4397590361445783" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2766990291262136" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/menu/nav_drawer_menu.xml" value="0.25833333333333336" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

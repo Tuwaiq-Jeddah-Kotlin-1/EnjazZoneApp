@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw600dp-v13\\values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\a3ac3e09c2eac1a7e99912ab6a7cac93\\transformed\\appcompat-1.4.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\c984df0040f578fa52f470082e8b3ff8\\transformed\\appcompat-1.4.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\d754e7ce487b25c354202c6c0ee944ea\\transformed\\material-1.4.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\d100a84a06c628ecf36c48a0ee5102a1\\transformed\\material-1.6.0-alpha01\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,10,11,12,13,14",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.login.LoginFragment">
+
+    <EditText
+            android:id="@+id/etEmailLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:hint="Email"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    <EditText
+            android:id="@+id/etPasswordLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="Password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etEmailLogin" />
+
+    <CheckBox
+            android:text="Remember me"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            app:layout_constraintStart_toStartOf="@+id/etPasswordLogin"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/chbRememberMe"
+            app:layout_constraintTop_toBottomOf="@+id/etPasswordLogin"
+            app:layout_constraintHorizontal_bias="0.0" />
+
+    <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="208dp"
+            android:layout_height="46dp"
+            android:text="Login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etPasswordLogin"
+            app:layout_constraintHorizontal_bias="0.507"
+            android:layout_marginTop="52dp" />
+
+    <TextView
+            android:text="Don't have an account? Sign Up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/tvSignupLink"
+            app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+            android:layout_marginTop="48dp"
+            app:layout_constraintHorizontal_bias="0.498" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
