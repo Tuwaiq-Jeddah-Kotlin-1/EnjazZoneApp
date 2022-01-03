@@ -23,7 +23,7 @@ import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.tuwaiq.enjazzoneapp.R
-import com.tuwaiq.enjazzoneapp.data.TaskTodo
+import com.tuwaiq.enjazzoneapp.data.TasksDataClass
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -40,7 +40,7 @@ class ToDoFragment : Fragment() {
     lateinit var welcomingMessageTV: TextView
     private val tasksCollectionRef = Firebase.firestore.collection("users")
     private lateinit var db:FirebaseFirestore
-    private lateinit var tasksArrayList:ArrayList<TaskTodo>
+    private lateinit var tasksArrayList:ArrayList<TasksDataClass>
     //private lateinit var todoRVListAdapter:TodoRVListAdapter
 
     override fun onCreateView(
@@ -48,25 +48,26 @@ class ToDoFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_to_do, container, false)
-        toDoViewModel =
-            ViewModelProvider(this)[ToDoViewModel::class.java]
-        return view
+        return inflater.inflate(R.layout.fragment_to_do, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         todoRecyclerView = view.findViewById(R.id.rvTodo)
         //todoRecyclerView.setHasFixedSize(true)
-
         tasksArrayList = arrayListOf()
-
         todoRecyclerView.adapter = TodoRVListAdapter(tasksArrayList, view)
         todoRecyclerView.layoutManager = LinearLayoutManager(this.context)
-        getAllTasksInDB()
+        toDoViewModel = ViewModelProvider(this)[ToDoViewModel::class.java]
+
+        //getAllTasksInDB()
+        toDoViewModel.getAllTasks(tasksArrayList,viewLifecycleOwner).observe(viewLifecycleOwner,{
+            todoRecyclerView.adapter = TodoRVListAdapter(it, view)
+        })
+
         enterTaskET = view.findViewById(R.id.enterATaskET)
         sendIB = view.findViewById(R.id.sendIB)
+        sendIB.isEnabled = false
         welcomingMessageTV = view.findViewById(R.id.tvWelcomingMessage)
         welcomingMessageTV.text = welcomingMessageString
 
@@ -83,7 +84,6 @@ class ToDoFragment : Fragment() {
             welcomingMessageTV.visibility = View.GONE
             todoRecyclerView.visibility = View.VISIBLE
         }*/
-        sendIB.isEnabled = false
 
         //todoRecyclerView.adapter = TodoRVListAdapter(taskDataList, view)
 
@@ -111,10 +111,13 @@ class ToDoFragment : Fragment() {
 
         sendIB.setOnClickListener {
             val taskTitle: String = enterTaskET.text.toString()
-            val todoTask = TaskTodo()
-            todoTask.task = taskTitle
+            val todoTask = TasksDataClass()
+            todoTask.taskTitle = taskTitle
             todoTask.taskId = UUID.randomUUID().toString()
-            saveTaskInDB(todoTask)
+            //saveTaskInDB(todoTask)
+
+            toDoViewModel.saveTask(todoTask)
+
             welcomingMessageTV.visibility = View.GONE
             todoRecyclerView.adapter = TodoRVListAdapter(tasksArrayList, view)
             todoRecyclerView.layoutManager = LinearLayoutManager(this.context)
@@ -123,7 +126,7 @@ class ToDoFragment : Fragment() {
         }
     } // onViewCreated END
 
-    private fun saveTaskInDB(task:TaskTodo) {
+/*    private fun saveTaskInDB(task:TasksDataClass) {
         tasksCollectionRef.document(task.taskId).set(task).addOnCompleteListener {
             if (it.isSuccessful) {
                 Toast.makeText(this@ToDoFragment.context, "Successfully added the task! Way to go 🤩", Toast.LENGTH_SHORT).show()
@@ -132,8 +135,8 @@ class ToDoFragment : Fragment() {
             .addOnFailureListener {
                 println("Localized message: \"${it.localizedMessage}\" <------------")
             }
-    }
-    private fun getAllTasksInDB() {
+    }*/
+/*    private fun getAllTasksInDB() {
         db = FirebaseFirestore.getInstance()
         db.collection("users")
             .addSnapshotListener(object : EventListener<QuerySnapshot> {
@@ -144,16 +147,14 @@ class ToDoFragment : Fragment() {
                     }
                     for (documentChange:DocumentChange in value?.documentChanges!!) {
                         if (documentChange.type == DocumentChange.Type.ADDED) {
-                            tasksArrayList.add(documentChange.document.toObject(TaskTodo::class.java))
+                            tasksArrayList.add(documentChange.document.toObject(TasksDataClass::class.java))
                         }
                     }
                     tasksArrayList.sortBy { list -> list.nowDate }
                     todoRecyclerView.adapter?.notifyDataSetChanged()
                 }
-
-
             })
-    }
+    }*/
 }
 
 /*fun todoRVDraw(todoRecyclerView:RecyclerView ,view:View) {
@@ -161,7 +162,7 @@ class ToDoFragment : Fragment() {
     todoRecyclerView.layoutManager = LinearLayoutManager(view.context)
 }*/
 
-fun welcomeText(taskList: List<TaskTodo>, tvWelcomeText: TextView) {
+fun welcomeText(taskList: List<TasksDataClass>, tvWelcomeText: TextView) {
     if (taskList.isEmpty()) tvWelcomeText.visibility = View.VISIBLE
     else tvWelcomeText.visibility = View.GONE
 }

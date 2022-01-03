@@ -2725,7 +2725,6 @@ id browser_actions_menu_items
 id browser_actions_menu_view
 id btnLogin
 id btnLogout
-id btnLogout2
 id btnSignup
 id buttonPanel
 id cache_measures
@@ -2738,6 +2737,7 @@ id center_horizontal
 id center_vertical
 id chain
 id chains
+id chbKeepMeSignedIn
 id chbRememberMe
 id chbSignupRememberMe
 id checkbox
@@ -2821,6 +2821,7 @@ id etEmailSignup
 id etPasswordLogin
 id etPasswordSignup
 id etTodoRow
+id etUsername
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -3089,6 +3090,7 @@ id test_radiobutton_android_button_tint
 id test_radiobutton_app_button_tint
 id text
 id text2
+id textClock
 id textEnd
 id textSpacerNoButtons
 id textSpacerNoTitle
@@ -3121,11 +3123,9 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
-id tvEmailID
 id tvLoginLink
 id tvSignupLink
 id tvTodoRow
-id tvUserID
 id tvWelcomingMessage
 id unchecked
 id uniform
@@ -3238,10 +3238,10 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
-layout activity_main2
 layout activity_splash_screen
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
+layout clock
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog

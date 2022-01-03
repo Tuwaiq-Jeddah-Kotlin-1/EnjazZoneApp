@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextClock xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/textClock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:format24Hour="dd/MM/yyyy   HH:mm:ss"
+        android:gravity="center_horizontal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        tools:visibility="visible">
+</TextClock>

@@ -1,6 +1,7 @@
 package com.tuwaiq.enjazzoneapp.ui.signup
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +10,9 @@ import android.widget.*
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.FirebaseFirestore
 import com.tuwaiq.enjazzoneapp.R
+import com.tuwaiq.enjazzoneapp.data.UsersDataClass
 import com.tuwaiq.enjazzoneapp.sharedPreferences
 
 class SignupFragment : Fragment() {
@@ -43,7 +46,9 @@ class SignupFragment : Fragment() {
     private fun signupUser() {
         val email = view?.findViewById<EditText>(R.id.etEmailSignup)?.text.toString()
         val password = view?.findViewById<EditText>(R.id.etPasswordSignup)?.text.toString()
+        val userName = view?.findViewById<EditText>(R.id.etUsername)?.text.toString()
         val signupFragmentContext = this@SignupFragment.context
+        val sharedEditor = sharedPreferences.edit()
         val remember = view?.findViewById<CheckBox>(R.id.chbSignupRememberMe)
         //sharedPreferences = this.requireActivity().getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
 
@@ -57,14 +62,15 @@ class SignupFragment : Fragment() {
                         //remember!!.setOnClickListener {
                             if (remember!!.isChecked){
                                 //Toast.makeText(signupFragmentContext, "REMEMBER ME IS SUCCESSFUL", Toast.LENGTH_LONG).show()
-                                val sharedEditor = sharedPreferences.edit()
-                                sharedEditor.putBoolean("CHECKBOX", remember.isChecked)
+
+                                sharedEditor.putBoolean("REMEMBER-CHECKBOX", remember.isChecked)
                                 sharedEditor.putString("EMAIL", email)
                                 sharedEditor.putString("PASSWORD", password)
+                                sharedEditor.putString("USERNAME", userName)
                                 sharedEditor.apply()
                             }
                         //}
-                        findNavController().navigate(actionNavigateToSignupFragment)
+                        dataUsers(userName, email)
                     }
                 }
 
@@ -80,5 +86,29 @@ class SignupFragment : Fragment() {
         }else Toast.makeText(signupFragmentContext, "Error: Email or Password can't be empty", Toast.LENGTH_LONG).show()
 
     }
+
+    private fun dataUsers(userName:String, email:String) {
+        val userData = UsersDataClass()
+        userData.email =email
+        userData.userID= FirebaseAuth.getInstance().currentUser!!.uid
+        userData.username=userName
+        addUserDataToFirestore(userData)
+    }
+
+    private fun addUserDataToFirestore(userData: UsersDataClass) {
+        val db =FirebaseFirestore.getInstance()
+        db.collection("users").document(userData.userID).set(userData).addOnCompleteListener {
+            if (it.isSuccessful) {
+                Log.e("Firestore", "Successfully added the task!")
+                findNavController().navigate(R.id.navigation_login)
+            } else Log.e("Firestore", it.exception.toString())
+        }
+            .addOnFailureListener {
+                println("Localized message: \"${it.localizedMessage}\" <------------")
+                Log.e("Firestore", it.localizedMessage)
+            }
+    }
+
+
 
 }
