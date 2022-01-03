@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.navigation.NavDirections
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -39,6 +40,8 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if(sharedPreferences.getBoolean("KEEP-SIGNED-IN-CHECKBOX", false))
+            findNavController().navigate(R.id.navigation_ToDo)
 
         emailET = view.findViewById(R.id.etEmailLogin)
         passwordET = view.findViewById(R.id.etPasswordLogin)
@@ -69,6 +72,7 @@ class LoginFragment : Fragment() {
         val email = view?.findViewById<EditText>(R.id.etEmailLogin)?.text.toString()
         val password = view?.findViewById<EditText>(R.id.etPasswordLogin)?.text.toString()
         val loginFragmentContext = this@LoginFragment.context
+        val keepSignIn = view?.findViewById<CheckBox>(R.id.chbKeepMeSignedIn)
 
         if (email.isNotEmpty() && password.isNotEmpty()) {
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
@@ -80,17 +84,27 @@ class LoginFragment : Fragment() {
                         //val intent = Intent(this, SecondActivity::class.java) //this line is replaced by:
                         val actionNavigateToToDoFragment = LoginFragmentDirections.actionLoginFragmentToNavigationToDo()
                         //remember!!.setOnClickListener {
-                            if (rememberChB.isChecked){
-                                sharedEditor.putBoolean("CHECKBOX", rememberChB.isChecked)
-                                sharedEditor.putString("EMAIL", email)
-                                sharedEditor.putString("PASSWORD", password)
-                                sharedEditor.apply()
-                            }else{
-                                sharedEditor.putBoolean("CHECKBOX", false)
-                                sharedEditor.putString("EMAIL", null)
-                                sharedEditor.putString("PASSWORD", null)
-                                sharedEditor.apply()
-                            }
+                        if (rememberChB.isChecked){
+                            sharedEditor.putBoolean("CHECKBOX", rememberChB.isChecked)
+                            sharedEditor.putString("EMAIL", email)
+                            sharedEditor.putString("PASSWORD", password)
+                            sharedEditor.apply()
+                        }else{
+                            sharedEditor.putBoolean("CHECKBOX", false)
+                            sharedEditor.putString("EMAIL", null)
+                            sharedEditor.putString("PASSWORD", null)
+                            sharedEditor.apply()
+                        }
+                        if (keepSignIn!!.isChecked){
+                            sharedEditor.putBoolean("KEEP-SIGNED-IN-CHECKBOX", keepSignIn.isChecked)
+                            sharedEditor.putString("EMAIL", email)
+                            sharedEditor.apply()
+                        }
+                        else {
+                            sharedEditor.putBoolean("KEEP-SIGNED-IN-CHECKBOX", false)
+                            //sharedEditor.putString("EMAIL", null)
+                            sharedEditor.apply()
+                        }
                         //}
                         findNavController().navigate(actionNavigateToToDoFragment)
                         /* intent.putExtra("user_id", firebaseUser.uid)

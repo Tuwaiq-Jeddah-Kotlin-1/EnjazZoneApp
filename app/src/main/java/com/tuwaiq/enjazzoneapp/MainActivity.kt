@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -17,8 +18,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.*
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import java.util.*
 
 const val sharedPrefFile:String = "SHARED_PREF"
+const val emailInSharedPref:String = "EMAIL"
+const val rememberChbInSharedPref:String = "SHARED_PREF"
 lateinit var sharedPreferences: SharedPreferences
 
 class MainActivity : AppCompatActivity() {
@@ -34,27 +38,27 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        /*Objects.requireNonNull(supportActionBar)?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        supportActionBar?.setCustomView(R.layout.clock)*/
+
         drawerLayout = findViewById(R.id.activity_main_container)
         navView = findViewById(R.id.nav_view)
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
-/*        navView.setOnClickListener {
-
-        }*/
         navView.setNavigationItemSelectedListener {
-            Log.e("Inside Listener OUTSIDE when of Nav View", "${it.itemId} BEEN PRESSED")
             when(it.itemId) {
-
                 R.id.btnLogout -> {
                     Log.e("Inside when of Nav View", "${it.itemId} BEEN PRESSED")
                     Toast.makeText(this, "Logout has been pressed", Toast.LENGTH_LONG).show()
                     FirebaseAuth.getInstance().signOut()
                     navController.navigate(R.id.navigation_login)
                     println("HELLO !!! \nLogout been clicked.")
+                    val sharedEditor = sharedPreferences.edit()
+                    sharedEditor.putBoolean("KEEP-SIGNED-IN-CHECKBOX", false)
+                    sharedEditor.apply()
                 }else -> Log.e("else", "ELSE NAV VIEW")
-
             }
             true
         }
