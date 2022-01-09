@@ -3123,8 +3123,10 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id tvDigitalClock
 id tvLoginLink
 id tvSignupLink
+id tvTodaysDetailedDate
 id tvTodoRow
 id tvWelcomingMessage
 id unchecked
