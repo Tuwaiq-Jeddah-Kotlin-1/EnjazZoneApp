@@ -3,27 +3,20 @@ package com.tuwaiq.enjazzoneapp.ui.todo
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.firestore.DocumentChange
-import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreException
-import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.tuwaiq.enjazzoneapp.R
 import com.tuwaiq.enjazzoneapp.data.TasksDataClass
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -33,6 +26,8 @@ const val welcomingMessageString = "Plan your day, Achieve more!"
 //lateinit var todoRecyclerView: RecyclerView
 
 class ToDoFragment : Fragment() {
+    private lateinit var todaysDateTV: TextView
+    private lateinit var digitalTextClock: TextClock
     private lateinit var todoRecyclerView: RecyclerView
     private lateinit var toDoViewModel: ToDoViewModel //by viewModels()
     private lateinit var enterTaskET: EditText
@@ -53,6 +48,26 @@ class ToDoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        todaysDateTV = view.findViewById(R.id.tvTodaysDetailedDate)
+        todaysDateTV.text = getTodayDetailedDate()
+//        todaysDateTV.text = Calendar.getInstance().time.toString() //Sun Jan 09 11:18:34 GMT+03:00 2022
+
+        digitalTextClock = view.findViewById(R.id.tvDigitalClock)
+/*        digitalTextClock.format24Hour = HH:mm
+        digitalTextClock.format12Hour = h:mm a*/
+        digitalTextClock.setOnClickListener {
+            println("format24Hour ${digitalTextClock.format24Hour}\nformat12Hour ${digitalTextClock.format12Hour}")
+            if (digitalTextClock.format24Hour == "HH:mm" || digitalTextClock.format12Hour == "h:mm") {
+                digitalTextClock.format24Hour = "h:mm"
+                digitalTextClock.format12Hour = "HH:mm"
+            }else {
+                digitalTextClock.format24Hour = "HH:mm"
+                digitalTextClock.format12Hour = "h:mm a"
+            }
+        }
+
+        //todaysDateTV.text = Date.getCurrentDateTime().toString("yyyy/MM/dd HH:mm:ss")
         todoRecyclerView = view.findViewById(R.id.rvTodo)
         //todoRecyclerView.setHasFixedSize(true)
         tasksArrayList = arrayListOf()
@@ -89,23 +104,15 @@ class ToDoFragment : Fragment() {
 
         enterTaskET.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                //if(enterTaskET.text.isNotBlank())sendIB.isEnabled = true
-                /*if(enterTaskET.text.isNotBlank())sendIB.isEnabled = true
-                else sendIB.isEnabled = false*/
                 sendIB.isEnabled = enterTaskET.text.isNotBlank()
-                //if (enterTaskET.text.isNotBlank()) toDoViewModel.vmTaskTitle = enterTaskET.text.toString()
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                //if(enterTaskET.text.isNotBlank())sendIB.isEnabled = true
                 sendIB.isEnabled = enterTaskET.text.isNotBlank()
-                //if (enterTaskET.text.isNotBlank()) toDoViewModel.vmTaskTitle = enterTaskET.text.toString()
             }
 
             override fun afterTextChanged(s: Editable?) {
-                //if(enterTaskET.text.isNotBlank())sendIB.isEnabled = true
                 sendIB.isEnabled = enterTaskET.text.isNotBlank()
-                //if (enterTaskET.text.isNotBlank()) toDoViewModel.vmTaskTitle = enterTaskET.text.toString()
             }
         })
 
@@ -165,4 +172,9 @@ class ToDoFragment : Fragment() {
 fun welcomeText(taskList: List<TasksDataClass>, tvWelcomeText: TextView) {
     if (taskList.isEmpty()) tvWelcomeText.visibility = View.VISIBLE
     else tvWelcomeText.visibility = View.GONE
+}
+
+fun getTodayDetailedDate (time:Date = Calendar.getInstance().time) :String {
+    val formatter = SimpleDateFormat("EEEE: D MMM YYYY")
+    return formatter.format(time)
 }

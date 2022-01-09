@@ -3122,8 +3122,10 @@ int id transition_position 0x7f0801fd
 int id transition_scene_layoutid_cache 0x7f0801fe
 int id transition_transform 0x7f0801ff
 int id triangle 0x7f080200
+int id tvDigitalClock 0x7f08021d
 int id tvLoginLink 0x7f080201
 int id tvSignupLink 0x7f080202
+int id tvTodaysDetailedDate 0x7f08021c
 int id tvTodoRow 0x7f080203
 int id tvWelcomingMessage 0x7f080204
 int id unchecked 0x7f080205
