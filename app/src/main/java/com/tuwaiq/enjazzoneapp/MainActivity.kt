@@ -20,10 +20,7 @@ import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import java.util.*
 
-const val sharedPrefFile:String = "SHARED_PREF"
-const val emailInSharedPref:String = "EMAIL"
-const val rememberChbInSharedPref:String = "SHARED_PREF"
-lateinit var sharedPreferences: SharedPreferences
+//lateinit var sharedPreferences: SharedPreferences
 
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration:AppBarConfiguration
@@ -34,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout:DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        sharedPreferences = getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+        //sharedPreferences = getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -56,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.navigation_login)
                     println("HELLO !!! \nLogout been clicked.")
                     val sharedEditor = sharedPreferences.edit()
-                    sharedEditor.putBoolean("KEEP-SIGNED-IN-CHECKBOX", false)
+                    sharedEditor.putBoolean(keepMeSignedInKeyInSharedPref, false)
                     sharedEditor.apply()
                 }else -> Log.e("else", "ELSE NAV VIEW")
             }
@@ -113,6 +110,8 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_ToDo -> finish()
             R.id.navigation_calender_view -> navController.navigate(R.id.navigation_ToDo)
             R.id.navigation_enjaz_zone -> navController.navigate(R.id.navigation_ToDo)
+            R.id.navigation_login -> finish()
+            R.id.navigation_signup -> finish()
             else -> super.onBackPressed()
         } // when() {}
     } //fun onBackPressed()

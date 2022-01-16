@@ -2,7 +2,6 @@ package com.tuwaiq.enjazzoneapp.data
 
 import android.content.Context
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
@@ -37,15 +36,22 @@ class TodoRepo(context: Context) {
         return tasksList
     }
 
-    fun saveTaskInDB(task:TasksDataClass) {
+    fun saveTaskInDB(task:TasksDataClass):String {
+        var saveTaskResult = ""
         db.collection("users").document(uid.toString()).collection("tasks").document(task.taskId).set(task).addOnCompleteListener {
-            if (it.isSuccessful) {
+            saveTaskResult = if (it.isSuccessful) {
                 Log.e("Firestore", "Successfully added the task!")
-            } else Log.e("Firestore", it.exception.toString())
+                "Successfully added the task!"
+            } else {
+                it.exception?.let { exception -> Log.e("Firestore", exception.localizedMessage.toString()) }
+                it.exception?.localizedMessage.toString()
+            }
         }
             .addOnFailureListener {
                 println("Localized message: \"${it.localizedMessage}\" <------------")
                 Log.e("Firestore", it.localizedMessage)
+                saveTaskResult = it.localizedMessage
             }
+        return saveTaskResult
     }
 }

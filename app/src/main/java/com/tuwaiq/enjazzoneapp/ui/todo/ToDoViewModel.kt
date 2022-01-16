@@ -16,7 +16,5 @@ class ToDoViewModel(context: Application) : AndroidViewModel(context) {
         return tasks
     }
 
-    fun saveTask(task:TasksDataClass) {
-        repo.saveTaskInDB(task)
-    }
+    fun saveTask(task:TasksDataClass):String = repo.saveTaskInDB(task)
 }

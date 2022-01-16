@@ -1,6 +1,5 @@
 package com.tuwaiq.enjazzoneapp.ui.login
 
-import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,8 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.navigation.NavDirections
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -24,9 +21,9 @@ class LoginFragment : Fragment() {
     private lateinit var rememberChB:CheckBox
     //private val passwordET = view?.findViewById<EditText>(R.id.etPasswordLogin)
 
-    private val isRemembered = sharedPreferences.getBoolean("CHECKBOX", false)
-    private val emailInSharedPref = sharedPreferences.getString("EMAIL", null)
-    private val passwordInSharedPref = sharedPreferences.getString("PASSWORD", null)
+    private val isRemembered = sharedPreferences.getBoolean(rememberMeKeyInSharedPref, false)
+    private val emailInSharedPref = sharedPreferences.getString(emailKeyInSharedPref, null)
+    private val passwordInSharedPref = sharedPreferences.getString(passwordKeyInSharedPref, null)
     private val sharedEditor: SharedPreferences.Editor = sharedPreferences.edit()
 
     override fun onCreateView(
@@ -40,7 +37,7 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if(sharedPreferences.getBoolean("KEEP-SIGNED-IN-CHECKBOX", false))
+        if(sharedPreferences.getBoolean(keepMeSignedInKeyInSharedPref, false))
             findNavController().navigate(R.id.navigation_ToDo)
 
         emailET = view.findViewById(R.id.etEmailLogin)
@@ -85,23 +82,23 @@ class LoginFragment : Fragment() {
                         val actionNavigateToToDoFragment = LoginFragmentDirections.actionLoginFragmentToNavigationToDo()
                         //remember!!.setOnClickListener {
                         if (rememberChB.isChecked){
-                            sharedEditor.putBoolean("CHECKBOX", rememberChB.isChecked)
-                            sharedEditor.putString("EMAIL", email)
-                            sharedEditor.putString("PASSWORD", password)
+                            sharedEditor.putBoolean(rememberMeKeyInSharedPref, rememberChB.isChecked)
+                            sharedEditor.putString(emailKeyInSharedPref, email)
+                            sharedEditor.putString(passwordKeyInSharedPref, password)
                             sharedEditor.apply()
                         }else{
-                            sharedEditor.putBoolean("CHECKBOX", false)
-                            sharedEditor.putString("EMAIL", null)
-                            sharedEditor.putString("PASSWORD", null)
+                            sharedEditor.putBoolean(rememberMeKeyInSharedPref, false)
+                            sharedEditor.putString(emailKeyInSharedPref, null)
+                            sharedEditor.putString(passwordKeyInSharedPref, null)
                             sharedEditor.apply()
                         }
                         if (keepSignIn!!.isChecked){
-                            sharedEditor.putBoolean("KEEP-SIGNED-IN-CHECKBOX", keepSignIn.isChecked)
-                            sharedEditor.putString("EMAIL", email)
+                            sharedEditor.putBoolean(keepMeSignedInKeyInSharedPref, keepSignIn.isChecked)
+                            sharedEditor.putString(emailKeyInSharedPref, email)
                             sharedEditor.apply()
                         }
                         else {
-                            sharedEditor.putBoolean("KEEP-SIGNED-IN-CHECKBOX", false)
+                            sharedEditor.putBoolean(keepMeSignedInKeyInSharedPref, false)
                             //sharedEditor.putString("EMAIL", null)
                             sharedEditor.apply()
                         }

@@ -3,20 +3,23 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="30dp">
 
         <TextView
-                android:id="@+id/tvTodoRow"
+                android:id="@+id/tvTaskTitle"
                 android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:hint="Empty Task Row"
-                android:autoSizeMaxTextSize="40sp"
-
-                android:textSize="30sp"
+                android:layout_height="30dp"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="16sp"
+                app:autoSizeMaxTextSize="100sp"
+                app:autoSizeStepGranularity="1sp"
+                android:textSize="40sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/editIB" />
+
+                />
+<!--        app:layout_constraintEnd_toStartOf="@+id/editIB"-->
         <!--        android:hintTextColor="#78909C"-->
 
         <EditText
