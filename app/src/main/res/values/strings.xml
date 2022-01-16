@@ -10,7 +10,7 @@
     <string name="calendar_view">Calendar View</string>
     <string name="enjaz_zone">Enjaz Zone</string>
     <string name="send_button">Send Button</string>
-    <string name="enter_a_task_hint">Enter a Task</string>
+    <string name="enter_a_task_hint">Any tasks to write down for Today?</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>

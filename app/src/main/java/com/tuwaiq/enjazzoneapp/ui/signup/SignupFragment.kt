@@ -11,9 +11,8 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
-import com.tuwaiq.enjazzoneapp.R
+import com.tuwaiq.enjazzoneapp.*
 import com.tuwaiq.enjazzoneapp.data.UsersDataClass
-import com.tuwaiq.enjazzoneapp.sharedPreferences
 
 class SignupFragment : Fragment() {
 
@@ -63,10 +62,10 @@ class SignupFragment : Fragment() {
                             if (remember!!.isChecked){
                                 //Toast.makeText(signupFragmentContext, "REMEMBER ME IS SUCCESSFUL", Toast.LENGTH_LONG).show()
 
-                                sharedEditor.putBoolean("REMEMBER-CHECKBOX", remember.isChecked)
-                                sharedEditor.putString("EMAIL", email)
-                                sharedEditor.putString("PASSWORD", password)
-                                sharedEditor.putString("USERNAME", userName)
+                                sharedEditor.putBoolean(rememberMeKeyInSharedPref, remember.isChecked)
+                                sharedEditor.putString(emailKeyInSharedPref, email)
+                                sharedEditor.putString(passwordKeyInSharedPref, password)
+                                sharedEditor.putString(usernameKeyInSharedPref, userName)
                                 sharedEditor.apply()
                             }
                         //}

@@ -8,26 +8,69 @@
     android:orientation="vertical"
     tools:context=".ui.todo.ToDoFragment">
 
-    <TextView
-            android:hint="Today's Date"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvTodaysDetailedDate"
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clEnjazMotivatorZone"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tvDigitalClock"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/rvTodo" />
-
-    <android.widget.TextClock
-            android:hint="Digital Clock"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvDigitalClock"
-            android:textAlignment="viewEnd"
-            app:layout_constraintStart_toEndOf="@+id/tvTodaysDetailedDate"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/rvTodo"/>
+            app:layout_constraintBottom_toTopOf="@+id/rvTodoRecyclerView">
+
+        <TextView
+                android:id="@+id/tvTimerHeader"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:hint="Timer Header"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvTodayDetailedDate"
+                app:layout_constraintBottom_toTopOf="@+id/tvDayRemainingTimer" />
+
+        <TextView
+                android:id="@+id/tvDayRemainingTimer"
+                android:hint="hh:mm:ss"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvDigitalTextClock"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTimerHeader"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+                android:id="@+id/tvTodayDetailedDate"
+                android:hint="Today's Date"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvDayRemainingTimer"
+                app:layout_constraintBottom_toTopOf="@+id/tvDigitalTextClock"
+                app:layout_constraintVertical_bias="0.0" />
+
+        <android.widget.TextClock
+                android:id="@+id/tvDigitalTextClock"
+                android:hint="Digital Clock"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
+                android:gravity="center"
+                app:layout_constraintStart_toEndOf="@id/tvDayRemainingTimer"
+                app:layout_constraintTop_toBottomOf="@+id/tvTodayDetailedDate"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintHorizontal_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/tvWelcomingMessage"
@@ -39,18 +82,17 @@
         app:layout_constraintBottom_toTopOf="@id/enterATaskET"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/clEnjazMotivatorZone"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvTodo"
+            android:id="@+id/rvTodoRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@id/enterATaskET"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTodaysDetailedDate"
-            app:layout_constraintHorizontal_bias="0.0">
+            app:layout_constraintTop_toBottomOf="@+id/clEnjazMotivatorZone">
 
 
     </androidx.recyclerview.widget.RecyclerView>
@@ -58,15 +100,15 @@
     <EditText
         android:id="@+id/enterATaskET"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:hint="@string/enter_a_task_hint"
-        android:inputType="text"
-        android:text=""
+        android:inputType="textCapSentences|textMultiLine"
+        android:maxLines="6"
+        android:isScrollContainer="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/sendIB"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvTodo" />
+        app:layout_constraintTop_toBottomOf="@+id/rvTodoRecyclerView" />
 
     <ImageButton
         android:id="@+id/sendIB"
@@ -77,6 +119,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/enterATaskET"
-        app:layout_constraintTop_toBottomOf="@+id/rvTodo" />
+        app:layout_constraintTop_toBottomOf="@+id/rvTodoRecyclerView"
+        android:backgroundTint="@color/white"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
