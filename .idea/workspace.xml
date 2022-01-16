@@ -14,7 +14,25 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0d8f146b-fa37-48a4-973f-0d9ab2885b7e" name="Default Changelist" comment="User Interface: Three Fragments with their View Models + Navigation Component + Bottom Navigation">
+    <list default="true" id="0d8f146b-fa37-48a4-973f-0d9ab2885b7e" name="Default Changelist" comment="Fourth Commit: Timer for remaining hours of the day + completed simple basic todolist. In details...&#10;- SplashScreen.kt: made and put the shared keys as constants + made the delay dynamic.&#10;- MainActivity.kt: removed unneeded shared preference lines of codes + added lines to finish the activity when pressed on &quot;Back Button&quot; when it is pressed in login+signup pages.&#10;- ToDoViewModel.kt: made &quot;saveTask&quot; one-lined function.&#10;- TasksDataClass.kt: modified and added properties to the task data class.&#10;- LoginFragment.kt &amp; SignupFragment.kt: made the shared preference keys dynamic as constants values.&#10;- TodoRepo.kt: made &quot;SaveTaskResult&quot; function return a message of operation result.&#10;&#10;ToDoFragment.kt + TodoRVListAdapter.kt: Added two timers+header + simple todolist with basic features.&#10;&#10;Layouts are changes accordingly.">
+      <change afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res/debug/drawable_baseline_expand_less_24.xml.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res/debug/drawable_baseline_expand_more_24.xml.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res/debug/drawable_ic_baseline_cancel_24.xml.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res/debug/drawable_ic_baseline_expand_circle_down_24.xml.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res/debug/drawable_ic_baseline_expand_more_24.xml.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res/debug/drawable_ic_icons8_edit_property_24_png.xml.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res/debug/drawable_ic_icons_delete.xml.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res/debug/drawable_ic_icons_delete_32.xml.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res/debug/drawable_ic_icons_edit.xml.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res/debug/layout_task_r_v_row.xml.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/tuwaiq/enjazzoneapp/SplashScreenKt.dex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/tuwaiq/enjazzoneapp/ui/todo/ToDoFragment$onViewCreated$5.dex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/tuwaiq/enjazzoneapp/ui/todo/ToDoFragment$onViewCreated$activeHoursTimer$1$onFinish$sleepingHoursTimer$1.dex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/tuwaiq/enjazzoneapp/ui/todo/ToDoFragment$onViewCreated$activeHoursTimer$1.dex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/build/tmp/kotlin-classes/debug/com/tuwaiq/enjazzoneapp/SplashScreenKt.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/build/tmp/kotlin-classes/debug/com/tuwaiq/enjazzoneapp/ui/todo/ToDoFragment$onViewCreated$5.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/build/tmp/kotlin-classes/debug/com/tuwaiq/enjazzoneapp/ui/todo/ToDoFragment$onViewCreated$activeHoursTimer$1$onFinish$sleepingHoursTimer$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/build/tmp/kotlin-classes/debug/com/tuwaiq/enjazzoneapp/ui/todo/ToDoFragment$onViewCreated$activeHoursTimer$1.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_expand_less_24.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_expand_more_24.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_cancel_24.xml" afterDir="false" />
@@ -37,7 +55,7 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_3_2022_9_55_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_3_2022_9_55_PM__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]/buildOutputCleanup.lock" beforeDir="false" />
@@ -417,7 +435,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639295632418</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Fourth Commit: Timer for remaining hours of the day + completed simple basic todolist. In details...&#10;- SplashScreen.kt: made and put the shared keys as constants + made the delay dynamic.&#10;- MainActivity.kt: removed unneeded shared preference lines of codes + added lines to finish the activity when pressed on &quot;Back Button&quot; when it is pressed in login+signup pages.&#10;- ToDoViewModel.kt: made &quot;saveTask&quot; one-lined function.&#10;- TasksDataClass.kt: modified and added properties to the task data class.&#10;- LoginFragment.kt &amp; SignupFragment.kt: made the shared preference keys dynamic as constants values.&#10;- TodoRepo.kt: made &quot;SaveTaskResult&quot; function return a message of operation result.&#10;&#10;ToDoFragment.kt + TodoRVListAdapter.kt: Added two timers+header + simple todolist with basic features.&#10;&#10;Layouts are changes accordingly.">
+      <created>1642359159110</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1642359159110</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -441,7 +466,9 @@
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
     <MESSAGE value="User Interface: Three Fragments with their View Models + Navigation Component + Bottom Navigation" />
-    <option name="LAST_COMMIT_MESSAGE" value="User Interface: Three Fragments with their View Models + Navigation Component + Bottom Navigation" />
+    <MESSAGE value="In...&#10;- SplashScreen.kt: made and put the shared keys as constants + made the delay dynamic.&#10;- MainActivity.kt: removed unneeded shared preference lines of codes + added lines to finish the activity when pressed on &quot;Back Button&quot; when it is pressed in login+signup pages.&#10;- ToDoViewModel.kt: made &quot;saveTask&quot; one-lined function.&#10;- TasksDataClass.kt: modified and added properties to the task data class.&#10;- LoginFragment.kt &amp; SignupFragment.kt: made the shared preference keys dynamic as constants values.&#10;- TodoRepo.kt: made &quot;SaveTaskResult&quot; function return a message of operation result.&#10;&#10;ToDoFragment.kt + TodoRVListAdapter.kt: Added two timers+header + simple todolist with basic features.&#10;&#10;Layouts are changes accordingly." />
+    <MESSAGE value="Fourth Commit: Timer for remaining hours of the day + completed simple basic todolist. In details...&#10;- SplashScreen.kt: made and put the shared keys as constants + made the delay dynamic.&#10;- MainActivity.kt: removed unneeded shared preference lines of codes + added lines to finish the activity when pressed on &quot;Back Button&quot; when it is pressed in login+signup pages.&#10;- ToDoViewModel.kt: made &quot;saveTask&quot; one-lined function.&#10;- TasksDataClass.kt: modified and added properties to the task data class.&#10;- LoginFragment.kt &amp; SignupFragment.kt: made the shared preference keys dynamic as constants values.&#10;- TodoRepo.kt: made &quot;SaveTaskResult&quot; function return a message of operation result.&#10;&#10;ToDoFragment.kt + TodoRVListAdapter.kt: Added two timers+header + simple todolist with basic features.&#10;&#10;Layouts are changes accordingly." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fourth Commit: Timer for remaining hours of the day + completed simple basic todolist. In details...&#10;- SplashScreen.kt: made and put the shared keys as constants + made the delay dynamic.&#10;- MainActivity.kt: removed unneeded shared preference lines of codes + added lines to finish the activity when pressed on &quot;Back Button&quot; when it is pressed in login+signup pages.&#10;- ToDoViewModel.kt: made &quot;saveTask&quot; one-lined function.&#10;- TasksDataClass.kt: modified and added properties to the task data class.&#10;- LoginFragment.kt &amp; SignupFragment.kt: made the shared preference keys dynamic as constants values.&#10;- TodoRepo.kt: made &quot;SaveTaskResult&quot; function return a message of operation result.&#10;&#10;ToDoFragment.kt + TodoRVListAdapter.kt: Added two timers+header + simple todolist with basic features.&#10;&#10;Layouts are changes accordingly." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
