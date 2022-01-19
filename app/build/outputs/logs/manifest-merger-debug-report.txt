@@ -4,9 +4,9 @@ ADDED from C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidMa
 INJECTED from C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:2:1-37:12
 INJECTED from C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:2:1-37:12
 INJECTED from C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:2:1-37:12
-MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Hp\.gradle\caches\transforms-3\33132feddf9312aab1218e09067aae92\transformed\multidex-2.0.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-dynamic-features-fragment:2.3.5] C:\Users\Hp\.gradle\caches\transforms-3\e9d25e1c801edcfc903d0634c9661df7\transformed\jetified-navigation-dynamic-features-fragment-2.3.5\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.navigation:navigation-fragment-ktx:2.3.5] C:\Users\Hp\.gradle\caches\transforms-3\3f9b3d04905d85f6a8abb104de8c58f7\transformed\navigation-fragment-ktx-2.3.5\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Hp\.gradle\caches\transforms-3\33132feddf9312aab1218e09067aae92\transformed\multidex-2.0.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.fragment:fragment-ktx:1.2.4] C:\Users\Hp\.gradle\caches\transforms-3\523986a9c06f28181d0c7f7b5bc16c55\transformed\jetified-fragment-ktx-1.2.4\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.navigation:navigation-ui-ktx:2.3.5] C:\Users\Hp\.gradle\caches\transforms-3\6ee28f2380b6168d1846feb7781c5e29\transformed\navigation-ui-ktx-2.3.5\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.navigation:navigation-dynamic-features-runtime:2.3.5] C:\Users\Hp\.gradle\caches\transforms-3\a596ed45cf2c49a705924a56f4b6e8d5\transformed\jetified-navigation-dynamic-features-runtime-2.3.5\AndroidManifest.xml:17:1-24:12
@@ -23,8 +23,8 @@ MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0] C:\Users\Hp\.grad
 MERGED from [com.google.firebase:firebase-auth-ktx:21.0.1] C:\Users\Hp\.gradle\caches\transforms-3\44d6764c6f93f24928f26aa6b25bd53c\transformed\jetified-firebase-auth-ktx-21.0.1\AndroidManifest.xml:2:1-17:12
 MERGED from [com.google.firebase:firebase-firestore-ktx:24.0.0] C:\Users\Hp\.gradle\caches\transforms-3\660e1d20b0df26c203f840d8cf6c0ce8\transformed\jetified-firebase-firestore-ktx-24.0.0\AndroidManifest.xml:2:1-21:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\Hp\.gradle\caches\transforms-3\c24328982364d6318c49e64ff32d4742\transformed\legacy-support-v4-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Hp\.gradle\caches\transforms-3\c4f7c5c0aa89a6c0dfd80bdad318f42d\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.navigation:navigation-fragment:2.3.5] C:\Users\Hp\.gradle\caches\transforms-3\f0ab2126786576d0d401fcc73c2b26e1\transformed\navigation-fragment-2.3.5\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Hp\.gradle\caches\transforms-3\c4f7c5c0aa89a6c0dfd80bdad318f42d\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\Hp\.gradle\caches\transforms-3\34682b595ed80f3420df7ce04fe2c9d4\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:17:1-83:12
 MERGED from [com.google.firebase:firebase-firestore:24.0.0] C:\Users\Hp\.gradle\caches\transforms-3\cd1cc5de57bcd19d40623ce57cb03227\transformed\jetified-firebase-firestore-24.0.0\AndroidManifest.xml:2:1-26:12
 MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] C:\Users\Hp\.gradle\caches\transforms-3\9781b6e0bd9da8bda82829125dcc2eb0\transformed\jetified-play-services-auth-api-phone-17.4.0\AndroidManifest.xml:2:1-7:12
@@ -189,12 +189,12 @@ uses-sdk
 INJECTED from C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml
-MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Hp\.gradle\caches\transforms-3\33132feddf9312aab1218e09067aae92\transformed\multidex-2.0.1\AndroidManifest.xml:20:5-43
-MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Hp\.gradle\caches\transforms-3\33132feddf9312aab1218e09067aae92\transformed\multidex-2.0.1\AndroidManifest.xml:20:5-43
 MERGED from [androidx.navigation:navigation-dynamic-features-fragment:2.3.5] C:\Users\Hp\.gradle\caches\transforms-3\e9d25e1c801edcfc903d0634c9661df7\transformed\jetified-navigation-dynamic-features-fragment-2.3.5\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.navigation:navigation-dynamic-features-fragment:2.3.5] C:\Users\Hp\.gradle\caches\transforms-3\e9d25e1c801edcfc903d0634c9661df7\transformed\jetified-navigation-dynamic-features-fragment-2.3.5\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.navigation:navigation-fragment-ktx:2.3.5] C:\Users\Hp\.gradle\caches\transforms-3\3f9b3d04905d85f6a8abb104de8c58f7\transformed\navigation-fragment-ktx-2.3.5\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.navigation:navigation-fragment-ktx:2.3.5] C:\Users\Hp\.gradle\caches\transforms-3\3f9b3d04905d85f6a8abb104de8c58f7\transformed\navigation-fragment-ktx-2.3.5\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Hp\.gradle\caches\transforms-3\33132feddf9312aab1218e09067aae92\transformed\multidex-2.0.1\AndroidManifest.xml:20:5-43
+MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Hp\.gradle\caches\transforms-3\33132feddf9312aab1218e09067aae92\transformed\multidex-2.0.1\AndroidManifest.xml:20:5-43
 MERGED from [androidx.fragment:fragment-ktx:1.2.4] C:\Users\Hp\.gradle\caches\transforms-3\523986a9c06f28181d0c7f7b5bc16c55\transformed\jetified-fragment-ktx-1.2.4\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment-ktx:1.2.4] C:\Users\Hp\.gradle\caches\transforms-3\523986a9c06f28181d0c7f7b5bc16c55\transformed\jetified-fragment-ktx-1.2.4\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.navigation:navigation-ui-ktx:2.3.5] C:\Users\Hp\.gradle\caches\transforms-3\6ee28f2380b6168d1846feb7781c5e29\transformed\navigation-ui-ktx-2.3.5\AndroidManifest.xml:20:5-22:41
@@ -227,10 +227,10 @@ MERGED from [com.google.firebase:firebase-firestore-ktx:24.0.0] C:\Users\Hp\.gra
 MERGED from [com.google.firebase:firebase-firestore-ktx:24.0.0] C:\Users\Hp\.gradle\caches\transforms-3\660e1d20b0df26c203f840d8cf6c0ce8\transformed\jetified-firebase-firestore-ktx-24.0.0\AndroidManifest.xml:6:5-8:41
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\Hp\.gradle\caches\transforms-3\c24328982364d6318c49e64ff32d4742\transformed\legacy-support-v4-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\Hp\.gradle\caches\transforms-3\c24328982364d6318c49e64ff32d4742\transformed\legacy-support-v4-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Hp\.gradle\caches\transforms-3\c4f7c5c0aa89a6c0dfd80bdad318f42d\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Hp\.gradle\caches\transforms-3\c4f7c5c0aa89a6c0dfd80bdad318f42d\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.navigation:navigation-fragment:2.3.5] C:\Users\Hp\.gradle\caches\transforms-3\f0ab2126786576d0d401fcc73c2b26e1\transformed\navigation-fragment-2.3.5\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.navigation:navigation-fragment:2.3.5] C:\Users\Hp\.gradle\caches\transforms-3\f0ab2126786576d0d401fcc73c2b26e1\transformed\navigation-fragment-2.3.5\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Hp\.gradle\caches\transforms-3\c4f7c5c0aa89a6c0dfd80bdad318f42d\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Hp\.gradle\caches\transforms-3\c4f7c5c0aa89a6c0dfd80bdad318f42d\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\Hp\.gradle\caches\transforms-3\34682b595ed80f3420df7ce04fe2c9d4\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:21:5-44
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\Hp\.gradle\caches\transforms-3\34682b595ed80f3420df7ce04fe2c9d4\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:21:5-44
 MERGED from [com.google.firebase:firebase-firestore:24.0.0] C:\Users\Hp\.gradle\caches\transforms-3\cd1cc5de57bcd19d40623ce57cb03227\transformed\jetified-firebase-firestore-24.0.0\AndroidManifest.xml:7:5-9:41

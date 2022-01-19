@@ -88,6 +88,8 @@
             android:id="@+id/taskCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             app:cardElevation="12dp"
             app:cardCornerRadius="20dp"
             app:cardMaxElevation="14dp"
@@ -131,6 +133,8 @@
                         android:layout_marginBottom="10dp"
                         android:textSize="20sp"
                         android:textStyle=""
+                        android:clickable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
                         android:textColor="@color/black"
                         app:layout_constraintVertical_bias="0.0" />
 
@@ -145,7 +149,8 @@
                         android:inputType="textCapSentences|textMultiLine"
                         android:maxLines="6"
                         android:hint="Edit Task Row"
-                        android:visibility="gone"
+                        android:background="@null"
+                        android:visibility="invisible"
                         android:isScrollContainer="true"
                         android:paddingVertical="2dp"
                         android:paddingHorizontal="8dp"

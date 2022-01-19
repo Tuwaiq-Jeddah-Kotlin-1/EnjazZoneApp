@@ -14,16 +14,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.tuwaiq.enjazzoneapp.R
+import com.tuwaiq.enjazzoneapp.*
 import com.tuwaiq.enjazzoneapp.data.TasksDataClass
-import com.tuwaiq.enjazzoneapp.sharedPreferences
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.time.OffsetDateTime
 import java.time.ZoneOffset
 import java.util.*
-import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
 
 
@@ -208,13 +206,13 @@ class ToDoFragment : Fragment() {
         todoRecyclerView = view.findViewById(R.id.rvTodoRecyclerView)
         //todoRecyclerView.setHasFixedSize(true)
         tasksArrayList = arrayListOf()
-        todoRecyclerView.adapter = TodoRVListAdapter(tasksArrayList, view)
+        todoRecyclerView.adapter = TodoRVListAdapter(tasksArrayList, view, parentFragmentManager)
         todoRecyclerView.layoutManager = LinearLayoutManager(this.context)
         toDoViewModel = ViewModelProvider(this)[ToDoViewModel::class.java]
 
         //getAllTasksInDB()
         toDoViewModel.getAllTasks(tasksArrayList,viewLifecycleOwner).observe(viewLifecycleOwner,{
-            todoRecyclerView.adapter = TodoRVListAdapter(it, view)
+            todoRecyclerView.adapter = TodoRVListAdapter(it, view, parentFragmentManager)
         })
 
         welcomingMessageTV = view.findViewById(R.id.tvWelcomingMessage)
@@ -247,12 +245,10 @@ class ToDoFragment : Fragment() {
             todoTask.taskTitle = taskTitle
             todoTask.taskId = UUID.randomUUID().toString()
 
-            val saveTaskMessage = toDoViewModel.saveTask(todoTask)
-            println("SaveTask Message: $saveTaskMessage")
-            Toast.makeText(this.context, saveTaskMessage, Toast.LENGTH_SHORT).show()
+            toDoViewModel.saveTask(todoTask)
 
             //welcomingMessageTV.visibility = View.GONE
-            todoRecyclerView.adapter = TodoRVListAdapter(tasksArrayList, view)
+            todoRecyclerView.adapter = TodoRVListAdapter(tasksArrayList, view, parentFragmentManager)
             todoRecyclerView.layoutManager = LinearLayoutManager(this.context)
             //todoRVListAdapter.notifyItemInserted(todoRVListAdapter.itemCount)
             etEnterTaskET.text = null

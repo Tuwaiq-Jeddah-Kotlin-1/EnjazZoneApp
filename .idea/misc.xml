@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/baseline_expand_more_24.xml" value="0.1" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/baseline_logout_24.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/delete_red_button.xml" value="0.18796296296296297" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/ic_baseline_calendar_month_24.xml" value="0.15925925925925927" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/ic_baseline_format_list_bulleted_24.xml" value="0.15925925925925927" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/ic_baseline_format_list_numbered_24.xml" value="0.15925925925925927" />
@@ -16,6 +17,7 @@
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/paper_plane_24.xml" value="0.136" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/paper_plane_24_blue.xml" value="0.8" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/pencil_24.xml" value="0.14791666666666667" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/radius.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/trash_delete_24.xml" value="0.15462962962962962" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/trophy_24.xml" value="0.1425925925925926" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout-v26/todo_r_v_item_row.xml" value="0.1" />
@@ -29,13 +31,15 @@
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/custom_calendar_tasks.xml" value="0.4" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/drawer_layout_and_nav_view.xml" value="0.2554347826086957" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/fragment_appointments.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/fragment_blank.xml" value="0.23324275362318841" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/fragment_calendar_view.xml" value="0.2" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/fragment_enjaz_zone.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/fragment_login.xml" value="0.264" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/fragment_profile.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/fragment_signup.xml" value="0.25833333333333336" />
-        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/fragment_to_do.xml" value="0.4721189591078067" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/fragment_task_details.xml" value="0.264" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/fragment_to_do.xml" value="0.43418467583497056" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/main_constraint_layout_and_bottom_nav_view.xml" value="0.1" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/nav_header.xml" value="0.25833333333333336" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/task_r_v_row.xml" value="0.4642857142857143" />

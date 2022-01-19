@@ -1259,6 +1259,7 @@ color bright_foreground_inverse_material_dark
 color bright_foreground_inverse_material_light
 color bright_foreground_material_dark
 color bright_foreground_material_light
+color bright_red
 color browser_actions_bg_grey
 color browser_actions_divider_color
 color browser_actions_text_color
@@ -1328,9 +1329,13 @@ color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
 color foreground_material_light
+color grass_green
+color green
 color grey
 color highlighted_text_material_dark
 color highlighted_text_material_light
+color light_gray
+color lighter_gray
 color m3_appbar_overlay_color
 color m3_assist_chip_icon_tint_color
 color m3_assist_chip_stroke_color
@@ -1800,6 +1805,7 @@ color mtrl_textinput_hovered_box_stroke_color
 color notification_action_color_filter
 color notification_icon_bg_color
 color notification_material_background_media_default_color
+color off_white
 color primary_blue
 color primary_dark_material_dark
 color primary_dark_material_light
@@ -2535,6 +2541,7 @@ drawable common_google_signin_btn_text_light
 drawable common_google_signin_btn_text_light_focused
 drawable common_google_signin_btn_text_light_normal
 drawable common_google_signin_btn_text_light_normal_background
+drawable delete_red_button
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
@@ -2571,6 +2578,7 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_notifications_black_24dp
+drawable icons8_edit_property_64
 drawable m3_appbar_background
 drawable m3_popupmenu_background_overlay
 drawable m3_radiobutton_ripple
@@ -2615,6 +2623,9 @@ drawable notify_panel_notification_icon_bg
 drawable paper_plane_24
 drawable paper_plane_24_blue
 drawable pencil_24
+drawable radius
+drawable sand_hour_green
+drawable sand_hour_red
 drawable splash_screen_logo
 drawable test_custom_background
 drawable test_level_drawable
@@ -2735,6 +2746,7 @@ id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
+id btnDeleteBTN
 id btnLogin
 id btnLogout
 id btnSignup
@@ -2763,6 +2775,7 @@ id chip_group
 id chronometer
 id circle_center
 id clEnjazMotivatorZone
+id clTaskHeaderCL
 id clTaskTitleCL
 id clear_text
 id clip_horizontal
@@ -2785,6 +2798,13 @@ id currentState
 id custom
 id customPanel
 id cut
+id cvEndingHourCV
+id cvEnterTaskCV
+id cvPickDueDateCV
+id cvSendIBCV
+id cvStartingHourCV
+id cvTaskHeaderCV
+id cvTimelyCV
 id dark
 id date_picker_actions
 id decelerate
@@ -2837,6 +2857,8 @@ id etEmailLogin
 id etEmailSignup
 id etPasswordLogin
 id etPasswordSignup
+id etTaskDescriptionET
+id etTaskTitleET
 id etTodoRow
 id etUsername
 id exitUntilCollapsed
@@ -2878,6 +2900,7 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imageView
 id immediateStop
 id included
 id info
@@ -2890,6 +2913,8 @@ id item2
 id item3
 id item4
 id item_touch_helper_previous_elevation
+id ivEndHour
+id ivStartHour
 id jumpToEnd
 id jumpToStart
 id labeled
@@ -2926,6 +2951,8 @@ id material_timepicker_mode_button
 id material_timepicker_ok_button
 id material_timepicker_view
 id material_value_index
+id mcvDeleteTaskMCV
+id mcvSaveChangesMCV
 id media_actions
 id message
 id middle
@@ -3103,6 +3130,7 @@ id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id tag_window_insets_animation_callback
 id taskCardView
+id taskDetailsFragment
 id test_checkbox_android_button_tint
 id test_checkbox_app_button_tint
 id test_radiobutton_android_button_tint
@@ -3114,6 +3142,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textView3
 id text_calendar_view
 id text_enjaz_zone
 id text_input_end_icon
@@ -3141,11 +3170,21 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id tvCreationDateTV
 id tvDayRemainingTimer
+id tvDialogFragmentHeaderTitleTV
 id tvDigitalTextClock
+id tvEndingHourHeader
 id tvLoginLink
+id tvSaveChangesTV
 id tvSignupLink
+id tvStarterHourHeader
+id tvTaskDescriptionHeaderTV
+id tvTaskDueDateTV
+id tvTaskEndingHourTV
+id tvTaskStartingHourTV
 id tvTaskTitle
+id tvTaskTitleHeaderTV
 id tvTimerHeader
 id tvTodayDetailedDate
 id tvWelcomingMessage
@@ -3155,6 +3194,7 @@ id unlabeled
 id up
 id useLogo
 id vertical_only
+id view
 id view_offset_helper
 id view_transition
 id view_tree_lifecycle_owner
@@ -3284,6 +3324,7 @@ layout fragment_calendar_view
 layout fragment_enjaz_zone
 layout fragment_login
 layout fragment_signup
+layout fragment_task_details
 layout fragment_to_do
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
@@ -3368,7 +3409,6 @@ layout text_view_with_line_height_from_layout
 layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
-layout todo_r_v_item_row
 menu bottom_nav_menu
 menu example_menu
 menu example_menu2
