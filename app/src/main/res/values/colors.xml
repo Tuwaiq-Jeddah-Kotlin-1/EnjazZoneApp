@@ -8,7 +8,13 @@
 <!--    <color name="black">#FF000000</color>-->
     <color name="white">#FFFFFFFF</color>
     <color name="dark_red">#9A1818</color>
+    <color name="bright_red">#DA0000</color>
     <color name="black">#000000</color>
     <color name="grey">#7E7E7E</color>
+    <color name="light_gray">#aaa</color>
+    <color name="lighter_gray">#CDCDCD</color>
+    <color name="off_white">#BFFFFFFF</color>
     <color name="primary_blue">#2196F3</color>
+    <color name="grass_green">#8BC34A</color>
+    <color name="green">#85B175</color>
 </resources>

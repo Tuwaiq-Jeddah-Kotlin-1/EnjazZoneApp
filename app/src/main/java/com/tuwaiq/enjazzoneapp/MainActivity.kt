@@ -1,29 +1,22 @@
 package com.tuwaiq.enjazzoneapp
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.*
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
-import java.util.*
-
-//lateinit var sharedPreferences: SharedPreferences
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var appBarConfiguration:AppBarConfiguration
+    //private lateinit var appBarConfiguration:AppBarConfiguration
     private lateinit var navController: NavController
     private lateinit var bottomNavView: BottomNavigationView
     private lateinit var navView: NavigationView
@@ -31,12 +24,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout:DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //sharedPreferences = getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        /*Objects.requireNonNull(supportActionBar)?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
-        supportActionBar?.setCustomView(R.layout.clock)*/
 
         drawerLayout = findViewById(R.id.activity_main_container)
         navView = findViewById(R.id.nav_view)
@@ -112,6 +101,9 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_enjaz_zone -> navController.navigate(R.id.navigation_ToDo)
             R.id.navigation_login -> finish()
             R.id.navigation_signup -> finish()
+/*            R.id.taskDetailsFragment -> {
+                finish()
+            }*/
             else -> super.onBackPressed()
         } // when() {}
     } //fun onBackPressed()

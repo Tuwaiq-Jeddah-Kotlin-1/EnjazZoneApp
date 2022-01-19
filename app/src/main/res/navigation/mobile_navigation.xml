@@ -49,4 +49,14 @@
                 android:id="@+id/action_signupFragment_to_loginFragment"
                 app:destination="@id/navigation_login" />
     </fragment>
+
+    <dialog
+            android:id="@+id/taskDetailsFragment"
+            android:name="com.tuwaiq.enjazzoneapp.ui.todo.TaskDetailsFragment"
+            android:label="TaskDetailsFragment"
+            tools:layout="@layout/fragment_task_details">
+        <argument
+                android:name="PassedTaskObject"
+                app:argType="com.tuwaiq.enjazzoneapp.data.TasksDataClass" />
+    </dialog>
 </navigation>
