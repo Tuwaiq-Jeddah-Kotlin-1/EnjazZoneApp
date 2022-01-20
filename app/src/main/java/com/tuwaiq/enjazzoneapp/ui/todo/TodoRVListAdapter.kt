@@ -19,11 +19,12 @@ import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.tuwaiq.enjazzoneapp.R
 import com.tuwaiq.enjazzoneapp.data.TasksDataClass
 import android.content.Context.CLIPBOARD_SERVICE
+import android.content.Intent
+import androidx.core.content.ContextCompat
 
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
@@ -37,7 +38,7 @@ class TodoRVHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
     val editCheckIB: ImageButton = itemView.findViewById(R.id.editCheckIB)
     val cancelEditIB: ImageButton = itemView.findViewById(R.id.cancelIB)
     val deleteIB: ImageButton = itemView.findViewById(R.id.deleteIB)
-    val editInDetailsIB: ImageButton = itemView.findViewById(R.id.editInDetailsIB)
+    val ibShareTaskTitleIB: ImageButton = itemView.findViewById(R.id.ibShareTaskTitleIB)
     val editCL: ConstraintLayout = itemView.findViewById(R.id.editCL)
     val expandIB: ImageButton = itemView.findViewById(R.id.expandIB)
 }
@@ -100,7 +101,7 @@ class TodoRVListAdapter(private var mList: MutableList<TasksDataClass>, private 
                 tasksCollectionRef.document(taskInAdapter.taskId).update("isDone", taskInAdapter.taskTitle)
             }*/
             (view.context.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager?)?.setPrimaryClip(
-                ClipData.newPlainText("Task Title", holder.tvTaskTitle.text))
+                ClipData.newPlainText("Task Title", holder.tvTaskTitle.text.toString().substringAfter(". ")))
             Toast.makeText(view.context, "Text copied to clipboard", Toast.LENGTH_SHORT).show()
             true
         }
@@ -133,7 +134,7 @@ class TodoRVListAdapter(private var mList: MutableList<TasksDataClass>, private 
             holder.etTodoRow.visibility = View.VISIBLE
             holder.editIB.visibility = View.GONE
             holder.deleteIB.visibility = View.GONE
-            holder.editInDetailsIB.visibility = View.GONE
+            holder.ibShareTaskTitleIB.visibility = View.GONE
             holder.expandIB.visibility = View.GONE
             holder.cancelEditIB.visibility = View.VISIBLE
             holder.editCheckIB.visibility = View.VISIBLE
@@ -148,6 +149,15 @@ class TodoRVListAdapter(private var mList: MutableList<TasksDataClass>, private 
             }
             else todoTextViewState(holder)
         }
+
+        holder.ibShareTaskTitleIB.setOnClickListener {
+            val shareIntent = Intent()
+            shareIntent.action = Intent.ACTION_SEND
+            shareIntent.putExtra(Intent.EXTRA_TEXT, "a Task that's in my schedule: ${taskInAdapter.taskTitle}")
+            shareIntent.type = "text/plain"
+            ContextCompat.startActivity(view.context, shareIntent, null)
+        }
+
         holder.editCheckIB.setOnClickListener {
             val taskNewTitle = holder.etTodoRow.text.toString()
             if (taskNewTitle.isNotEmpty()) {
@@ -191,7 +201,7 @@ class TodoRVListAdapter(private var mList: MutableList<TasksDataClass>, private 
 
         holder.editIB.visibility = View.VISIBLE
         holder.deleteIB.visibility = View.VISIBLE
-        holder.editInDetailsIB.visibility = View.VISIBLE
+        holder.ibShareTaskTitleIB.visibility = View.VISIBLE
         holder.expandIB.visibility = View.VISIBLE
         holder.tvTaskTitle.visibility = View.VISIBLE
     }

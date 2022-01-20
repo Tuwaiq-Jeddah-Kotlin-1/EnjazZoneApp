@@ -1,10 +1,10 @@
-package com.tuwaiq.enjazzoneapp.ui.calendar_view
+package com.tuwaiq.enjazzoneapp.ui.tasks_view
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class CalendarViewModel : ViewModel() {
+class TasksViewViewModel : ViewModel() {
 
 
     private val _text = MutableLiveData<String>().apply {

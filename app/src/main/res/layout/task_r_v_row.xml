@@ -47,7 +47,7 @@
                 android:id="@+id/deleteIB"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                app:layout_constraintEnd_toStartOf="@+id/editInDetailsIB"
+                app:layout_constraintEnd_toStartOf="@+id/ibShareTaskTitleIB"
                 app:layout_constraintTop_toTopOf="parent"
                 android:translationZ="90dp"
                 app:srcCompat="@drawable/ic_icons_delete_32"
@@ -74,13 +74,14 @@
                 app:tint="@color/primary_blue" />
 
         <ImageButton
-                android:id="@+id/editInDetailsIB"
+                android:id="@+id/ibShareTaskTitleIB"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_icons8_edit_property_24_png"
-                android:backgroundTint="@color/white" />
+                app:srcCompat="@drawable/ic_baseline_share_24"
+                android:backgroundTint="@color/white"
+                app:tint="@color/primary_blue" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

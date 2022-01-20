@@ -16,10 +16,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_calender_view"
-        android:name="com.tuwaiq.enjazzoneapp.ui.calendar_view.CalendarFragment"
-        android:label="@string/calendar_appointments_later_tasks"
-        tools:layout="@layout/fragment_calendar_view" />
+        android:id="@+id/navigation_tasks_view"
+        android:name="com.tuwaiq.enjazzoneapp.ui.tasks_view.TasksViewFragment"
+        android:label="@string/tasks_view"
+        tools:layout="@layout/fragment_tasks_view" />
 
     <fragment
         android:id="@+id/navigation_enjaz_zone"

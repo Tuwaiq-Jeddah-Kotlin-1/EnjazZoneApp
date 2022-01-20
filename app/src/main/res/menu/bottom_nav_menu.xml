@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_calender_view"
-        android:icon="@drawable/ic_baseline_calendar_month_24"
-        android:title="@string/calendar_view" />
+        android:id="@+id/navigation_tasks_view"
+        android:icon="@drawable/ic_baseline_calendar_view_day_24"
+        android:title="@string/tasks_view" />
     <item
         android:id="@+id/navigation_ToDo"
         android:icon="@drawable/ic_baseline_format_list_numbered_24"

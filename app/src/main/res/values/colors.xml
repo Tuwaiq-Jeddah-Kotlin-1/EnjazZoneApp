@@ -15,6 +15,8 @@
     <color name="lighter_gray">#CDCDCD</color>
     <color name="off_white">#BFFFFFFF</color>
     <color name="primary_blue">#2196F3</color>
+    <color name="lighter_blue_no_transparent">#2196F3</color>
+    <color name="lighter_blue_transparent">#1A58B5FF</color>
     <color name="grass_green">#8BC34A</color>
-    <color name="green">#85B175</color>
+    <color name="green">#2E7D32</color>
 </resources>
