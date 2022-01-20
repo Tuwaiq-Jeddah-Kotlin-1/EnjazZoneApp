@@ -1335,6 +1335,8 @@ color grey
 color highlighted_text_material_dark
 color highlighted_text_material_light
 color light_gray
+color lighter_blue_no_transparent
+color lighter_blue_transparent
 color lighter_gray
 color m3_appbar_overlay_color
 color m3_assist_chip_icon_tint_color
@@ -2550,6 +2552,7 @@ drawable design_snackbar_background
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable ic_baseline_calendar_month_24
+drawable ic_baseline_calendar_view_day_24
 drawable ic_baseline_cancel_24
 drawable ic_baseline_check_circle_24
 drawable ic_baseline_expand_circle_down_24
@@ -2559,6 +2562,7 @@ drawable ic_baseline_format_list_numbered_24
 drawable ic_baseline_list_alt_24
 drawable ic_baseline_person_24
 drawable ic_baseline_send_24
+drawable ic_baseline_share_24
 drawable ic_baseline_view_list_24
 drawable ic_clock_black_24dp
 drawable ic_dashboard_black_24dp
@@ -2762,6 +2766,7 @@ id center_horizontal
 id center_vertical
 id chain
 id chains
+id chbIsDoneCheckBox
 id chbKeepMeSignedIn
 id chbRememberMe
 id chbSignupRememberMe
@@ -2777,6 +2782,7 @@ id circle_center
 id clEnjazMotivatorZone
 id clTaskHeaderCL
 id clTaskTitleCL
+id clTaskViewCL
 id clear_text
 id clip_horizontal
 id clip_vertical
@@ -2844,7 +2850,6 @@ id east
 id editCL
 id editCheckIB
 id editIB
-id editInDetailsIB
 id edit_query
 id elastic
 id end
@@ -2893,6 +2898,7 @@ id home
 id homeAsUp
 id honorRequest
 id horizontal_only
+id ibShareTaskTitleIB
 id icon
 id icon_group
 id icon_only
@@ -3000,11 +3006,11 @@ id navigation_bar_item_icon_view
 id navigation_bar_item_labels_group
 id navigation_bar_item_large_label_view
 id navigation_bar_item_small_label_view
-id navigation_calender_view
 id navigation_enjaz_zone
 id navigation_header_container
 id navigation_login
 id navigation_signup
+id navigation_tasks_view
 id never
 id neverCompleteToEnd
 id neverCompleteToStart
@@ -3044,6 +3050,7 @@ id progress_title
 id radio
 id ratio
 id rectangles
+id recyclerView
 id reverseSawtooth
 id right
 id rightToLeft
@@ -3180,11 +3187,13 @@ id tvSaveChangesTV
 id tvSignupLink
 id tvStarterHourHeader
 id tvTaskDescriptionHeaderTV
+id tvTaskDescriptionTV
 id tvTaskDueDateTV
 id tvTaskEndingHourTV
 id tvTaskStartingHourTV
 id tvTaskTitle
 id tvTaskTitleHeaderTV
+id tvTaskTitleTV
 id tvTimerHeader
 id tvTodayDetailedDate
 id tvWelcomingMessage
@@ -3320,11 +3329,11 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout dynamic_feature_install_fragment
-layout fragment_calendar_view
 layout fragment_enjaz_zone
 layout fragment_login
 layout fragment_signup
 layout fragment_task_details
+layout fragment_tasks_view
 layout fragment_to_do
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
@@ -3394,6 +3403,7 @@ layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 layout task_r_v_row
+layout tasks_view_recycler_view_row
 layout test_action_chip
 layout test_chip_zero_corner_radius
 layout test_design_checkbox
@@ -3453,7 +3463,6 @@ string bottom_sheet_behavior
 string bottomsheet_action_expand_halfway
 string calendar
 string calendar_appointments_later_tasks
-string calendar_view
 string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
@@ -3600,6 +3609,7 @@ string retry
 string search_menu_title
 string send_button
 string status_bar_notification_info_overflow
+string tasks_view
 string title_activity_main
 string to_do
 string to_do_list

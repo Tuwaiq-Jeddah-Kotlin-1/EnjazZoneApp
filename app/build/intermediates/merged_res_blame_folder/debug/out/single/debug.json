@@ -108,10 +108,6 @@
         "source": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\src\\main\\res\\drawable\\ic_icons_edit.xml"
     },
     {
-        "merged": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_calendar_view.xml.flat",
-        "source": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\src\\main\\res\\layout\\fragment_calendar_view.xml"
-    },
-    {
         "merged": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_task_details.xml.flat",
         "source": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\src\\main\\res\\layout\\fragment_task_details.xml"
     },
@@ -156,6 +152,10 @@
         "source": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\src\\main\\res\\drawable\\baseline_expand_more_24.xml"
     },
     {
+        "merged": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_calendar_view_day_24.xml.flat",
+        "source": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\src\\main\\res\\drawable\\ic_baseline_calendar_view_day_24.xml"
+    },
+    {
         "merged": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\build\\intermediates\\merged_res\\debug\\drawable_trash_delete_24.xml.flat",
         "source": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\src\\main\\res\\drawable\\trash_delete_24.xml"
     },
@@ -170,6 +170,14 @@
     {
         "merged": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_share_24.xml.flat",
+        "source": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\src\\main\\res\\drawable\\ic_baseline_share_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_tasks_view.xml.flat",
+        "source": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\src\\main\\res\\layout\\fragment_tasks_view.xml"
     },
     {
         "merged": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher.webp.flat",
@@ -218,6 +226,10 @@
     {
         "merged": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\build\\intermediates\\merged_res\\debug\\layout_tasks_view_recycler_view_row.xml.flat",
+        "source": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\src\\main\\res\\layout\\tasks_view_recycler_view_row.xml"
     },
     {
         "merged": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_notifications_black_24dp.xml.flat",

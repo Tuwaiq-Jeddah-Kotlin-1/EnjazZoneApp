@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         when(navController.currentDestination?.id) {
             R.id.navigation_ToDo -> finish()
-            R.id.navigation_calender_view -> navController.navigate(R.id.navigation_ToDo)
+            R.id.navigation_tasks_view -> navController.navigate(R.id.navigation_ToDo)
             R.id.navigation_enjaz_zone -> navController.navigate(R.id.navigation_ToDo)
             R.id.navigation_login -> finish()
             R.id.navigation_signup -> finish()

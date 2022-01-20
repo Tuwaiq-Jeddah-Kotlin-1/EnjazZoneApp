@@ -11,10 +11,10 @@ data class TasksDataClass(
     var taskId: String = "",
     val nowDate: Long = System.currentTimeMillis(),
     var dueDate: Long = nowDate + threeHoursInMilliSeconds,
-    var isDone: Boolean = false,
+    var done: Boolean = false,
     var defDurationInMilliSeconds: Long = 64800000,
     var numberingInList: Int = 0,
-    var taskDescription: String = "No description added yet.",
+    var taskDescription: String = "Task description.",
     var taskStartingHourMillis: Long = System.currentTimeMillis(),
     var taskEndingHourMillis: Long = System.currentTimeMillis()
 ) : Parcelable

@@ -87,9 +87,6 @@ class ToDoFragment : Fragment() {
         val sleepingHoursTimerHeader = "Sleeping Time\uD83D\uDCA4\uD83D\uDCA4 (10pm-6am):"
         tvDayTimerHeaderTV.text = activeHoursTimerHeader
 
-        tvDayTimerTV.setOnClickListener {
-
-        }
         val activeHoursTimer = object: CountDownTimer(activeHoursCounter, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 //println(millisUntilFinished)
@@ -206,13 +203,13 @@ class ToDoFragment : Fragment() {
         todoRecyclerView = view.findViewById(R.id.rvTodoRecyclerView)
         //todoRecyclerView.setHasFixedSize(true)
         tasksArrayList = arrayListOf()
-        todoRecyclerView.adapter = TodoRVListAdapter(tasksArrayList, view, parentFragmentManager)
+        todoRecyclerView.adapter = TodoRVListAdapter(tasksArrayList, view)
         todoRecyclerView.layoutManager = LinearLayoutManager(this.context)
         toDoViewModel = ViewModelProvider(this)[ToDoViewModel::class.java]
 
         //getAllTasksInDB()
         toDoViewModel.getAllTasks(tasksArrayList,viewLifecycleOwner).observe(viewLifecycleOwner,{
-            todoRecyclerView.adapter = TodoRVListAdapter(it, view, parentFragmentManager)
+            todoRecyclerView.adapter = TodoRVListAdapter(it, view)
         })
 
         welcomingMessageTV = view.findViewById(R.id.tvWelcomingMessage)
@@ -248,7 +245,7 @@ class ToDoFragment : Fragment() {
             toDoViewModel.saveTask(todoTask)
 
             //welcomingMessageTV.visibility = View.GONE
-            todoRecyclerView.adapter = TodoRVListAdapter(tasksArrayList, view, parentFragmentManager)
+            todoRecyclerView.adapter = TodoRVListAdapter(tasksArrayList, view)
             todoRecyclerView.layoutManager = LinearLayoutManager(this.context)
             //todoRVListAdapter.notifyItemInserted(todoRVListAdapter.itemCount)
             etEnterTaskET.text = null

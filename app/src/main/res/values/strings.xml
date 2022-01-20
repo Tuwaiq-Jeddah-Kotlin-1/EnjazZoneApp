@@ -7,7 +7,7 @@
     <string name="to_do_list">To-Do Lists</string>
     <string name="calendar_appointments_later_tasks">Calendar(Appointments &amp; Later Tasks)</string>
     <string name="calendar">Calendar</string>
-    <string name="calendar_view">Calendar View</string>
+    <string name="tasks_view">Tasks View</string>
     <string name="enjaz_zone">Enjaz Zone</string>
     <string name="send_button">Send Button</string>
     <string name="enter_a_task_hint">Any tasks to write down for Today?</string>
