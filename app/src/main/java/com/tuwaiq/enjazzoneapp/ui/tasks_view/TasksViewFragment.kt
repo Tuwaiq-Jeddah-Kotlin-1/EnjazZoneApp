@@ -20,6 +20,7 @@ class TasksViewFragment : Fragment() {
     private lateinit var tasksViewViewModel: ToDoViewModel
     private lateinit var tvFragmentHeader: TextView
     private lateinit var recyclerView: RecyclerView
+    private lateinit var rvLayoutManager:LinearLayoutManager
     private lateinit var tasksArrayList:ArrayList<TasksDataClass>
 
     override fun onCreateView(
@@ -37,24 +38,29 @@ class TasksViewFragment : Fragment() {
         tvFragmentHeader = view.findViewById(R.id.text_calendar_view)
         recyclerView = view.findViewById(R.id.recyclerView)
         tasksArrayList = arrayListOf()
-        recyclerView.adapter = TasksViewRecyclerViewAdapter(tasksArrayList, view)
 
-        recyclerView.layoutManager = LinearLayoutManager(this.context)
+        rvLayoutManager = LinearLayoutManager(this.context)
+        recyclerView.layoutManager = rvLayoutManager
 
-        //var listCount = 0
         tasksViewViewModel.getAllTasks(tasksArrayList, viewLifecycleOwner).observe(viewLifecycleOwner, { it ->
-            it.sortBy { list -> list.dueDate }
-            recyclerView.adapter = TasksViewRecyclerViewAdapter(it, view)
-            //listCount = it.size
-            tvFragmentHeader.text = "All Tasks (${it.size}) \"due-date\" sorted:"
-/*            var positionToStart = 0
-            it.forEach { taskInAdapter ->
-                taskInAdapter.dueDate
-            }
-            LinearLayoutManager(this.context).scrollToPositionWithOffset(positionToStart, 0)*/
-            recyclerView.smoothScrollToPosition(positionToStartFrom)
-            //LinearLayoutManager(view.context).startSmoothScroll(positionToStartFrom)
-        })
+            it.sortByDescending { list -> list.dueDate }
 
+            recyclerView.adapter = TasksViewRecyclerViewAdapter(it, view,// rvLayoutManager
+                tasksViewViewModel)
+            /*{
+                *//*(recyclerView.layoutManager as LinearLayoutManager).findViewByPosition(
+                    positionToStartFrom)*//*
+                (recyclerView.layoutManager as LinearLayoutManager).scrollToPosition(it)
+                println("HEEEEEEEEEEEEEEEEre is Position: $it")
+            }
+            */
+            //recyclerView.adapter!!.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+
+            tvFragmentHeader.text = "All Tasks (${it.size}) \"due-date\" sorted:"
+        })
+/*        recyclerView.adapter = TasksViewRecyclerViewAdapter(tasksArrayList, view) {
+            (recyclerView.layoutManager as LinearLayoutManager).findViewByPosition(it)
+            println("HEEEEEEEEEEEEEEEEre is Position: $it")
+        }*/
     }
 }

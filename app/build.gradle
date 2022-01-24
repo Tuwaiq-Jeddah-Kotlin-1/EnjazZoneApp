@@ -50,6 +50,11 @@ android {
 }
 
 dependencies {
+/*    //WorkManager Library
+    implementation 'androidx.work:work-runtime-ktx:2.7.1'*/
+
+    //implementation "recyclerview:1.2.0-alpha02"
+    //implementation "androidx.recyclerview:recyclerview:1.2.1"
     implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0"
 
     implementation 'androidx.multidex:multidex:2.0.1'

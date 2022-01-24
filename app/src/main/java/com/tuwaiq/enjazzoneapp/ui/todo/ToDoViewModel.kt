@@ -3,18 +3,23 @@ package com.tuwaiq.enjazzoneapp.ui.todo
 import android.app.Application
 import androidx.lifecycle.*
 import com.tuwaiq.enjazzoneapp.data.TasksDataClass
-import com.tuwaiq.enjazzoneapp.data.TodoRepo
+import com.tuwaiq.enjazzoneapp.data.Repository
+import kotlinx.coroutines.launch
 
 class ToDoViewModel(context: Application) : AndroidViewModel(context) {
-    private val repo = TodoRepo(context)
+    private val repo = Repository()
 
     fun getAllTasks(newList:ArrayList<TasksDataClass>, viewLifecycleOwner: LifecycleOwner): LiveData<ArrayList<TasksDataClass>> {
         val tasks = MutableLiveData<ArrayList<TasksDataClass>>()
-        repo.getAllTasksFromDB(newList).observe(viewLifecycleOwner,{
-            tasks.postValue(it)
-        })
+        viewModelScope.launch {
+            repo.getAllTasksFromDB(newList).observe(viewLifecycleOwner,{
+                tasks.postValue(it)
+            })
+        }
         return tasks
     }
 
-    fun saveTask(task:TasksDataClass):String = repo.saveTaskInDB(task)
+    suspend fun createTask(task:TasksDataClass) = viewModelScope.launch { repo.createTaskInDB(task) }
+
+    suspend fun updateTask(task:TasksDataClass, key:String) = viewModelScope.launch { repo.updateTaskInDB (task, key) }
 }

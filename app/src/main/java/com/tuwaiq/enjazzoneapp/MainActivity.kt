@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
-        navView.setNavigationItemSelectedListener {
+/*        navView.setNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.btnLogout -> {
                     Log.e("Inside when of Nav View", "${it.itemId} BEEN PRESSED")
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                 }else -> Log.e("else", "ELSE NAV VIEW")
             }
             true
-        }
+        }*/
         bottomNavView = findViewById(R.id.bottom_nav_view)
         navController = findNavController(R.id.nav_host_fragment_activity_main)
 /*        appBarConfiguration = AppBarConfiguration(

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.user_profile_and_settings.UserProfileAndSettingsFragment"
+        >
+
+    <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
+            android:layout_margin="3dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/materialCardView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clHeaderCL"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/lighter_blue_transparent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                    android:id="@+id/tvUsernameHeaderTV"
+                    android:text="Username:"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/primary_blue"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="15dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tvUsernameTV" />
+            <TextView
+                    android:id="@+id/tvUsernameTV"
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="30dp"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/black"
+                    android:hint="Username"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginEnd="15dp"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                    android:id="@+id/tvEmailHeaderTV"
+                    android:text="Email:"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/primary_blue"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="15dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tvEmailTV" />
+
+            <TextView
+                    android:id="@+id/tvEmailTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/black"
+                    android:hint="Email"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginEnd="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvUsernameTV"
+                    android:layout_marginTop="45dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="65dp">
+
+        <TextView
+                android:id="@+id/tvScheduleHeaderTV"
+                android:text="Bedtime schedule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="30dp"
+                app:layout_constraintBottom_toTopOf="@+id/vHeaderLineV" />
+
+        <View
+                android:id="@+id/vHeaderLineV"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lighter_blue_transparent"
+                app:layout_constraintTop_toBottomOf="@id/tvScheduleHeaderTV"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+                android:text="Get in bed"
+                android:translationZ="90dp"
+                android:textSize="12.5sp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/btnGetInBedBTN"
+                android:id="@+id/textView"
+                app:layout_constraintBottom_toTopOf="@+id/btnGetInBedBTN"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="-9dp" />
+
+        <Button
+                android:id="@+id/btnGetInBedBTN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10:00 PM"
+                android:paddingVertical="15dp"
+                android:paddingHorizontal="30dp"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white"
+                android:textAlignment="viewStart"
+                android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+                android:drawableTint="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vHeaderLineV"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnWakeUpBTN"
+                android:layout_marginEnd="20dp" />
+
+        <TextView
+                android:text="Wake up"
+                android:translationZ="90dp"
+                android:textSize="12.5sp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/btnWakeUpBTN"
+                app:layout_constraintStart_toStartOf="@+id/btnWakeUpBTN"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="-9dp" />
+
+        <Button
+                android:id="@+id/btnWakeUpBTN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="06:00 AM"
+                android:paddingVertical="15dp"
+                android:paddingHorizontal="30dp"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white"
+                android:textAlignment="viewStart"
+                android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+                android:drawableTint="@color/black"
+                app:layout_constraintTop_toBottomOf="@+id/vHeaderLineV"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnGetInBedBTN" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcvDeleteTaskMCV"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardElevation="12dp"
+            app:cardCornerRadius="20dp"
+            app:cardMaxElevation="14dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="false"
+            app:strokeColor="@color/bright_red"
+            app:strokeWidth="0.1dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="25dp">
+
+        <Button
+                android:id="@+id/btnLogoutBTN"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Logout"
+                android:textColor="@color/bright_red"
+                android:drawableEnd="@drawable/baseline_logout_24"
+                android:backgroundTint="@color/white"
+                android:clickable="false"
+                android:drawableTint="@color/bright_red"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

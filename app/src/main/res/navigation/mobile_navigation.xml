@@ -23,9 +23,9 @@
 
     <fragment
         android:id="@+id/navigation_enjaz_zone"
-        android:name="com.tuwaiq.enjazzoneapp.ui.enjaz_zone.EnjazZoneFragment"
-        android:label="@string/enjaz_zone"
-        tools:layout="@layout/fragment_enjaz_zone"
+        android:name="com.tuwaiq.enjazzoneapp.ui.user_profile_and_settings.UserProfileAndSettingsFragment"
+        android:label="@string/user_profile"
+        tools:layout="@layout/fragment_user_profile_and_settings"
             />
     <fragment
             android:id="@+id/navigation_login"
