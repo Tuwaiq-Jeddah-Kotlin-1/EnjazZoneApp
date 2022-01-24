@@ -12,10 +12,12 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tuwaiq.enjazzoneapp.*
 import com.tuwaiq.enjazzoneapp.data.TasksDataClass
+import kotlinx.coroutines.launch
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
@@ -23,14 +25,12 @@ import java.time.OffsetDateTime
 import java.time.ZoneOffset
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.math.absoluteValue
 
 
 const val welcomingMessageString = "Plan your day, Achieve more!"
 const val aDayInMilliSeconds = 86400000
 const val threeHoursInMilliSeconds = 10800000
-//var taskDataList = mutableListOf<TaskTodo>(TaskTodo())
-//var tasksArrayList:ArrayList<TaskTodo> = mutableListOf<TaskTodo>(TaskTodo())
-//lateinit var todoRecyclerView: RecyclerView
 
 class ToDoFragment : Fragment() {
 
@@ -50,7 +50,6 @@ class ToDoFragment : Fragment() {
     lateinit var welcomingMessageTV: TextView
 
     private lateinit var tasksArrayList:ArrayList<TasksDataClass>
-    //lateinit var sleepingHoursTimer: CountDownTimer
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -66,48 +65,42 @@ class ToDoFragment : Fragment() {
         tvDayTimerHeaderTV = view.findViewById(R.id.tvTimerHeader)
 
         tvDayTimerTV = view.findViewById(R.id.tvDayRemainingTimer)
-        val sixHoursInMilliSeconds:Long = 21600000
-        val eighteenHoursInMilliSeconds:Long = 86400000 - sixHoursInMilliSeconds //64,800,000
-        //val counterStarter:Long = 86400000 - sixHoursInMilliSeconds
-        val simpleDateFormat = SimpleDateFormat("HH:mm:ss")
-        val currentTime24HourFormat = simpleDateFormat.format(System.currentTimeMillis())
-        //val currentTimeMillis = System.currentTimeMillis()
-        val currentTimeInModTillADay = simpleDateFormat.format((System.currentTimeMillis()%84000000))
-        val currentTimeInLongToDateToDateTimeFormat = simpleDateFormat.format(Date(System.currentTimeMillis()))
-        val nowDate = OffsetDateTime.now( ZoneOffset.UTC )
 
         val currentTimeMillis = System.currentTimeMillis()
-        val activeHoursCounter:Long = (86400000 - (currentTimeMillis % 86400000)) - 18000000
-        val sleepingHoursCounter:Long = (86400000 - (currentTimeMillis % 86400000)) + 10800000
+        val activeHoursCounter:Long = (milliSecondsInDay - (currentTimeMillis % milliSecondsInDay)) - (milliSecondsInDay %((sharedPreferences.getLong(getInBedSharedPrefLongKey, (14400000).toLong())%milliSecondsInDay)))
+        val sleepingHoursCounter:Long = (milliSecondsInDay - (currentTimeMillis % milliSecondsInDay)) + (milliSecondsInDay %((sharedPreferences.getLong(wakeupSharedPrefLongKey, (7200000).toLong())%milliSecondsInDay)))
 
-        var counterBooleanSwitch = true
-        var longCounterUntilFinished:Long = activeHoursCounter//if(counterBooleanSwitch) activeHoursCounter else sleepingHoursCounter
+        val longCounterUntilFinished:Long = activeHoursCounter//if(counterBooleanSwitch) activeHoursCounter else sleepingHoursCounter
 
-        val activeHoursTimerHeader = "Enjaz Hours\uD83C\uDFC6 (6am-10pm):"
-        val sleepingHoursTimerHeader = "Sleeping Time\uD83D\uDCA4\uD83D\uDCA4 (10pm-6am):"
+        val activeHoursTimerHeader = "Enjaz Hours\uD83C\uDFC6 (${sharedPreferences.getString(wakeupSharedPrefStringKey, "6:00 AM")?.substringBefore(":")}am-${sharedPreferences.getString(getInBedSharedPrefStringKey, "10:00 PM")?.substringBefore(":")}pm)"
+        val sleepingHoursTimerHeader = "Sleeping Time\uD83D\uDCA4\uD83D\uDCA4 (${sharedPreferences.getString(getInBedSharedPrefStringKey, "10:00 PM")?.substringBefore(":")}pm-${sharedPreferences.getString(wakeupSharedPrefStringKey, "6:00 AM")?.substringBefore(":")}am)"
         tvDayTimerHeaderTV.text = activeHoursTimerHeader
 
-        val activeHoursTimer = object: CountDownTimer(activeHoursCounter, 1000) {
+        val activeHoursTimer = object: CountDownTimer(longCounterUntilFinished, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                //println(millisUntilFinished)
-                // Used for formatting digit to be in 2 digits only:
-                tvDayTimerTV.text = twoDigitsDecimalFormatTime(millisUntilFinished)
+
+                val f: NumberFormat = DecimalFormat("00")
+                val hour = millisUntilFinished / 3600000 % 24
+                val min = millisUntilFinished / 60000 % 60
+                val sec = millisUntilFinished / 1000 % 60
+                tvDayTimerTV.text = "${f.format(hour)}:${f.format(min)}:${f.format(sec)} ⏳"
+
             }
             override fun onFinish() {
                 tvDayTimerHeaderTV.text = sleepingHoursTimerHeader
                 val sleepingHoursTimer = object: CountDownTimer(sleepingHoursCounter, 1000) {
                     override fun onTick(millisUntilFinished: Long) {
-                        // Used for formatting digit to be in 2 digits only:
+
                         val f: NumberFormat = DecimalFormat("00")
                         val hour = millisUntilFinished / 3600000 % 24
                         val min = millisUntilFinished / 60000 % 60
                         val sec = millisUntilFinished / 1000 % 60
-                        tvDayTimerTV.text = "${f.format(hour)}:${f.format(min)}:${f.format(sec)}"
+                        tvDayTimerTV.text = "\uD83D\uDECC\uD83C\uDFFB${f.format(hour)}:${f.format(min)}:${f.format(sec)}\uD83D\uDE34\uD83D\uDE34"
+
                     }
                     override fun onFinish() {
                         tvDayTimerHeaderTV.text = sleepingHoursTimerHeader
 
-                        //tvDayTimerTV.text = "(HH:mm to HH:mm)"
                     }
                 }
                 sleepingHoursTimer.start()
@@ -115,71 +108,8 @@ class ToDoFragment : Fragment() {
         }
         activeHoursTimer.start()
 
-/*        val startCalendar = Calendar.getInstance()
-        val endCalendar = Calendar.getInstance()
-
-        val startMillis: Long = startCalendar.timeInMillis //get the start time in milliseconds
-        endCalendar.set(2022, 0, 14) // 10 = November, month start at 0 = January
-        endCalendar.timeInMillis // 10 = November, month start at 0 = January
-        val endMillis: Long = endCalendar.timeInMillis //get the end time in milliseconds
-
-        //val totalMillis = endMillis - startMillis //total time in milliseconds
-        val totalMillis = System.currentTimeMillis() //total time in milliseconds*/
-
-
-/*
-            println(activeHoursCounter)
-            println(twoDigitsDecimalFormatTime(activeHoursCounter))
-            println(System.currentTimeMillis())
-            println(twoDigitsDecimalFormatTime(System.currentTimeMillis()))
-            println(nowDate)
-*/
-
-        //val countDownTimer:CountDownTimer = object: CountDownTimer((84000000 - (System.currentTimeMillis() % 84000000)), 1000) {
-/*        val countDownTimer:CountDownTimer = object: CountDownTimer(84000000, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                //println(millisUntilFinished)
-                // Used for formatting digit to be in 2 digits only:
-                //tvDayTimerTV.text = twoDigitsDecimalFormatTime(millisUntilFinished)
-                var millisUntilFinished = millisUntilFinished
-                val days: Long = TimeUnit.MILLISECONDS.toDays(millisUntilFinished)
-                millisUntilFinished -= TimeUnit.DAYS.toMillis(days)
-                val hours: Long = TimeUnit.MILLISECONDS.toHours(millisUntilFinished)
-                millisUntilFinished -= TimeUnit.HOURS.toMillis(hours)
-                val minutes: Long = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)
-                millisUntilFinished -= TimeUnit.MINUTES.toMillis(minutes)
-                val seconds: Long = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
-                tvDayTimerTV.text = "$days:$hours:$minutes:$seconds" //You can compute the millisUntilFinished on hours/minutes/seconds
-            }
-            override fun onFinish() {
-                tvDayTimerHeaderTV.text = sleepingHoursTimerHeader
-            }
-        }
-        countDownTimer.start()*/
-
-/*        val cdt: CountDownTimer = object : CountDownTimer(totalMillis, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                var millisUntilFinished = millisUntilFinished
-                val days: Long = TimeUnit.MILLISECONDS.toDays(millisUntilFinished)
-                millisUntilFinished -= TimeUnit.DAYS.toMillis(days)
-                val hours: Long = TimeUnit.MILLISECONDS.toHours(millisUntilFinished)
-                millisUntilFinished -= TimeUnit.HOURS.toMillis(hours)
-                val minutes: Long = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)
-                millisUntilFinished -= TimeUnit.MINUTES.toMillis(minutes)
-                val seconds: Long = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
-                tvDayTimerTV.text = "$days:$hours:$minutes:$seconds" //You can compute the millisUntilFinished on hours/minutes/seconds
-            }
-
-            override fun onFinish() {
-                tvDayTimerTV.text ="Finish!"
-            }
-        }
-        cdt.start()*/
-
-
-
         tvDayTimerTV.setOnLongClickListener {
-            Toast.makeText(this.context, "Time remaining until sleeping hours\uD83D\uDCA4\uD83D\uDCA4", Toast.LENGTH_LONG).show()
+            Toast.makeText(this.context, "Time remaining until bedtime hours\uD83D\uDCA4\uD83D\uDCA4", Toast.LENGTH_LONG).show()
             true
         }
 
@@ -207,7 +137,6 @@ class ToDoFragment : Fragment() {
         todoRecyclerView.layoutManager = LinearLayoutManager(this.context)
         toDoViewModel = ViewModelProvider(this)[ToDoViewModel::class.java]
 
-        //getAllTasksInDB()
         toDoViewModel.getAllTasks(tasksArrayList,viewLifecycleOwner).observe(viewLifecycleOwner,{
             todoRecyclerView.adapter = TodoRVListAdapter(it, view)
         })
@@ -242,8 +171,9 @@ class ToDoFragment : Fragment() {
             todoTask.taskTitle = taskTitle
             todoTask.taskId = UUID.randomUUID().toString()
 
-            toDoViewModel.saveTask(todoTask)
-
+            toDoViewModel.viewModelScope.launch {
+                toDoViewModel.createTask(todoTask)
+            }
             //welcomingMessageTV.visibility = View.GONE
             todoRecyclerView.adapter = TodoRVListAdapter(tasksArrayList, view)
             todoRecyclerView.layoutManager = LinearLayoutManager(this.context)
@@ -268,14 +198,6 @@ class ToDoFragment : Fragment() {
         }
     }
 
-    private fun twoDigitsDecimalFormatTime(millisUntilFinished: Long): String {
-        val f: NumberFormat = DecimalFormat("00")
-        val hour = millisUntilFinished / 3600000 % 24
-        val min = millisUntilFinished / 60000 % 60
-        val sec = millisUntilFinished / 1000 % 60
-        return "${f.format(hour)}:${f.format(min)}:${f.format(sec)} ⏳"
-    }
-
     private fun editEditTextHeight() {
         if (etEnterTaskET.lineCount == etEnterTaskET.maxLines) {
             etEnterTaskET.maxLines = etEnterTaskET.lineCount+1
@@ -288,7 +210,7 @@ fun welcomeText(taskList: List<TasksDataClass>, tvWelcomeText: TextView) {
     else tvWelcomeText.visibility = View.GONE
 }
 
-fun getTodayDetailedDate (time:Date = Calendar.getInstance().time) :String {
-    val formatter = SimpleDateFormat("EEEE: D MMM yyyy")
+fun getTodayDetailedDate (time:Date = Calendar.getInstance(Locale.getDefault()).time) :String {
+    val formatter = SimpleDateFormat("EEEE D MMM yyyy")
     return formatter.format(time)
 }

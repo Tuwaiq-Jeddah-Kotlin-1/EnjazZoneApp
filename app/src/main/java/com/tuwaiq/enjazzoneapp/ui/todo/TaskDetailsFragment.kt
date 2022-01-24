@@ -265,26 +265,26 @@ class TaskDetailsFragment: DialogFragment() {
         val endHour = calendar.get(Calendar.HOUR_OF_DAY)
         val endMinute = calendar.get(Calendar.MINUTE)
         cvEndingHourCV.setOnClickListener {
-            TimePickerDialog(requireContext(), android.R.style.Theme_Material_Dialog_Alert, TimePickerDialog.OnTimeSetListener
-            { _, hour, minute ->
-                calendar.set(Calendar.HOUR_OF_DAY, hour)
-                calendar.set(Calendar.MINUTE, minute)
+            TimePickerDialog(requireContext(), android.R.style.Theme_Material_Dialog_Alert,
+                { _, hour, minute ->
+                    calendar.set(Calendar.HOUR_OF_DAY, hour)
+                    calendar.set(Calendar.MINUTE, minute)
 
-                val sdf = SimpleDateFormat("h:mm a", Locale.getDefault())
-                tvTaskEndHourTV.text = sdf.format(calendar.time)
-                val toDateToLong = calendar.timeInMillis
-                Toast.makeText(view.context,"Selected Ending Hour is: ${tvTaskEndHourTV.text}",Toast.LENGTH_LONG).show()
-                Toast.makeText(view.context,"Selected Ending Hour in Millis: $toDateToLong",Toast.LENGTH_LONG).show()
-                println(toDateToLong)
-                taskObject?.taskEndingHourMillis = calendar.timeInMillis
-                taskObject?.let { it1 ->
-                    tasksCollectionRef.document(currentUserID.toString()).collection("tasks")
-                        .document(
-                            it1.taskId
-                        ).update("taskEndingHourMillis", it1.taskEndingHourMillis)
-                }
-                Toast.makeText(view.context, "Edit saved ✔", Toast.LENGTH_SHORT).show()
-            }, endHour, endMinute, false).show()
+                    val sdf = SimpleDateFormat("h:mm a", Locale.getDefault())
+                    tvTaskEndHourTV.text = sdf.format(calendar.time)
+                    val toDateToLong = calendar.timeInMillis
+                    Toast.makeText(view.context,"Selected Ending Hour is: ${tvTaskEndHourTV.text}",Toast.LENGTH_LONG).show()
+                    Toast.makeText(view.context,"Selected Ending Hour in Millis: $toDateToLong",Toast.LENGTH_LONG).show()
+                    println(toDateToLong)
+                    taskObject?.taskEndingHourMillis = calendar.timeInMillis
+                    taskObject?.let { it1 ->
+                        tasksCollectionRef.document(currentUserID.toString()).collection("tasks")
+                            .document(
+                                it1.taskId
+                            ).update("taskEndingHourMillis", it1.taskEndingHourMillis)
+                    }
+                    Toast.makeText(view.context, "Edit saved ✔", Toast.LENGTH_SHORT).show()
+                }, endHour, endMinute, false).show()
         } //cvEndingHourCV.setOnClickListener
 
         mcvDeleteTaskMCV.setOnClickListener {

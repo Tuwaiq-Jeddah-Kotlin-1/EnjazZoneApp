@@ -9,12 +9,18 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 
 lateinit var sharedPreferences: SharedPreferences
-const val sharedPrefFile:String = "SHARED_PREF"
-const val emailKeyInSharedPref:String = "EMAIL"
-const val passwordKeyInSharedPref:String = "PASSWORD"
+// Keys:
+const val sharedPrefFile = "SHARED_PREF"
+const val emailKeyInSharedPref = "EMAIL"
+const val passwordKeyInSharedPref = "PASSWORD"
 const val rememberMeKeyInSharedPref = "REMEMBER-ME-CHECKBOX"
 const val keepMeSignedInKeyInSharedPref = "KEEP-SIGNED-IN-CHECKBOX"
 const val usernameKeyInSharedPref = "USERNAME"
+const val getInBedSharedPrefStringKey = "GET_IN_BED_STRING"
+const val getInBedSharedPrefLongKey = "GET_IN_BED_LONG"
+const val wakeupSharedPrefStringKey = "WAKE_UP_STRING"
+const val wakeupSharedPrefLongKey = "WAKE_UP_LONG"
+const val milliSecondsInDay:Long = 86400000
 
 @Suppress("DEPRECATION")
 class SplashScreen : AppCompatActivity() {
