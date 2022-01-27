@@ -14,10 +14,10 @@ class Repository {
     private val db = FirebaseFirestore.getInstance()
     private val tasksCollectionRef = Firebase.firestore.collection("users")
 
-    suspend fun getAllTasksFromDB(tasksList: ArrayList<TasksDataClass>): MutableLiveData<ArrayList<TasksDataClass>> = withContext(
+    suspend fun getAllTasksFromDB(): List<TasksDataClass> = withContext(
         Dispatchers.IO) {
-        val newTasksList = MutableLiveData<ArrayList<TasksDataClass>>()
-        newTasksList.postValue(arrayListOf())
+        val newTasksList = mutableListOf<TasksDataClass>()
+        //newTasksList = arrayListOf()
 
         db.collection("users").document(currentUserID).collection("tasks")
             .addSnapshotListener(object :
@@ -30,9 +30,9 @@ class Repository {
                     }
                     for (dc: DocumentChange in value?.documentChanges!!) {
                         if (dc.type == DocumentChange.Type.ADDED)
-                            newTasksList.value!!.add(dc.document.toObject(TasksDataClass::class.java))
+                            newTasksList.add(dc.document.toObject(TasksDataClass::class.java))
                     }
-
+                    newTasksList.sortByDescending { list -> list.nowDate }
                     //tasksList = tasksArrayList
                 }
             })

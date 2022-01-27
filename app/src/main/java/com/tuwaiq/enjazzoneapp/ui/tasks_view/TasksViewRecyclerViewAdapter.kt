@@ -3,7 +3,6 @@ package com.tuwaiq.enjazzoneapp.ui.tasks_view
 import android.graphics.Paint
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,11 +12,7 @@ import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewModelScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.tuwaiq.enjazzoneapp.R
 import com.tuwaiq.enjazzoneapp.data.TasksDataClass
 import com.tuwaiq.enjazzoneapp.ui.todo.ToDoViewModel
@@ -50,35 +45,19 @@ class TasksViewRecyclerViewHolder(itemView: View,
 */
 }
 
-class TasksViewRecyclerViewAdapter(private var tasksMutableList: MutableList<TasksDataClass>,
+class TasksViewRecyclerViewAdapter(private var tasksMutableList: List<TasksDataClass>,
                                    private val view: View,
                                    private val vm:ToDoViewModel,
-                                   //private val llm: LinearLayoutManager,
-                                   //private val clickListener: (position: Int) -> Unit
 )
     : RecyclerView.Adapter<TasksViewRecyclerViewHolder>() {
-    private val tasksCollectionRef = Firebase.firestore.collection("users")
-    private val currentUserID = FirebaseAuth.getInstance().currentUser?.uid
-    //private val mHandler = object :
-    //private val vm
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
     : TasksViewRecyclerViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.tasks_view_recycler_view_row, parent, false)
         return TasksViewRecyclerViewHolder(view,
-        //    clickListener
         )
-    }
-
-    override fun onBindViewHolder(
-        holder: TasksViewRecyclerViewHolder,
-        position: Int,
-        payloads: MutableList<Any>
-    ) {
-        if(payloads.isNotEmpty()) {
-        } else
-            super.onBindViewHolder(holder,position, payloads)
     }
 
     override fun onBindViewHolder(holder: TasksViewRecyclerViewHolder, position: Int) {
@@ -88,88 +67,177 @@ class TasksViewRecyclerViewAdapter(private var tasksMutableList: MutableList<Tas
         holder.tvTaskTitle.text = listNumbering+taskInAdapter.taskTitle
         holder.chbIsDoneCheckBox.isChecked = taskInAdapter.done
         holder.tvTaskDescriptionTV.text = taskInAdapter.taskDescription
-        holder.tvTaskStartingHourTV.text = SimpleDateFormat("h:mm a", Locale.getDefault()).format(Date(taskInAdapter.taskStartingHourMillis)).lowercase()+" - "
-        holder.tvTaskEndingHourTV.text = SimpleDateFormat("h:mm a", Locale.getDefault()).format(Date(taskInAdapter.taskEndingHourMillis))
-            .lowercase()
+        holder.tvTaskStartingHourTV.text = SimpleDateFormat("h:mm a", Locale.getDefault()).format(Date(taskInAdapter.taskStartingHourMillis)).lowercase() //+" - "
+        holder.tvTaskEndingHourTV.text = SimpleDateFormat("h:mm a", Locale.getDefault()).format(Date(taskInAdapter.taskEndingHourMillis)).lowercase()
         holder.tvTaskDueDateTV.text = SimpleDateFormat("EEE dd MMM yyyy", Locale.getDefault()).format(Date(taskInAdapter.dueDate))
 
         val defaultCardElevation = 22.0F
-        Log.d("CardElevationDefValue", holder.cvTaskCardView.cardElevation.toString())
-        val defaultConstraintLayoutBackgroundColor = ContextCompat.getColor(view.context, R.color.lighter_blue_transparent)
-        //Log.d("CL Background Color defValue", .toString())
-        //holder.clTaskViewCL.ba
-        val defaultTitleTextColor = holder.tvTaskTitle.currentTextColor
-        val taskCalendar = Calendar.getInstance(Locale.getDefault())
         val calendar = Calendar.getInstance(Locale.getDefault())
-
+        val taskCalendar = Calendar.getInstance(Locale.getDefault())
         taskCalendar.timeInMillis = taskInAdapter.dueDate
-        taskCalendar.get(Calendar.DAY_OF_WEEK)
 
-        if (taskCalendar.time >= calendar.time) holder.tvTaskDueDateTV.setTextColor(ContextCompat.getColor(view.context, R.color.primary_blue))
-        else if (taskCalendar.get(Calendar.HOUR_OF_DAY) == calendar.get(Calendar.HOUR_OF_DAY) && taskCalendar.get(Calendar.DAY_OF_MONTH) == calendar.get(Calendar.DAY_OF_MONTH)) holder.tvTaskDueDateTV.setTextColor(ContextCompat.getColor(view.context, R.color.green))
+        val defaultTaskDescription = "Task description."
+        var defaultTaskStartingHourText = SimpleDateFormat("h:mm a", Locale.getDefault()).format(Date(taskInAdapter.taskStartingHourMillis)).lowercase()+" - "
+        var defaultTaskEndingHourText = SimpleDateFormat("h:mm a", Locale.getDefault()).format(Date(taskInAdapter.taskEndingHourMillis)).lowercase()
+        var defaultTaskDuaDateText = SimpleDateFormat("EEE dd MMM yyyy", Locale.getDefault()).format(Date(taskInAdapter.dueDate))
 
-        //holder.tvTaskDueDateTV.setTextColor(if(taskCalendar.get(Calendar.HOUR_OF_DAY) == calendar.get(Calendar.HOUR_OF_DAY)) ContextCompat.getColor(view.context, R.color.green) else ContextCompat.getColor(view.context, R.color.green))
+        val colorPrimaryBlue = ContextCompat.getColor(view.context, R.color.primary_blue)
+        val colorBlack = ContextCompat.getColor(view.context, R.color.black)
+        val colorGreen = ContextCompat.getColor(view.context, R.color.green)
+        val colorYellow = ContextCompat.getColor(view.context, R.color.yellow)
+        val colorRed = ContextCompat.getColor(view.context, R.color.bright_red)
+        val colorLighterGrey = ContextCompat.getColor(view.context, R.color.lighter_gray)
+        val colorLighterBlueTransparent = ContextCompat.getColor(view.context, R.color.lighter_blue_transparent)
 
-        if (holder.chbIsDoneCheckBox.isChecked) {
-            holder.cvTaskCardView.cardElevation = 0F
-            holder.clTaskViewCL.setBackgroundColor(ContextCompat.getColor(view.context, R.color.lighter_gray))
-            holder.tvTaskTitle.setTextColor(ContextCompat.getColor(view.context, R.color.black))
-            holder.tvTaskTitle.paintFlags = holder.tvTaskTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-        } else if (!holder.chbIsDoneCheckBox.isChecked) {
-            holder.cvTaskCardView.cardElevation = defaultCardElevation
-            holder.clTaskViewCL.setBackgroundColor(defaultConstraintLayoutBackgroundColor)
-            holder.tvTaskTitle.setTextColor(defaultTitleTextColor)
-            //if (holder.tvTaskTitle.paintFlags == holder.tvTaskTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG)
-                holder.tvTaskTitle.paintFlags = holder.tvTaskTitle.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+
+        holder.clTaskViewCL.setBackgroundColor(
+            when {
+                holder.chbIsDoneCheckBox.isChecked || taskInAdapter.dueDate < Calendar.getInstance(Locale.getDefault()).timeInMillis -> colorLighterGrey
+                //taskInAdapter.dueDate < Calendar.getInstance(Locale.getDefault()).timeInMillis -> ContextCompat.getColor(view.context, R.color.lighter_gray)
+                //!holder.chbIsDoneCheckBox.isChecked -> ContextCompat.getColor(view.context, R.color.lighter_blue_transparent)
+                //taskInAdapter.dueDate >= Calendar.getInstance(Locale.getDefault()).timeInMillis -> ContextCompat.getColor(view.context, R.color.lighter_blue_transparent)
+                else -> colorLighterBlueTransparent
+            }
+        )
+
+        holder.cvTaskCardView.cardElevation =
+            when {
+                holder.chbIsDoneCheckBox.isChecked -> 0F
+                taskDueDateIsThisWeek(taskCalendar, calendar)
+                -> defaultCardElevation+4F
+                taskDueDateIsToday(taskCalendar, calendar)
+                -> defaultCardElevation+8F
+                taskDueDateIsThisHour(taskCalendar, calendar)
+                -> defaultCardElevation+defaultCardElevation
+                //!holder.chbIsDoneCheckBox.isChecked -> defaultCardElevation
+                else -> defaultCardElevation
+            }
+
+        holder.tvTaskTitle.setTextColor(
+            when {
+                holder.chbIsDoneCheckBox.isChecked || taskInAdapter.dueDate < Calendar.getInstance(Locale.getDefault()).timeInMillis
+                -> colorBlack
+                //taskCalendar.time >= calendar.time || !holder.chbIsDoneCheckBox.isChecked -> ContextCompat.getColor(view.context, R.color.primary_blue)
+                else -> colorPrimaryBlue
+            }
+        )
+
+        holder.tvTaskTitle.paintFlags =
+            when {
+            holder.chbIsDoneCheckBox.isChecked -> holder.tvTaskTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            // !holder.chbIsDoneCheckBox.isChecked -> holder.tvTaskTitle.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+            else -> holder.tvTaskTitle.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
         }
 
-        if (taskInAdapter.dueDate < Calendar.getInstance(Locale.getDefault()).timeInMillis) {
-            holder.clTaskViewCL.setBackgroundColor(
-                ContextCompat.getColor(
-                    view.context,
-                    R.color.lighter_gray
-                )
-            )
-            positionToStartFrom++
-        }
+        holder.tvTaskDescriptionTV.setTextColor(
+            when {
+                holder.tvTaskDescriptionTV.text != defaultTaskDescription -> colorBlack
+                else -> colorLighterGrey
+            }
+        )
 
-        //if (Date(taskInAdapter.dueDate) >= Date(Calendar.getInstance().timeInMillis)) positionToStartFrom = position
+        holder.tvTaskStartingHourTV.setTextColor(
+            when {
+                holder.tvTaskStartingHourTV.text != defaultTaskStartingHourText -> colorBlack
+                else -> colorLighterGrey
+            }
+        )
+        holder.tvTaskStartingHourTV.text =
+            when (holder.tvTaskStartingHourTV.text) {
+                defaultTaskStartingHourText -> "$defaultTaskEndingHourText - "
+                else -> "$defaultTaskEndingHourText - " //==
+            }
 
-        //if (positionToStartFrom != 0)
+        holder.tvTaskEndingHourTV.setTextColor(
+            when {
+                holder.tvTaskStartingHourTV.text != defaultTaskEndingHourText -> colorBlack
+                else -> colorLighterGrey
+            }
+        )
 
-        holder.chbIsDoneCheckBox.setOnCheckedChangeListener { buttonView, isChecked ->
+        holder.tvTaskDueDateTV.setTextColor(
+            when {
+                taskCalendar.time < calendar.time -> colorBlack
+                taskDueDateIsThisWeek(taskCalendar, calendar) -> colorPrimaryBlue //colorGreen
+                taskDueDateIsToday(taskCalendar, calendar) -> colorYellow
+                taskDueDateIsThisHour(taskCalendar, calendar) -> colorRed
+                //taskCalendar.time >= calendar.time -> ContextCompat.getColor(view.context, R.color.primary_blue)
+                else -> colorGreen //colorPrimaryBlue
+            }
+        )
+        holder.tvTaskDueDateTV.text =
+            when {
+                taskCalendar.time < calendar.time -> "$defaultTaskDuaDateText (Past due date)"
+                taskDueDateIsThisWeek(taskCalendar, calendar) -> "$defaultTaskDuaDateText (This Week)"
+                taskDueDateIsTomorrow(taskCalendar, calendar) -> "$defaultTaskDuaDateText (Tomorrow)"
+                taskDueDateIsToday(taskCalendar, calendar) -> "$defaultTaskDuaDateText (Today)"
+                taskDueDateIsThisHour(taskCalendar, calendar) -> "$defaultTaskDuaDateText (This Hour)"
+                else -> "$defaultTaskDuaDateText (Upcoming week+)"
+            }
+
+        holder.chbIsDoneCheckBox.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 taskInAdapter.done = true
-                vm.viewModelScope.launch {
+                //vm.viewModelScope.launch {
                     vm.updateTask(taskInAdapter, "done")
-                }
-                //tasksCollectionRef.document(currentUserID.toString()).collection("tasks").document(taskInAdapter.taskId).update("done", taskInAdapter.done)
-                //llm.scrollToPosition(position)
+                //}
                 Handler(Looper.myLooper()!!).post {
                     notifyItemChanged(position)
                 }
-//                notifyItemChanged(position)
-
+                //Add animation Here when user scratches/striking-Through the task, indicating that, the user, have finished the task
             }
             else if (!isChecked){ //not checked
                 taskInAdapter.done = false
-
-                vm.viewModelScope.launch {
+                //vm.viewModelScope.launch {
                     vm.updateTask(taskInAdapter, "done")
-                }
-                //tasksCollectionRef.document(currentUserID.toString()).collection("tasks").document(taskInAdapter.taskId).update("done", taskInAdapter.done)
-                //llm.scrollToPosition(position)
-  //              notifyItemChanged(position)
-
+                //}
                 Handler(Looper.myLooper()!!).post {
                     notifyItemChanged(position)
                 }
+                //Add animation Here when user un-scratches/un-striking-Through the task, indicating that, the user, haven't finished the task
             }
         }
-        Log.d("RV position", "Hellooo, this is RV position: $position value")
+
+/*        Log.d("RV position", "Hellooo, this is RV position: $position value")
         Log.d("RV positionToStartFrom", "value $positionToStartFrom of positionToStartFrom")
-        println("Hello")
+        println("Hello")*/
     }
+
+    private fun taskDueDateIsThisHour(
+        taskCalendar: Calendar,
+        calendar: Calendar
+    ) = (taskCalendar.get(Calendar.HOUR_OF_DAY) == calendar.get(Calendar.HOUR_OF_DAY)
+            && taskCalendar.get(Calendar.DAY_OF_WEEK_IN_MONTH) == calendar.get(Calendar.DAY_OF_YEAR)
+            && taskCalendar.get(Calendar.DAY_OF_WEEK) == calendar.get(Calendar.DAY_OF_WEEK)
+            && taskCalendar.get(Calendar.DAY_OF_MONTH) == calendar.get(Calendar.DAY_OF_MONTH)
+            && taskCalendar.get(Calendar.DAY_OF_YEAR) == calendar.get(Calendar.DAY_OF_YEAR))
+
+    private fun taskDueDateIsTomorrow(
+        taskCalendar: Calendar,
+        calendar: Calendar
+    ) = (taskCalendar.get(Calendar.DAY_OF_WEEK_IN_MONTH+1) == calendar.get(Calendar.DAY_OF_YEAR+1)
+            && taskCalendar.get(Calendar.DAY_OF_WEEK+1) == calendar.get(Calendar.DAY_OF_WEEK+1)
+            && taskCalendar.get(Calendar.DAY_OF_MONTH+1) == calendar.get(Calendar.DAY_OF_MONTH+1)
+            && taskCalendar.get(Calendar.DAY_OF_YEAR+1) == calendar.get(Calendar.DAY_OF_YEAR)+1)
+
+
+    private fun taskDueDateIsToday(
+        taskCalendar: Calendar,
+        calendar: Calendar
+    ) = (taskCalendar.get(Calendar.DAY_OF_WEEK_IN_MONTH) == calendar.get(Calendar.DAY_OF_YEAR)
+            && taskCalendar.get(Calendar.DAY_OF_WEEK) == calendar.get(Calendar.DAY_OF_WEEK)
+            && taskCalendar.get(Calendar.DAY_OF_MONTH) == calendar.get(Calendar.DAY_OF_MONTH)
+            && taskCalendar.get(Calendar.DAY_OF_YEAR) == calendar.get(Calendar.DAY_OF_YEAR))
+
+    private fun taskDueDateIsThisWeek(
+        taskCalendar: Calendar,
+        calendar: Calendar
+    ) = (taskCalendar.get(Calendar.WEEK_OF_MONTH) == calendar.get(Calendar.WEEK_OF_MONTH)
+            && taskCalendar.get(Calendar.WEEK_OF_YEAR) == calendar.get(Calendar.WEEK_OF_YEAR)
+            && taskCalendar.get(Calendar.DAY_OF_WEEK_IN_MONTH) == calendar.get(Calendar.DAY_OF_YEAR)
+            && taskCalendar.get(Calendar.DAY_OF_WEEK) == calendar.get(Calendar.DAY_OF_WEEK)
+            && taskCalendar.get(Calendar.DAY_OF_MONTH) == calendar.get(Calendar.DAY_OF_MONTH)
+            && taskCalendar.get(Calendar.DAY_OF_YEAR) == calendar.get(Calendar.DAY_OF_YEAR))
 
     override fun getItemCount(): Int = tasksMutableList.size
 }

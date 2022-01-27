@@ -26,7 +26,7 @@
                 android:id="@+id/clTaskViewCL"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="20dp"
+                android:padding="15dp"
                 android:paddingVertical="15dp"
                 android:background="@color/lighter_blue_transparent"
                 >
@@ -39,7 +39,7 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:maxLines="3"
-                    android:textColor="@color/lighter_blue_no_transparent"
+                    android:textColor="@color/primary_blue"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/chbIsDoneCheckBox"
