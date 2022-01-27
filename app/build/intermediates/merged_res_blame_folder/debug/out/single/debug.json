@@ -252,10 +252,6 @@
         "source": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\build\\intermediates\\merged_res\\debug\\layout_task_r_v_row_footer.xml.flat",
-        "source": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\src\\main\\res\\layout\\task_r_v_row_footer.xml"
-    },
-    {
         "merged": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_icons_delete_32.xml.flat",
         "source": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\src\\main\\res\\drawable\\ic_icons_delete_32.xml"
     },

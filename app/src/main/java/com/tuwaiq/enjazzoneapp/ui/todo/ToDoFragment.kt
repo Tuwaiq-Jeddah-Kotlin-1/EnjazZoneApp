@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tuwaiq.enjazzoneapp.*
@@ -38,7 +39,7 @@ class ToDoFragment : Fragment() {
     private lateinit var tcDigitalTextClock: TextClock
 
     private lateinit var todoRecyclerView: RecyclerView
-    //private lateinit var rvAdapter:(RecyclerView.Adapter<RecyclerView.ViewHolder!>?..RecyclerView.Adapter<*>?)// = todoRecyclerView.adapter
+
     private lateinit var rvAdapter:RecyclerView.Adapter<*>
 
     private lateinit var toDoViewModel: ToDoViewModel
@@ -55,8 +56,7 @@ class ToDoFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-/*        todoRecyclerView = view?.findViewById(R.id.rvTodoRecyclerView)!!
-        todoRecyclerView.layoutManager = LinearLayoutManager(this.context)*/
+
         return inflater.inflate(R.layout.fragment_to_do, container, false)
     }
 
@@ -64,7 +64,6 @@ class ToDoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         tvDayTimerHeaderTV = view.findViewById(R.id.tvTimerHeader)
-
         tvDayTimerTV = view.findViewById(R.id.tvDayRemainingTimer)
 
         val getInBed = if (sharedPreferences.getLong(getInBedSharedPrefLongKey, (14400000).toLong()) == (14400000).toLong()) 14400000 else (milliSecondsInDay %((sharedPreferences.getLong(getInBedSharedPrefLongKey, (14400000).toLong())%milliSecondsInDay)))
@@ -79,8 +78,8 @@ class ToDoFragment : Fragment() {
 
         val activeHoursTimerHeader = "Enjaz Hours\uD83C\uDFC6 (${sharedPreferences.getString(wakeupSharedPrefStringKey, "5:00 AM")?.substringBefore(":")}am-${sharedPreferences.getString(getInBedSharedPrefStringKey, "11:00 PM")?.substringBefore(":")}pm)"
         val sleepingHoursTimerHeader = "Sleeping Time\uD83D\uDCA4\uD83D\uDCA4 (${sharedPreferences.getString(getInBedSharedPrefStringKey, "11:00 PM")?.substringBefore(":")}pm-${sharedPreferences.getString(wakeupSharedPrefStringKey, "5:00 AM")?.substringBefore(":")}am)"
-        tvDayTimerHeaderTV.text = activeHoursTimerHeader
 
+        tvDayTimerHeaderTV.text = activeHoursTimerHeader
         val activeHoursTimer = object: CountDownTimer(longCounterUntilFinished, 1000) {
             override fun onTick(millisUntilFinished: Long) {
 
@@ -142,20 +141,16 @@ class ToDoFragment : Fragment() {
 
 
         todoRecyclerView = view.findViewById(R.id.rvTodoRecyclerView)
-        todoRecyclerView.setHasFixedSize(true)
-        //todoRecyclerView.setHasFixedSize(true)
-        tasksArrayList = arrayListOf()
-        //todoRecyclerView.adapter = TodoRVListAdapter(tasksArrayList, view)
+
+
+
         todoRecyclerView.layoutManager = LinearLayoutManager(this.context)
         toDoViewModel = ViewModelProvider(this)[ToDoViewModel::class.java]
-        //tasksArrayList.sortByDescending { list -> list.nowDate }
-        //todoRecyclerView.adapter = TodoRVListAdapter(tasksArrayList, view)
 
-        //toDoViewModel.tasks.value?.clear()
         toDoViewModel.getAllTasks()
         toDoViewModel.tasks.observe(viewLifecycleOwner) {
-            rvAdapter = TodoRVListAdapter(it, view, toDoViewModel)
-          //  rvAdapter.setHasStableIds(true)
+            rvAdapter = TodoRVListAdapter(it, view)
+
             todoRecyclerView.adapter = rvAdapter
         }
 
@@ -176,10 +171,10 @@ class ToDoFragment : Fragment() {
         welcomingMessageTV.text = welcomingMessageString
         welcomingMessageTV.visibility = View.GONE
 
-/*        sendIB = view.findViewById(R.id.sendIB)
+        sendIB = view.findViewById(R.id.sendIB)
 
-        etEnterTaskET = view.findViewById(R.id.enterATaskET)*/
-/*        etEnterTaskET.setText(sharedPreferences.getString("ENTER_TASK_DRAFT", null))
+        etEnterTaskET = view.findViewById(R.id.enterATaskET)
+        etEnterTaskET.setText(sharedPreferences.getString("ENTER_TASK_DRAFT", null))
         sendIB.isEnabled = etEnterTaskET.text.isNotBlank()
         sendIBSetTint()
         etEnterTaskET.addTextChangedListener(object : TextWatcher {
@@ -194,73 +189,28 @@ class ToDoFragment : Fragment() {
                 sharedPreferences.edit().putString("ENTER_TASK_DRAFT", etEnterTaskET.text.toString()).apply()
                 sendIBSetTint()
             }
-        })*/
+        })
 
-        //rvAdapter
-/*        sendIB.setOnClickListener {
+        sendIB.setOnClickListener {
             val taskTitle: String = etEnterTaskET.text.toString()
             val todoTask = TasksDataClass()
             todoTask.taskTitle = taskTitle
-            todoTask.taskId = UUID.randomUUID().toString()
+            //todoTask.taskId = UUID.randomUUID().toString()
 
             toDoViewModel.createTask(todoTask)
 
-            //rvAdapter.notifyItemRangeInserted(0, rvAdapter.itemCount+1)
-            loadTasksList()
             etEnterTaskET.text = null
-        }*/
-/*            val list: MutableList<TasksDataClass> = toDoViewModel.tasks.value!!
-            list.add(0, todoTask)
-            toDoViewModel.tasks.value = list//?.add(0, todoTask)*/
 
-//            todoRecyclerView.adapter?.notifyItemInserted(0)
-            /*todoRecyclerView.adapter?.itemCount?.let { it1 ->
-                todoRecyclerView.adapter?.notifyItemRangeChanged(0,
-                    it1-1
-                )
-            }*/
-            //todoRecyclerView.adapter?.notifyItemInserted(0)
+            view.findNavController().navigate(R.id.navigation_ToDo)
+        }
 
-            //println("tasksArrayList Size: ${tasksArrayList.size}")
-            //todoRecyclerView.post( { todoRecyclerView.adapter?.notifyDataSetChanged() })
-/*            if(activity != null) {
-                requireActivity().runOnUiThread {
-                    //root.Recycleview.adapter = TodoRVListAdapter(Array)
-                    //Adapter(Array).notifyDataSetChanged()
-
-                    loadTasksList(view)
-                    todoRecyclerView.adapter?.notifyDataSetChanged()
-                    todoRecyclerView.smoothScrollToPosition(0)
-                }
-            }*/
-            //activity?.runOnUiThread {
-            //Handler(Looper.getMainLooper()).post {
-                //toDoViewModel.createTask(todoTask)
-                //todoRecyclerView.adapter?.notifyDataSetChanged()
-            //}//
-
-                //loadTasksList(view)
-            //}
-            //todoRecyclerView.adapter?.notifyDataSetChanged()
-
-            //todoRecyclerView.adapter?.notifyDataSetChanged()
-            //rvAdapter?.notifyDataSetChanged()
-
-            //welcomingMessageTV.visibility = View.GONE
-
-/*            todoRecyclerView.adapter = TodoRVListAdapter(tasksArrayList, view)
-            todoRecyclerView.layoutManager = LinearLayoutManager(this.context)*/
-            //todoRVListAdapter.notifyItemInserted(todoRVListAdapter.itemCount)
-//            etEnterTaskET.text = null
-            //sendIB.hideKeyboard()
-        //}
     } // onViewCreated END
 
     private fun loadTasksList() {
         toDoViewModel.getAllTasks()
     }
 
-/*    private fun sendIBSetTint() {
+    private fun sendIBSetTint() {
         if (sendIB.isEnabled) context?.let { ContextCompat.getColor(it, R.color.primary_blue) }
             ?.let {
                 DrawableCompat.setTint(
@@ -274,7 +224,7 @@ class ToDoFragment : Fragment() {
                 it
             )
         }
-    }*/
+    }
 
     private fun editEditTextHeight() {
         if (etEnterTaskET.lineCount == etEnterTaskET.maxLines) {

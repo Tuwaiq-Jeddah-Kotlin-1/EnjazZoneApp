@@ -14,7 +14,7 @@ class Repository {
     private val db = FirebaseFirestore.getInstance()
     private val tasksCollectionRef = Firebase.firestore.collection("users")
 
-    suspend fun getAllTasksFromDB(): List<TasksDataClass> = withContext(
+    suspend fun getAllTasksFromDB(): MutableList<TasksDataClass> = withContext(
         Dispatchers.IO) {
         val newTasksList = mutableListOf<TasksDataClass>()
         //newTasksList = arrayListOf()

@@ -8,9 +8,9 @@ import kotlinx.coroutines.launch
 
 class ToDoViewModel(context: Application) : AndroidViewModel(context) {
     private val repo = Repository()
-    val tasks = MutableLiveData<List<TasksDataClass>>()
+    val tasks = MutableLiveData<MutableList<TasksDataClass>>()
 
-    fun getAllTasks() : LiveData<List<TasksDataClass>>{
+    fun getAllTasks() : LiveData<MutableList<TasksDataClass>>{
         //tasks.value?.clear()
         viewModelScope.launch {
                 tasks.postValue(repo.getAllTasksFromDB())
