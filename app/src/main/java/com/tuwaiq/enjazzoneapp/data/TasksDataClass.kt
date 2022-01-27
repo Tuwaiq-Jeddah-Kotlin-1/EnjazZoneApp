@@ -9,7 +9,7 @@ import java.util.*
 @Parcelize
 data class TasksDataClass(
     var taskTitle: String = "",
-    var taskId: String = "",
+    var taskId: String = UUID.randomUUID().toString(),
     val nowDate: Long = System.currentTimeMillis(),
     var dueDate: Long = nowDate + milliSecondsInDay,
     var done: Boolean = false,

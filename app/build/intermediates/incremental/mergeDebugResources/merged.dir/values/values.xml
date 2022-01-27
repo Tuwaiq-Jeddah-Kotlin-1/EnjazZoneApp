@@ -192,8 +192,10 @@
         <enum name="none" value="0"/>
         <enum name="chain" value="1"/>
         <enum name="aligned" value="2"/>
+        <enum name="chain2" value="3"/>
     </attr>
     <attr format="integer" name="framePosition"/>
+    <attr format="boolean" name="guidelineUseRtl"/>
     <attr format="reference" name="headerLayout"/>
     <attr format="dimension" name="height"/>
     <attr format="reference" name="hideMotionSpec"/>
@@ -844,6 +846,7 @@
     <color name="tooltip_background_dark">#e6616161</color>
     <color name="tooltip_background_light">#e6FFFFFF</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="yellow">#F9A825</color>
     <dimen name="abc_action_bar_content_inset_material">16dp</dimen>
     <dimen name="abc_action_bar_content_inset_with_nav">72dp</dimen>
     <dimen name="abc_action_bar_default_height_material">56dp</dimen>
@@ -1009,11 +1012,13 @@
     <dimen name="item_touch_helper_max_drag_scroll_per_frame">20dp</dimen>
     <dimen name="item_touch_helper_swipe_escape_max_velocity">800dp</dimen>
     <dimen name="item_touch_helper_swipe_escape_velocity">120dp</dimen>
+    <dimen name="m3_alert_dialog_action_bottom_padding">14dp</dimen>
+    <dimen name="m3_alert_dialog_action_top_padding">14dp</dimen>
     <dimen name="m3_alert_dialog_corner_size">28dp</dimen>
     <dimen name="m3_alert_dialog_elevation">@dimen/m3_sys_elevation_level3</dimen>
     <dimen name="m3_alert_dialog_icon_margin">16dp</dimen>
     <dimen name="m3_alert_dialog_icon_size">24dp</dimen>
-    <dimen name="m3_alert_dialog_title_bottom_margin">10dp</dimen>
+    <dimen name="m3_alert_dialog_title_bottom_margin">16dp</dimen>
     <dimen name="m3_appbar_expanded_title_margin_bottom">16dp</dimen>
     <dimen name="m3_appbar_expanded_title_margin_horizontal">16dp</dimen>
     <dimen name="m3_appbar_scrim_height_trigger">96dp</dimen>
@@ -1563,6 +1568,22 @@
     <integer name="m3_card_anim_delay_ms">75</integer>
     <integer name="m3_card_anim_duration_ms">120</integer>
     <integer name="m3_chip_anim_duration">100</integer>
+    <integer name="m3_sys_motion_duration_100">100</integer>
+    <integer name="m3_sys_motion_duration_1000">1000</integer>
+    <integer name="m3_sys_motion_duration_150">150</integer>
+    <integer name="m3_sys_motion_duration_200">200</integer>
+    <integer name="m3_sys_motion_duration_250">250</integer>
+    <integer name="m3_sys_motion_duration_300">300</integer>
+    <integer name="m3_sys_motion_duration_350">350</integer>
+    <integer name="m3_sys_motion_duration_400">400</integer>
+    <integer name="m3_sys_motion_duration_450">450</integer>
+    <integer name="m3_sys_motion_duration_50">50</integer>
+    <integer name="m3_sys_motion_duration_500">500</integer>
+    <integer name="m3_sys_motion_duration_550">550</integer>
+    <integer name="m3_sys_motion_duration_600">600</integer>
+    <integer name="m3_sys_motion_duration_700">700</integer>
+    <integer name="m3_sys_motion_duration_800">800</integer>
+    <integer name="m3_sys_motion_duration_900">900</integer>
     <integer name="m3_sys_motion_duration_long1">500</integer>
     <integer name="m3_sys_motion_duration_long2">600</integer>
     <integer name="m3_sys_motion_duration_medium1">300</integer>
@@ -1690,8 +1711,15 @@
     <string name="m3_sys_motion_easing_accelerated" translatable="false">cubic-bezier(0.4, 0.0, 1.0, 1.0)</string>
     <string name="m3_sys_motion_easing_decelerated" translatable="false">cubic-bezier(0.0, 0.0, 0.2, 1.0)</string>
     <string name="m3_sys_motion_easing_emphasized" translatable="false">path(M 0,0 C 0.05, 0, 0.133333, 0.06, 0.166666, 0.4 C 0.208333, 0.82, 0.25, 1, 1, 1)</string>
+    <string name="m3_sys_motion_easing_emphasized_accelerate" translatable="false">cubic-bezier(0.3, 0.0, 0.8, 0.2)</string>
+    <string name="m3_sys_motion_easing_emphasized_decelerate" translatable="false">cubic-bezier(0.1, 0.7, 0.1, 1.0)</string>
+    <string name="m3_sys_motion_easing_legacy" translatable="false">cubic-bezier(0.4, 0.0, 0.2, 1.0)</string>
+    <string name="m3_sys_motion_easing_legacy_accelerate" translatable="false">cubic-bezier(0.4, 0.0, 1.0, 1.0)</string>
+    <string name="m3_sys_motion_easing_legacy_decelerate" translatable="false">cubic-bezier(0.0, 0.0, 0.2, 1.0)</string>
     <string name="m3_sys_motion_easing_linear" translatable="false">cubic-bezier(0.0, 0.0, 1.0, 1.0)</string>
     <string name="m3_sys_motion_easing_standard" translatable="false">path(M 0,0 C 0.05, 0, 0.133333, 0.06, 0.166666, 0.4 C 0.208333, 0.82, 0.25, 1, 1, 1)</string>
+    <string name="m3_sys_motion_easing_standard_accelerate" translatable="false">cubic-bezier(0.3, 0.0, 1.0, 1.0)</string>
+    <string name="m3_sys_motion_easing_standard_decelerate" translatable="false">cubic-bezier(0.0, 0.0, 0.0, 1.0)</string>
     <string name="m3_sys_typescale_body_large_font" translatable="false">sans-serif</string>
     <string name="m3_sys_typescale_body_medium_font" translatable="false">sans-serif</string>
     <string name="m3_sys_typescale_body_small_font" translatable="false">sans-serif</string>
@@ -1846,7 +1874,8 @@
     <item name="android:layout_height">32dip</item>
     <item name="android:scaleType">fitCenter</item>
     <item name="android:src">@null</item>
-    <item name="android:contentDescription">@string/icon_content_description</item>
+    <item name="android:contentDescription">@null</item>
+    <item name="android:importantForAccessibility" ns1:targetApi="jelly_bean">no</item>
   </style>
     <style name="Base.MaterialAlertDialog.MaterialComponents.Title.Panel" parent="android:Widget">
     <item name="android:layout_width">match_parent</item>
@@ -2309,7 +2338,6 @@
 
     <!-- Color palettes -->
     <item name="colorPrimary">@color/m3_sys_color_dark_primary</item>
-    <item name="colorPrimaryDark">?attr/colorPrimary</item>
     <item name="colorOnPrimary">@color/m3_sys_color_dark_on_primary</item>
     <item name="colorPrimaryInverse">@color/m3_sys_color_dark_inverse_primary</item>
     <item name="colorPrimaryContainer">@color/m3_sys_color_dark_primary_container</item>
@@ -2336,6 +2364,9 @@
     <item name="colorErrorContainer">@color/m3_sys_color_dark_error_container</item>
     <item name="colorOnErrorContainer">@color/m3_sys_color_dark_on_error_container</item>
 
+    <!-- Framework Colors. -->
+    <item name="android:windowBackground">?android:attr/colorBackground</item>
+
     <!-- Default Framework Text Colors. -->
     <item name="android:textColorPrimary">@color/m3_dark_default_color_primary_text</item>
     <item name="android:textColorPrimaryInverse">@color/m3_default_color_primary_text</item>
@@ -2353,6 +2384,11 @@
     <item name="android:textColorLinkInverse">?attr/colorPrimaryInverse</item>
     <item name="android:textColorAlertDialogListItem">@color/m3_dark_default_color_primary_text</item>
 
+    <!-- Deprecated Colors. -->
+    <item name="colorPrimaryDark">?attr/colorPrimary</item>
+    <item name="colorPrimaryVariant">?attr/colorPrimary</item>
+    <item name="colorSecondaryVariant">?attr/colorSecondary</item>
+
     <!-- Dialog themes. -->
     <item name="alertDialogTheme">@style/ThemeOverlay.Material3.Dialog.Alert</item>
     <item name="bottomSheetDialogTheme">@style/ThemeOverlay.Material3.BottomSheetDialog</item>
@@ -2365,8 +2401,6 @@
     <item name="materialTimePickerTheme">@style/ThemeOverlay.Material3.MaterialTimePicker</item>
 
     <!-- Widget styles. -->
-    <item name="actionBarStyle">@style/Widget.Material3.ActionBar.Solid</item>
-    <item name="actionModeStyle">@style/Widget.Material3.ActionMode</item>
     <item name="appBarLayoutStyle">@style/Widget.Material3.AppBarLayout</item>
     <item name="badgeStyle">@style/Widget.Material3.Badge</item>
     <item name="borderlessButtonStyle">@style/Widget.Material3.Button.TextButton</item>
@@ -2425,9 +2459,14 @@
     <item name="toolbarSurfaceStyle">@style/Widget.Material3.Toolbar.Surface</item>
 
     <!-- Top App Bars. -->
-    <item name="actionBarSize">@dimen/m3_appbar_size_compact</item>
     <item name="collapsingToolbarLayoutMediumSize">@dimen/m3_appbar_size_medium</item>
     <item name="collapsingToolbarLayoutLargeSize">@dimen/m3_appbar_size_large</item>
+
+    <!-- Action Bars. -->
+    <item name="actionBarPopupTheme">@style/ThemeOverlay.Material3.Dark</item>
+    <item name="actionBarSize">@dimen/m3_appbar_size_compact</item>
+    <item name="actionBarStyle">@style/Widget.Material3.ActionBar.Solid</item>
+    <item name="actionModeStyle">@style/Widget.Material3.ActionMode</item>
 
     <!-- Popup Menu styles. -->
     <item name="popupMenuBackground">@drawable/m3_popupmenu_background_overlay</item>
@@ -2467,8 +2506,6 @@
     <!-- Menu type styles. -->
     <item name="textAppearanceLargePopupMenu">?attr/textAppearanceBodyLarge</item>
     <item name="textAppearanceSmallPopupMenu">?attr/textAppearanceBodyLarge</item>
-
-    <!-- TODO: Populate font families here -->
 
     <!-- Shape styles. -->
     <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Material3.SmallComponent</item>
@@ -2507,7 +2544,6 @@
 
     <!-- Color palettes -->
     <item name="colorPrimary">@color/m3_sys_color_dark_primary</item>
-    <item name="colorPrimaryDark">?attr/colorPrimary</item>
     <item name="colorOnPrimary">@color/m3_sys_color_dark_on_primary</item>
     <item name="colorPrimaryInverse">@color/m3_sys_color_dark_inverse_primary</item>
     <item name="colorPrimaryContainer">@color/m3_sys_color_dark_primary_container</item>
@@ -2551,9 +2587,12 @@
     <item name="android:textColorLinkInverse">?attr/colorPrimaryInverse</item>
     <item name="android:textColorAlertDialogListItem">@color/m3_dark_default_color_primary_text</item>
 
+    <!-- Deprecated Colors. -->
+    <item name="colorPrimaryDark">?attr/colorPrimary</item>
+    <item name="colorPrimaryVariant">?attr/colorPrimary</item>
+    <item name="colorSecondaryVariant">?attr/colorSecondary</item>
+
     <!-- Widget styles. -->
-    <item name="actionBarStyle">@style/Widget.Material3.ActionBar.Solid</item>
-    <item name="actionModeStyle">@style/Widget.Material3.ActionMode</item>
     <item name="appBarLayoutStyle">@style/Widget.Material3.AppBarLayout</item>
     <item name="badgeStyle">@style/Widget.Material3.Badge</item>
     <item name="borderlessButtonStyle">@style/Widget.Material3.Button.TextButton</item>
@@ -2612,9 +2651,14 @@
     <item name="toolbarSurfaceStyle">@style/Widget.Material3.Toolbar.Surface</item>
 
     <!-- Top App Bars. -->
-    <item name="actionBarSize">@dimen/m3_appbar_size_compact</item>
     <item name="collapsingToolbarLayoutMediumSize">@dimen/m3_appbar_size_medium</item>
     <item name="collapsingToolbarLayoutLargeSize">@dimen/m3_appbar_size_large</item>
+
+    <!-- Action Bars. -->
+    <item name="actionBarPopupTheme">@style/ThemeOverlay.Material3.Dark</item>
+    <item name="actionBarSize">@dimen/m3_appbar_size_compact</item>
+    <item name="actionBarStyle">@style/Widget.Material3.ActionBar.Solid</item>
+    <item name="actionModeStyle">@style/Widget.Material3.ActionMode</item>
 
     <!-- Popup Menu styles. -->
     <item name="popupMenuBackground">@drawable/m3_popupmenu_background_overlay</item>
@@ -2684,6 +2728,12 @@
     <item name="alertDialogTheme">@style/ThemeOverlay.Material3.Dialog.Alert</item>
     <item name="materialAlertDialogTheme">@style/ThemeOverlay.Material3.MaterialAlertDialog</item>
 
+    <!-- Picker styles and themes. -->
+    <item name="materialCalendarStyle">@style/Widget.Material3.MaterialCalendar</item>
+    <item name="materialCalendarFullscreenTheme">@style/ThemeOverlay.Material3.MaterialCalendar.Fullscreen</item>
+    <item name="materialCalendarTheme">@style/ThemeOverlay.Material3.MaterialCalendar</item>
+    <item name="materialTimePickerTheme">@style/ThemeOverlay.Material3.MaterialTimePicker</item>
+
     <!-- Theme overlays. -->
     <item name="dynamicColorThemeOverlay">@style/ThemeOverlay.Material3.DynamicColors.Dark</item>
   </style>
@@ -2692,7 +2742,6 @@
 
     <!-- Color palettes -->
     <item name="colorPrimary">@color/m3_sys_color_light_primary</item>
-    <item name="colorPrimaryDark">?attr/colorPrimary</item>
     <item name="colorOnPrimary">@color/m3_sys_color_light_on_primary</item>
     <item name="colorPrimaryInverse">@color/m3_sys_color_light_inverse_primary</item>
     <item name="colorPrimaryContainer">@color/m3_sys_color_light_primary_container</item>
@@ -2719,6 +2768,9 @@
     <item name="colorErrorContainer">@color/m3_sys_color_light_error_container</item>
     <item name="colorOnErrorContainer">@color/m3_sys_color_light_on_error_container</item>
 
+    <!-- Framework Colors. -->
+    <item name="android:windowBackground">?android:attr/colorBackground</item>
+
     <!-- Default Framework Text Colors. -->
     <item name="android:textColorPrimary">@color/m3_default_color_primary_text</item>
     <item name="android:textColorPrimaryInverse">@color/m3_dark_default_color_primary_text</item>
@@ -2736,6 +2788,11 @@
     <item name="android:textColorLinkInverse">?attr/colorPrimaryInverse</item>
     <item name="android:textColorAlertDialogListItem">@color/m3_default_color_primary_text</item>
 
+    <!-- Deprecated Colors. -->
+    <item name="colorPrimaryDark">?attr/colorPrimary</item>
+    <item name="colorPrimaryVariant">?attr/colorPrimary</item>
+    <item name="colorSecondaryVariant">?attr/colorSecondary</item>
+
     <!-- Dialog themes. -->
     <item name="alertDialogTheme">@style/ThemeOverlay.Material3.Dialog.Alert</item>
     <item name="bottomSheetDialogTheme">@style/ThemeOverlay.Material3.BottomSheetDialog</item>
@@ -2748,8 +2805,6 @@
     <item name="materialTimePickerTheme">@style/ThemeOverlay.Material3.MaterialTimePicker</item>
 
     <!-- Widget styles. -->
-    <item name="actionBarStyle">@style/Widget.Material3.Light.ActionBar.Solid</item>
-    <item name="actionModeStyle">@style/Widget.Material3.ActionMode</item>
     <item name="appBarLayoutStyle">@style/Widget.Material3.AppBarLayout</item>
     <item name="badgeStyle">@style/Widget.Material3.Badge</item>
     <item name="borderlessButtonStyle">@style/Widget.Material3.Button.TextButton</item>
@@ -2808,9 +2863,14 @@
     <item name="toolbarSurfaceStyle">@style/Widget.Material3.Toolbar.Surface</item>
 
     <!-- Top App Bars. -->
-    <item name="actionBarSize">@dimen/m3_appbar_size_compact</item>
     <item name="collapsingToolbarLayoutMediumSize">@dimen/m3_appbar_size_medium</item>
     <item name="collapsingToolbarLayoutLargeSize">@dimen/m3_appbar_size_large</item>
+
+    <!-- Action Bars. -->
+    <item name="actionBarPopupTheme">@style/ThemeOverlay.Material3.Light</item>
+    <item name="actionBarSize">@dimen/m3_appbar_size_compact</item>
+    <item name="actionBarStyle">@style/Widget.Material3.Light.ActionBar.Solid</item>
+    <item name="actionModeStyle">@style/Widget.Material3.ActionMode</item>
 
     <!-- Popup Menu styles. -->
     <item name="popupMenuBackground">@drawable/m3_popupmenu_background_overlay</item>
@@ -2850,8 +2910,6 @@
     <!-- Menu type styles. -->
     <item name="textAppearanceLargePopupMenu">?attr/textAppearanceBodyLarge</item>
     <item name="textAppearanceSmallPopupMenu">?attr/textAppearanceBodyLarge</item>
-
-    <!-- TODO: Populate font families here -->
 
     <!-- Shape styles. -->
     <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Material3.SmallComponent</item>
@@ -2890,7 +2948,6 @@
 
     <!-- Color palettes -->
     <item name="colorPrimary">@color/m3_sys_color_light_primary</item>
-    <item name="colorPrimaryDark">?attr/colorPrimary</item>
     <item name="colorOnPrimary">@color/m3_sys_color_light_on_primary</item>
     <item name="colorPrimaryInverse">@color/m3_sys_color_light_inverse_primary</item>
     <item name="colorPrimaryContainer">@color/m3_sys_color_light_primary_container</item>
@@ -2934,9 +2991,12 @@
     <item name="android:textColorLinkInverse">?attr/colorPrimaryInverse</item>
     <item name="android:textColorAlertDialogListItem">@color/m3_default_color_primary_text</item>
 
+    <!-- Deprecated Colors. -->
+    <item name="colorPrimaryDark">?attr/colorPrimary</item>
+    <item name="colorPrimaryVariant">?attr/colorPrimary</item>
+    <item name="colorSecondaryVariant">?attr/colorSecondary</item>
+
     <!-- Widget styles. -->
-    <item name="actionBarStyle">@style/Widget.Material3.Light.ActionBar.Solid</item>
-    <item name="actionModeStyle">@style/Widget.Material3.ActionMode</item>
     <item name="appBarLayoutStyle">@style/Widget.Material3.AppBarLayout</item>
     <item name="badgeStyle">@style/Widget.Material3.Badge</item>
     <item name="borderlessButtonStyle">@style/Widget.Material3.Button.TextButton</item>
@@ -2995,9 +3055,14 @@
     <item name="toolbarSurfaceStyle">@style/Widget.Material3.Toolbar.Surface</item>
 
     <!-- Top App Bars. -->
-    <item name="actionBarSize">@dimen/m3_appbar_size_compact</item>
     <item name="collapsingToolbarLayoutMediumSize">@dimen/m3_appbar_size_medium</item>
     <item name="collapsingToolbarLayoutLargeSize">@dimen/m3_appbar_size_large</item>
+
+    <!-- Action Bars. -->
+    <item name="actionBarPopupTheme">@style/ThemeOverlay.Material3.Light</item>
+    <item name="actionBarSize">@dimen/m3_appbar_size_compact</item>
+    <item name="actionBarStyle">@style/Widget.Material3.Light.ActionBar.Solid</item>
+    <item name="actionModeStyle">@style/Widget.Material3.ActionMode</item>
 
     <!-- Popup Menu styles. -->
     <item name="popupMenuBackground">@drawable/m3_popupmenu_background_overlay</item>
@@ -3066,6 +3131,12 @@
     <!-- Dialog themes. -->
     <item name="alertDialogTheme">@style/ThemeOverlay.Material3.Dialog.Alert</item>
     <item name="materialAlertDialogTheme">@style/ThemeOverlay.Material3.MaterialAlertDialog</item>
+
+    <!-- Picker styles and themes. -->
+    <item name="materialCalendarStyle">@style/Widget.Material3.MaterialCalendar</item>
+    <item name="materialCalendarFullscreenTheme">@style/ThemeOverlay.Material3.MaterialCalendar.Fullscreen</item>
+    <item name="materialCalendarTheme">@style/ThemeOverlay.Material3.MaterialCalendar</item>
+    <item name="materialTimePickerTheme">@style/ThemeOverlay.Material3.MaterialTimePicker</item>
 
     <!-- Theme overlays. -->
     <item name="dynamicColorThemeOverlay">@style/ThemeOverlay.Material3.DynamicColors.Light</item>
@@ -4845,7 +4916,7 @@
     <item name="android:layout_height">@dimen/m3_alert_dialog_icon_size</item>
     <item name="android:layout_marginEnd" ns1:ignore="NewApi">@dimen/m3_alert_dialog_icon_margin</item>
     <item name="android:layout_marginRight">@dimen/m3_alert_dialog_icon_margin</item>
-    <item name="tint">?attr/colorSecondary</item>
+    <item name="android:theme">@style/ThemeOverlay.MaterialAlertDialog.Material3.Title.Icon</item>
   </style>
     <style name="MaterialAlertDialog.Material3.Title.Icon.CenterStacked">
     <item name="android:layout_marginEnd" ns1:ignore="NewApi">0dp</item>
@@ -5965,7 +6036,6 @@
     <item name="materialAlertDialogTitlePanelStyle">@style/MaterialAlertDialog.Material3.Title.Panel.CenterStacked</item>
     <item name="materialAlertDialogTitleIconStyle">@style/MaterialAlertDialog.Material3.Title.Icon.CenterStacked</item>
     <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.Material3.Title.Text.CenterStacked</item>
-    <item name="materialAlertDialogBodyTextStyle">@style/MaterialAlertDialog.Material3.Body.Text.CenterStacked</item>
   </style>
     <style name="ThemeOverlay.Material3.MaterialCalendar" parent="ThemeOverlay.Material3.Dialog">
     <item name="android:windowElevation" ns1:ignore="NewApi">@dimen/m3_datepicker_elevation</item>
@@ -6041,6 +6111,9 @@
     <style name="ThemeOverlay.Material3.Toolbar.Surface" parent="">
     <item name="actionMenuTextColor">?attr/colorOnSurfaceVariant</item>
     <item name="colorControlNormal">?attr/colorOnSurfaceVariant</item>
+  </style>
+    <style name="ThemeOverlay.MaterialAlertDialog.Material3.Title.Icon" parent="">
+    <item name="colorControlNormal">?attr/colorSecondary</item>
   </style>
     <style name="ThemeOverlay.MaterialComponents" parent="ThemeOverlay.AppCompat"/>
     <style name="ThemeOverlay.MaterialComponents.ActionBar" parent="ThemeOverlay.AppCompat.ActionBar"/>
@@ -9520,6 +9593,7 @@
         <attr name="layout_constraintGuide_begin"/>
         <attr name="layout_constraintGuide_end"/>
         <attr name="layout_constraintGuide_percent"/>
+        <attr name="guidelineUseRtl"/>
         <attr name="layout_constraintLeft_toLeftOf"/>
         <attr name="layout_constraintLeft_toRightOf"/>
         <attr name="layout_constraintRight_toLeftOf"/>
@@ -9682,6 +9756,7 @@
         <attr name="layout_constraintGuide_begin"/>
         <attr name="layout_constraintGuide_end"/>
         <attr name="layout_constraintGuide_percent"/>
+        <attr name="guidelineUseRtl"/>
         <attr name="layout_constraintLeft_toLeftOf"/>
         <attr name="layout_constraintLeft_toRightOf"/>
         <attr name="layout_constraintRight_toLeftOf"/>
@@ -9842,6 +9917,7 @@
         <attr name="layout_constraintGuide_begin"/>
         <attr name="layout_constraintGuide_end"/>
         <attr name="layout_constraintGuide_percent"/>
+        <attr name="guidelineUseRtl"/>
 
         <attr name="layout_goneMarginLeft"/>
         <attr name="layout_goneMarginTop"/>
@@ -9977,6 +10053,8 @@
         <attr name="layout_constraintGuide_begin"/>
         <attr name="layout_constraintGuide_end"/>
         <attr name="layout_constraintGuide_percent"/>
+        <attr name="guidelineUseRtl"/>
+
         <attr name="layout_constraintLeft_toLeftOf"/>
         <attr name="layout_constraintLeft_toRightOf"/>
         <attr name="layout_constraintRight_toLeftOf"/>
@@ -10630,6 +10708,7 @@
         <attr name="layout_constraintGuide_begin"/>
         <attr name="layout_constraintGuide_end"/>
         <attr name="layout_constraintGuide_percent"/>
+        <attr name="guidelineUseRtl"/>
         <attr name="layout_constraintLeft_toLeftOf"/>
         <attr name="layout_constraintLeft_toRightOf"/>
         <attr name="layout_constraintRight_toLeftOf"/>
@@ -10956,6 +11035,9 @@
     <attr name="useMaterialThemeColors"/>
     <!-- Tint for the checkbox. -->
     <attr name="buttonTint"/>
+    <!-- Whether the MaterialCheckBox button drawable (checkbox icon) will be
+         centered when there is no text set for the checkbox. Default is true. -->
+    <attr format="boolean" name="centerIfNoTextEnabled"/>
   </declare-styleable>
     <declare-styleable name="MaterialDivider">
     <!-- Color of the divider. -->
@@ -10966,6 +11048,9 @@
     <attr name="dividerInsetEnd"/>
     <!-- End indent of the divider. -->
     <attr name="dividerInsetStart"/>
+    <!-- Whether the MaterialDividerItemDecoration class should draw a divider
+         after the last item of the recycler view. True by default. -->
+    <attr format="boolean" name="lastItemDecorated"/>
   </declare-styleable>
     <declare-styleable name="MaterialRadioButton">
     <!-- When set to true, MaterialRadioButton will tint itself according to
@@ -12004,6 +12089,10 @@
            This causes the indicator to look like it stretches between destinations
            an then shrinks back down to fit the size of it's target tab. -->
       <enum name="elastic" value="1"/>
+      <!-- Animate the selection indicator by sequentially fading it out from
+           its current destination and then fading it in at its new
+           destination. -->
+      <enum name="fade" value="2"/>
     </attr>
     <!-- The behavior mode for the Tabs in this layout -->
     <attr name="tabMode">

@@ -23,7 +23,7 @@ import java.util.*
 
 class UserProfileAndSettingsFragment : Fragment() {
 
-    private lateinit var userProfileAndSettingsViewModel: UserProfileAndSettingsViewModel
+    //private lateinit var userProfileAndSettingsViewModel: UserProfileAndSettingsViewModel
 
     private lateinit var tvUsernameTV: TextView
     private lateinit var tvEmailTV: TextView
@@ -42,8 +42,8 @@ class UserProfileAndSettingsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_user_profile_and_settings, container, false)
-        userProfileAndSettingsViewModel =
-            ViewModelProvider(this)[UserProfileAndSettingsViewModel::class.java]
+        //userProfileAndSettingsViewModel =
+          //  ViewModelProvider(this)[UserProfileAndSettingsViewModel::class.java]
         return view
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -76,7 +76,7 @@ class UserProfileAndSettingsFragment : Fragment() {
         val sdf12HoursSDF = SimpleDateFormat("h:mm a", Locale.getDefault())
         //val sdf24HoursSDF = SimpleDateFormat("H:mm", Locale.getDefault())
 
-        btnGetInBed.text = sharedPreferences.getString(getInBedSharedPrefStringKey, "22:00")
+        btnGetInBed.text = sharedPreferences.getString(getInBedSharedPrefStringKey, "11:00 PM")
 
         btnGetInBed.setOnClickListener {
             TimePickerDialog(requireActivity(), android.R.style.Theme_Material_Dialog_Alert, TimePickerDialog.OnTimeSetListener
@@ -106,7 +106,7 @@ class UserProfileAndSettingsFragment : Fragment() {
             //btnGetInBed.text
         }
 
-        btnWakeup.text = sharedPreferences.getString(wakeupSharedPrefStringKey, "06:00")
+        btnWakeup.text = sharedPreferences.getString(wakeupSharedPrefStringKey, "05:00 AM")
         btnWakeup.setOnClickListener {
             TimePickerDialog(requireActivity(), android.R.style.Theme_Material_Dialog_Alert, TimePickerDialog.OnTimeSetListener
             { _, hour, minute ->

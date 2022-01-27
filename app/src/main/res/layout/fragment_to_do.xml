@@ -110,25 +110,98 @@
         android:textAlignment="center"
         android:textStyle="bold"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/cvEnterTaskCV"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cvTimelyCV"/>
+<!--    app:layout_constraintBottom_toTopOf="@id/cvEnterTaskCV"-->
 
-
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvTodoRecyclerView"
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@id/cvEnterTaskCV"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cvTimelyCV">
+            app:layout_constraintTop_toBottomOf="@+id/cvTimelyCV"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTodoRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:scrollbars="vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/cvEnterTaskCV">
 
 
-    </androidx.recyclerview.widget.RecyclerView>
+            <!--android:scrollbarThumbVertical="@android:color/darker_gray"
+                android:scrollbarSize="5dp"-->
+        </androidx.recyclerview.widget.RecyclerView>
 
-    <androidx.cardview.widget.CardView
+        <androidx.cardview.widget.CardView
+                android:id="@+id/cvEnterTaskCV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="15dp"
+                app:cardMaxElevation="10dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardPreventCornerOverlap="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/cvSendIBCV"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rvTodoRecyclerView"
+                android:layout_marginEnd="2dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_marginTop="1dp">
+
+
+            <EditText
+                    android:id="@+id/enterATaskET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_a_task_hint"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:maxLines="6"
+                    android:isScrollContainer="true" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+                android:id="@+id/cvSendIBCV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="15dp"
+                app:cardMaxElevation="10dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardPreventCornerOverlap="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cvEnterTaskCV"
+                app:layout_constraintTop_toBottomOf="@+id/rvTodoRecyclerView"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp">
+
+
+            <ImageButton
+                    android:id="@+id/sendIB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/paper_plane_24"
+                    android:text="@string/send_button"
+
+                    android:backgroundTint="@color/white" />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    app:layout_constraintBottom_toTopOf="@id/cvEnterTaskCV"-->
+
+<!--    <androidx.cardview.widget.CardView
             android:id="@+id/cvEnterTaskCV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -182,7 +255,7 @@
                 android:text="@string/send_button"
 
                 android:backgroundTint="@color/white" />
-    </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>-->
 
 
 

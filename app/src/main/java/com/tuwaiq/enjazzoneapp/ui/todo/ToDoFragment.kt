@@ -2,6 +2,8 @@ package com.tuwaiq.enjazzoneapp.ui.todo
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
@@ -12,20 +14,16 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tuwaiq.enjazzoneapp.*
 import com.tuwaiq.enjazzoneapp.data.TasksDataClass
-import kotlinx.coroutines.launch
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
-import java.time.OffsetDateTime
-import java.time.ZoneOffset
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.math.absoluteValue
 
 
 const val welcomingMessageString = "Plan your day, Achieve more!"
@@ -42,6 +40,8 @@ class ToDoFragment : Fragment() {
 
     private lateinit var todoRecyclerView: RecyclerView
 
+    private lateinit var rvAdapter:RecyclerView.Adapter<*>
+
     private lateinit var toDoViewModel: ToDoViewModel
 
     private lateinit var etEnterTaskET: EditText
@@ -56,6 +56,7 @@ class ToDoFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         return inflater.inflate(R.layout.fragment_to_do, container, false)
     }
 
@@ -63,19 +64,22 @@ class ToDoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         tvDayTimerHeaderTV = view.findViewById(R.id.tvTimerHeader)
-
         tvDayTimerTV = view.findViewById(R.id.tvDayRemainingTimer)
 
+        val getInBed = if (sharedPreferences.getLong(getInBedSharedPrefLongKey, (14400000).toLong()) == (14400000).toLong()) 14400000 else (milliSecondsInDay %((sharedPreferences.getLong(getInBedSharedPrefLongKey, (14400000).toLong())%milliSecondsInDay)))
+        val wakeUp = if(sharedPreferences.getLong(wakeupSharedPrefLongKey, (7200000).toLong()) == (7200000).toLong()) 7200000 else (milliSecondsInDay %((sharedPreferences.getLong(wakeupSharedPrefLongKey, (7200000).toLong())%milliSecondsInDay)))
+
+
         val currentTimeMillis = System.currentTimeMillis()
-        val activeHoursCounter:Long = (milliSecondsInDay - (currentTimeMillis % milliSecondsInDay)) - (milliSecondsInDay %((sharedPreferences.getLong(getInBedSharedPrefLongKey, (14400000).toLong())%milliSecondsInDay)))
-        val sleepingHoursCounter:Long = (milliSecondsInDay - (currentTimeMillis % milliSecondsInDay)) + (milliSecondsInDay %((sharedPreferences.getLong(wakeupSharedPrefLongKey, (7200000).toLong())%milliSecondsInDay)))
+        val activeHoursCounter:Long = (milliSecondsInDay - (currentTimeMillis % milliSecondsInDay)) - getInBed
+        val sleepingHoursCounter:Long = (milliSecondsInDay - (currentTimeMillis % milliSecondsInDay)) + wakeUp
 
         val longCounterUntilFinished:Long = activeHoursCounter//if(counterBooleanSwitch) activeHoursCounter else sleepingHoursCounter
 
-        val activeHoursTimerHeader = "Enjaz Hours\uD83C\uDFC6 (${sharedPreferences.getString(wakeupSharedPrefStringKey, "6:00 AM")?.substringBefore(":")}am-${sharedPreferences.getString(getInBedSharedPrefStringKey, "10:00 PM")?.substringBefore(":")}pm)"
-        val sleepingHoursTimerHeader = "Sleeping Time\uD83D\uDCA4\uD83D\uDCA4 (${sharedPreferences.getString(getInBedSharedPrefStringKey, "10:00 PM")?.substringBefore(":")}pm-${sharedPreferences.getString(wakeupSharedPrefStringKey, "6:00 AM")?.substringBefore(":")}am)"
-        tvDayTimerHeaderTV.text = activeHoursTimerHeader
+        val activeHoursTimerHeader = "Enjaz Hours\uD83C\uDFC6 (${sharedPreferences.getString(wakeupSharedPrefStringKey, "5:00 AM")?.substringBefore(":")}am-${sharedPreferences.getString(getInBedSharedPrefStringKey, "11:00 PM")?.substringBefore(":")}pm)"
+        val sleepingHoursTimerHeader = "Sleeping Time\uD83D\uDCA4\uD83D\uDCA4 (${sharedPreferences.getString(getInBedSharedPrefStringKey, "11:00 PM")?.substringBefore(":")}pm-${sharedPreferences.getString(wakeupSharedPrefStringKey, "5:00 AM")?.substringBefore(":")}am)"
 
+        tvDayTimerHeaderTV.text = activeHoursTimerHeader
         val activeHoursTimer = object: CountDownTimer(longCounterUntilFinished, 1000) {
             override fun onTick(millisUntilFinished: Long) {
 
@@ -84,7 +88,10 @@ class ToDoFragment : Fragment() {
                 val min = millisUntilFinished / 60000 % 60
                 val sec = millisUntilFinished / 1000 % 60
                 tvDayTimerTV.text = "${f.format(hour)}:${f.format(min)}:${f.format(sec)} ⏳"
-
+/*                println("activeHoursCounter: $activeHoursCounter")
+                println("sleepingHoursCounter: $sleepingHoursCounter")
+                println("Get in bed: $getInBed")
+                println("Wake up: $wakeUp")*/
             }
             override fun onFinish() {
                 tvDayTimerHeaderTV.text = sleepingHoursTimerHeader
@@ -96,7 +103,10 @@ class ToDoFragment : Fragment() {
                         val min = millisUntilFinished / 60000 % 60
                         val sec = millisUntilFinished / 1000 % 60
                         tvDayTimerTV.text = "\uD83D\uDECC\uD83C\uDFFB${f.format(hour)}:${f.format(min)}:${f.format(sec)}\uD83D\uDE34\uD83D\uDE34"
-
+/*                        println("activeHoursCounter: $activeHoursCounter")
+                        println("sleepingHoursCounter: $sleepingHoursCounter")
+                        println("Get in bed: $getInBed")
+                        println("Wake up: $wakeUp")*/
                     }
                     override fun onFinish() {
                         tvDayTimerHeaderTV.text = sleepingHoursTimerHeader
@@ -131,15 +141,31 @@ class ToDoFragment : Fragment() {
 
 
         todoRecyclerView = view.findViewById(R.id.rvTodoRecyclerView)
-        //todoRecyclerView.setHasFixedSize(true)
-        tasksArrayList = arrayListOf()
-        todoRecyclerView.adapter = TodoRVListAdapter(tasksArrayList, view)
+
+
+
         todoRecyclerView.layoutManager = LinearLayoutManager(this.context)
         toDoViewModel = ViewModelProvider(this)[ToDoViewModel::class.java]
 
-        toDoViewModel.getAllTasks(tasksArrayList,viewLifecycleOwner).observe(viewLifecycleOwner,{
-            todoRecyclerView.adapter = TodoRVListAdapter(it, view)
-        })
+        toDoViewModel.getAllTasks()
+        toDoViewModel.tasks.observe(viewLifecycleOwner) {
+            rvAdapter = TodoRVListAdapter(it, view)
+
+            todoRecyclerView.adapter = rvAdapter
+        }
+
+        /*toDoViewModel.tasks.value?.clear()
+        toDoViewModel.getAllTasks()
+        toDoViewModel.tasks.observe(viewLifecycleOwner) {
+            rvAdapter = TodoRVListAdapter(it, view, toDoViewModel)
+            rvAdapter.setHasStableIds(true)
+            //it.sortByDescending { list -> list.nowDate }
+            //if (it.isNullOrEmpty())
+            todoRecyclerView.adapter = rvAdapter
+            //else
+            //    todoRecyclerView.swapAdapter(TodoRVListAdapter(it, view), true)
+        }*/
+        //loadTasksList()
 
         welcomingMessageTV = view.findViewById(R.id.tvWelcomingMessage)
         welcomingMessageTV.text = welcomingMessageString
@@ -169,18 +195,20 @@ class ToDoFragment : Fragment() {
             val taskTitle: String = etEnterTaskET.text.toString()
             val todoTask = TasksDataClass()
             todoTask.taskTitle = taskTitle
-            todoTask.taskId = UUID.randomUUID().toString()
+            //todoTask.taskId = UUID.randomUUID().toString()
 
-            toDoViewModel.viewModelScope.launch {
-                toDoViewModel.createTask(todoTask)
-            }
-            //welcomingMessageTV.visibility = View.GONE
-            todoRecyclerView.adapter = TodoRVListAdapter(tasksArrayList, view)
-            todoRecyclerView.layoutManager = LinearLayoutManager(this.context)
-            //todoRVListAdapter.notifyItemInserted(todoRVListAdapter.itemCount)
+            toDoViewModel.createTask(todoTask)
+
             etEnterTaskET.text = null
+
+            view.findNavController().navigate(R.id.navigation_ToDo)
         }
+
     } // onViewCreated END
+
+    private fun loadTasksList() {
+        toDoViewModel.getAllTasks()
+    }
 
     private fun sendIBSetTint() {
         if (sendIB.isEnabled) context?.let { ContextCompat.getColor(it, R.color.primary_blue) }

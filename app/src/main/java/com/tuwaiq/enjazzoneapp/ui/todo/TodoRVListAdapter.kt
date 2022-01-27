@@ -25,10 +25,8 @@ import com.tuwaiq.enjazzoneapp.data.TasksDataClass
 import android.content.Context.CLIPBOARD_SERVICE
 import android.content.Intent
 import androidx.core.content.ContextCompat
-
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
-
 
 class TodoRVHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
     val cvTaskCardView: CardView = itemView.findViewById(R.id.taskCardView)
