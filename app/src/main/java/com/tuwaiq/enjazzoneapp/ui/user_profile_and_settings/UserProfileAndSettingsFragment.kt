@@ -11,7 +11,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
@@ -94,14 +93,13 @@ class UserProfileAndSettingsFragment : Fragment() {
                 sharedEditor.putLong(getInBedSharedPrefLongKey, toDateToLong)
                 sharedEditor.apply()
 
-                Toast.makeText(view.context,"Selected Starting Hour is: ${btnGetInBed.text}",
+                Toast.makeText(view.context,view.resources.getString(R.string.selected_bedtime_hour)+btnGetInBed.text,
                     Toast.LENGTH_LONG).show()
-                Toast.makeText(view.context,"Selected Starting Hour in Millis: $toDateToLong",
-                    Toast.LENGTH_LONG).show()
-                println(toDateToLong)
+                //Toast.makeText(view.context,"Selected Starting Hour in Millis: $toDateToLong", Toast.LENGTH_LONG).show()
+                //println(toDateToLong)
 
 
-                Toast.makeText(view.context, "Edit saved ✔", Toast.LENGTH_SHORT).show()
+                Toast.makeText(view.context, view.resources.getString(R.string.edit_saved_check), Toast.LENGTH_SHORT).show()
             }, Calendar.getInstance().get(Calendar.HOUR_OF_DAY), Calendar.getInstance().get(Calendar.MINUTE), false).show()
             //btnGetInBed.text
         }
@@ -113,8 +111,8 @@ class UserProfileAndSettingsFragment : Fragment() {
                 val pickedDateTime = Calendar.getInstance()
                 pickedDateTime.set(Calendar.HOUR_OF_DAY, hour)
                 pickedDateTime.set(Calendar.MINUTE, minute)
-                println("hour $hour")
-                println("minute $minute")
+/*                println("hour $hour")
+                println("minute $minute")*/
                 val sharedEditor: SharedPreferences.Editor = sharedPreferences.edit()
                 btnWakeup.text = sdf12HoursSDF.format(pickedDateTime.time)
                 sharedEditor.putString(wakeupSharedPrefStringKey, sdf12HoursSDF.format(pickedDateTime.time))
@@ -123,31 +121,30 @@ class UserProfileAndSettingsFragment : Fragment() {
                 sharedEditor.putLong(wakeupSharedPrefLongKey, toDateToLong)
                 sharedEditor.apply()
 
-                Toast.makeText(view.context,"Selected Starting Hour is: ${btnWakeup.text}",
+                Toast.makeText(view.context,view.resources.getString(R.string.selected_wakeup_hour)+btnWakeup.text,
                     Toast.LENGTH_LONG).show()
-                Toast.makeText(view.context,"Selected Starting Hour in Millis: $toDateToLong",
-                    Toast.LENGTH_LONG).show()
+                //Toast.makeText(view.context,"Selected Starting Hour in Millis: $toDateToLong", Toast.LENGTH_LONG).show()
                 println(toDateToLong)
 
-                Toast.makeText(view.context, "Edit saved ✔", Toast.LENGTH_SHORT).show()
+                Toast.makeText(view.context, view.resources.getString(R.string.edit_saved_check), Toast.LENGTH_SHORT).show()
             }, Calendar.getInstance().get(Calendar.HOUR_OF_DAY), Calendar.getInstance().get(Calendar.MINUTE), false).show()
 
-            Toast.makeText(view.context,"pickedTimeInMillis: ${sharedPreferences.getLong(wakeupSharedPrefLongKey,10800000)}",Toast.LENGTH_LONG).show()
+            //Toast.makeText(view.context,"pickedTimeInMillis: ${sharedPreferences.getLong(wakeupSharedPrefLongKey,10800000)}",Toast.LENGTH_LONG).show()
 
         }
 
         tvUsernameTV.setOnClickListener {
-            println(sharedPreferences.getLong(getInBedSharedPrefLongKey,10800000))
-            println(sharedPreferences.getLong(wakeupSharedPrefLongKey,10800000))
+/*            println(sharedPreferences.getLong(getInBedSharedPrefLongKey,10800000))
+            println(sharedPreferences.getLong(wakeupSharedPrefLongKey,10800000))*/
         }
 
         btnLogout.setOnClickListener {
             val alertDialogBuilder = AlertDialog.Builder(view.context)
-            alertDialogBuilder.setMessage("ِAre you sure you want to logout?")
-                .setTitle("Logout Conformation")
+            alertDialogBuilder.setMessage(view.resources.getString(R.string.alert_dialog_message_logout))
+                .setTitle(view.resources.getString(R.string.alert_dialog_title_logout))
                 // if the dialog is cancelable
                 .setCancelable(true)
-                .setPositiveButton("Yes") { confirmDialog, _ ->
+                .setPositiveButton(view.resources.getString(R.string.alert_dialog_yes)) { confirmDialog, _ ->
                     FirebaseAuth.getInstance().signOut()
                     confirmDialog.dismiss()
                     findNavController().navigate(R.id.navigation_login)
@@ -155,7 +152,7 @@ class UserProfileAndSettingsFragment : Fragment() {
                     sharedEditor.putBoolean(keepMeSignedInKeyInSharedPref, false)
                     sharedEditor.apply()
                 }
-                .setNegativeButton("No") { confirmDialog, _ ->
+                .setNegativeButton(view.resources.getString(R.string.alert_dialog_no)) { confirmDialog, _ ->
                     confirmDialog.dismiss()
                 }
                 .show()

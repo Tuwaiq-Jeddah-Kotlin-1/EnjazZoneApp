@@ -79,7 +79,7 @@ class TasksViewRecyclerViewAdapter(private var tasksMutableList: List<TasksDataC
         val taskCalendar = Calendar.getInstance(Locale.getDefault())
         taskCalendar.timeInMillis = taskInAdapter.dueDate
 
-        val defaultTaskDescription = "Task description."
+        val defaultTaskDescription = view.resources.getString(R.string.task_Description)
         val defaultTaskStartingHourText = SimpleDateFormat("h:mm a", Locale.getDefault()).format(Date(taskInAdapter.taskStartingHourMillis)).lowercase()+" - "
         val defaultTaskEndingHourText = SimpleDateFormat("h:mm a", Locale.getDefault()).format(Date(taskInAdapter.taskEndingHourMillis)).lowercase()
         val defaultTaskDuaDateText = SimpleDateFormat("EEE dd MMM yyyy", Locale.getDefault()).format(Date(taskInAdapter.dueDate))
@@ -179,12 +179,12 @@ class TasksViewRecyclerViewAdapter(private var tasksMutableList: List<TasksDataC
         )
         holder.tvTaskDueDateTV.text =
             when {
-                taskDueDateIsThisHour(taskCalendar, calendar) -> "$defaultTaskDuaDateText (This Hour)"
-                taskDueDateIsToday(taskCalendar, calendar) -> "$defaultTaskDuaDateText (Today)"
-                taskDueDateIsTomorrow(taskCalendar, calendar) -> "$defaultTaskDuaDateText (Tomorrow)"
-                taskDueDateIsThisWeek(taskCalendar, calendar) -> "$defaultTaskDuaDateText (This Week)"
-                taskDueDateIsMoreThanWeek(taskCalendar, calendar) -> "$defaultTaskDuaDateText (Upcoming week+)"
-                taskInAdapter.dueDate < Calendar.getInstance(Locale.getDefault()).timeInMillis -> "$defaultTaskDuaDateText (Past due date)"
+                taskDueDateIsThisHour(taskCalendar, calendar) -> defaultTaskDuaDateText + view.resources.getString(R.string.this_hour)
+                taskDueDateIsToday(taskCalendar, calendar) -> defaultTaskDuaDateText + view.resources.getString(R.string.today)
+                taskDueDateIsTomorrow(taskCalendar, calendar) -> defaultTaskDuaDateText + view.resources.getString(R.string.tomorrow)
+                taskDueDateIsThisWeek(taskCalendar, calendar) -> defaultTaskDuaDateText + view.resources.getString(R.string.this_week)
+                taskDueDateIsMoreThanWeek(taskCalendar, calendar) -> defaultTaskDuaDateText  + view.resources.getString(R.string.upcoming_week_and_more)
+                taskInAdapter.dueDate < Calendar.getInstance(Locale.getDefault()).timeInMillis -> defaultTaskDuaDateText + view.resources.getString(R.string.past_due_date)
                 else -> holder.tvTaskDueDateTV.text
             }
         holder.tvTaskDueDateTV.paintFlags =

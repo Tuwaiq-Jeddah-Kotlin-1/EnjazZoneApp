@@ -36,7 +36,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:paddingBottom="10dp"
-                    android:text="Task Title"
+                    android:text="@string/task_title"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:maxLines="3"
@@ -62,7 +62,7 @@
                     android:id="@+id/tvTaskDescriptionTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Task Description"
+                    android:text="@string/task_description"
                     android:maxLines="3"
 
                     app:layout_constraintStart_toStartOf="parent"

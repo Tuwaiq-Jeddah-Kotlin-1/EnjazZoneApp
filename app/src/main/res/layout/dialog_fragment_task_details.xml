@@ -62,7 +62,7 @@
 
                 <TextView
                         android:id="@+id/tvTaskTitleHeaderTV"
-                        android:text="Task Title"
+                        android:text="@string/task_title"
                         android:textColor="@color/primary_blue"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
 
                 <TextView
                         android:id="@+id/tvTaskDescriptionHeaderTV"
-                        android:text="Description"
+                        android:text="@string/description"
                         android:textColor="@color/primary_blue"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
 
                 <EditText
                         android:id="@+id/etTaskDescriptionET"
-                        android:text="Description and notes are written here.."
+                        android:hint="Description and notes are written here.."
                         android:textSize="15sp"
                         android:background="@null"
                         android:layout_width="match_parent"
@@ -166,7 +166,7 @@
 
                     <TextView
                             android:id="@+id/tvSaveChangesTV"
-                            android:text="Save Changes"
+                            android:text="@string/save_changes"
 
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -223,7 +223,7 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pick Due Date"
+                        android:text="@string/pick_due_date"
                         android:textColor="@color/primary_blue"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -288,7 +288,7 @@
                         android:id="@+id/tvStarterHourHeader"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pick Starting Hour"
+                        android:text="@string/pick_starting_hour"
                         android:textColor="@color/green"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -351,7 +351,7 @@
                         android:id="@+id/tvEndingHourHeader"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pick Ending Hour"
+                        android:text="@string/pick_ending_hour"
                         android:textColor="@color/dark_red"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -415,7 +415,7 @@
                     android:id="@+id/btnLogoutBTN"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Delete Task"
+                    android:text="@string/delete_task"
                     android:textColor="@color/bright_red"
                     android:drawableEnd="@drawable/ic_icons_delete_32"
                     android:backgroundTint="@color/white"

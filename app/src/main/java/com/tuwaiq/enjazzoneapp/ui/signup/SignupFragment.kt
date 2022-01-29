@@ -74,15 +74,15 @@ class SignupFragment : Fragment() {
                 }
 
                 .addOnFailureListener {
-                    Toast.makeText(signupFragmentContext, "Error: ${it.localizedMessage}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(signupFragmentContext, resources.getString(R.string.signup_failure)+it.localizedMessage, Toast.LENGTH_LONG).show()
                 }
                 .addOnCanceledListener {
-                    Toast.makeText(signupFragmentContext, "Login Error: Login cancelled", Toast.LENGTH_LONG).show()
+                    Toast.makeText(signupFragmentContext, resources.getString(R.string.signup_cancelled), Toast.LENGTH_LONG).show()
                 }
                 .addOnSuccessListener {
-                    Toast.makeText(signupFragmentContext, "Navigating to: Login Page", Toast.LENGTH_LONG).show()
+                    Toast.makeText(signupFragmentContext, resources.getString(R.string.signup_success), Toast.LENGTH_LONG).show()
                 }
-        }else Toast.makeText(signupFragmentContext, "Error: Email or Password can't be empty", Toast.LENGTH_LONG).show()
+        }else Toast.makeText(signupFragmentContext, resources.getString(R.string.username_and_password_cannot_be_empty), Toast.LENGTH_LONG).show()
 
     }
 

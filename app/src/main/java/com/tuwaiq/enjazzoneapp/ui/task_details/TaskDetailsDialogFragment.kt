@@ -123,8 +123,8 @@ class TaskDetailsDialogFragment: DialogFragment() {
         mcvDeleteTaskMCV = view.findViewById(R.id.mcvDeleteTaskMCV)
 
         if (taskObject != null) {
-            tvDialogFragmentHeaderTitleTV.text = if (!taskObject!!.taskTitle.isNullOrBlank()) "Task #${taskPosition?.plus(1)} Details:" else "New Task In Details:"
-            tvTaskCreationDateTV.text = "Created in: "+dateAndDaySimpleDateFormat.format(Date(taskObject!!.nowDate))
+            tvDialogFragmentHeaderTitleTV.text = if (!taskObject!!.taskTitle.isNullOrBlank()) resources.getString(R.string.task_number)+taskPosition?.plus(1)+resources.getString(R.string.details) else resources.getString(R.string.new_task_in_details)
+            tvTaskCreationDateTV.text = resources.getString(R.string.created_in)+dateAndDaySimpleDateFormat.format(Date(taskObject!!.nowDate))
             etTaskTitleET.setText(taskObject!!.taskTitle)
             etTaskDescriptionET.setText(taskObject!!.taskDescription)
             tvTaskDueDateTV.text = dateAndDaySimpleDateFormat.format(Date(taskObject!!.dueDate))
@@ -151,15 +151,13 @@ class TaskDetailsDialogFragment: DialogFragment() {
                         mcvSaveChangesMCV.isEnabled = true //etTaskTitleET.text.isNotBlank()
                         tvSaveChangesTV.setTextColor(resources.getColor(R.color.primary_blue))
                         mcvSaveChangesMCV.cardElevation = defaultMCVCardElevation
-                        println("1. etTaskTitleET.text.isNotBlank() is invoked")
+
                     }
                     s.toString() == titleCurrentText || etTaskTitleET.text.isBlank() -> {
                         mcvSaveChangesMCV.isEnabled = false
                         tvSaveChangesTV.setTextColor(resources.getColor(R.color.grey))
                         mcvSaveChangesMCV.cardElevation = 0F
-                        println("2. s.toString() == currentText is invoked")
                     }
-                    else -> println("else of afterTextChanged is invoked")
                 }
             }
         })
@@ -183,15 +181,14 @@ class TaskDetailsDialogFragment: DialogFragment() {
                         mcvSaveChangesMCV.isEnabled = true
                         tvSaveChangesTV.setTextColor(resources.getColor(R.color.primary_blue))
                         mcvSaveChangesMCV.cardElevation = defaultMCVCardElevation
-                        println("1. etTaskTitleET.text.isNotBlank() is invoked")
+
                     }
                     s.toString() == descriptionCurrentText || etTaskDescriptionET.text.isBlank() -> {
                         mcvSaveChangesMCV.isEnabled = false
                         tvSaveChangesTV.setTextColor(resources.getColor(R.color.grey))
                         mcvSaveChangesMCV.cardElevation = 0F
-                        println("2. s.toString() == currentText is invoked")
+
                     }
-                    else -> println("else of afterTextChanged is invoked")
                 }
             }
         })
@@ -209,9 +206,8 @@ class TaskDetailsDialogFragment: DialogFragment() {
                         ).update("taskTitle", it1.taskTitle)
                 }
                 //sharedEdit.putBoolean(hasChangedSharedPrefBooleanKey, true).commit()
-
                 titleCurrentText = taskObject?.taskTitle.toString()
-                Toast.makeText(view.context, "Task title changes are saved", Toast.LENGTH_LONG).show()
+                Toast.makeText(view.context, resources.getString(R.string.task_title_changes_saved), Toast.LENGTH_LONG).show()
             }
 
             if (taskObject?.taskDescription != descriptionCurrentText) {
@@ -223,9 +219,9 @@ class TaskDetailsDialogFragment: DialogFragment() {
                 }
                 //sharedEdit.putBoolean(hasChangedSharedPrefBooleanKey, true).commit()
                 descriptionCurrentText = taskObject?.taskDescription.toString()
-                Toast.makeText(view.context, "Task description changes are saved", Toast.LENGTH_LONG).show()
-                Toast.makeText(view.context, "Edit saved ✔", Toast.LENGTH_SHORT).show()
+                Toast.makeText(view.context, resources.getString(R.string.task_description_changes_saved), Toast.LENGTH_LONG).show()
             }
+            Toast.makeText(view.context, resources.getString(R.string.edit_saved_check), Toast.LENGTH_SHORT).show()
             sharedEdit.putBoolean(hasChangesSharedPrefBooleanKey, true).commit()
             mcvSaveChangesMCV.isEnabled = false
             tvSaveChangesTV.setTextColor(resources.getColor(R.color.grey))
@@ -254,7 +250,7 @@ class TaskDetailsDialogFragment: DialogFragment() {
                     val sdf = SimpleDateFormat("EEE dd MMM yyyy", Locale.getDefault())
                     tvTaskDueDateTV.text = sdf.format(calendar.time)
                     val toDateToLong = calendar.timeInMillis
-                    Toast.makeText(view.context, "Selected Due Date is: ${tvTaskDueDateTV.text}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(view.context, resources.getString(R.string.selected_due_date)+tvTaskDueDateTV.text, Toast.LENGTH_LONG).show()
                     //Toast.makeText(view.context, "Selected Date in Millis: $toDateToLong", Toast.LENGTH_LONG).show()
                     //println(toDateToLong)
                     taskObject?.dueDate = calendar.timeInMillis
@@ -265,7 +261,7 @@ class TaskDetailsDialogFragment: DialogFragment() {
                     //view.setBackgroundColor(resources.getColor(R.color.primary_blue))
                     // Display Selected date in TextView
                     //tvTaskDueDateTV.text = "$dayOfMonth $monthOfYear $year"
-                    Toast.makeText(view.context, "Edit saved ✔", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(view.context, resources.getString(R.string.edit_saved_check), Toast.LENGTH_SHORT).show()
                 }, year, month, day
             ).show()
         }
@@ -283,15 +279,15 @@ class TaskDetailsDialogFragment: DialogFragment() {
                 val sdf = SimpleDateFormat("h:mm a", Locale.getDefault())
                 tvTaskStartingHourTV.text = sdf.format(pickedDateTime.time)
                 val toDateToLong = pickedDateTime.timeInMillis
-                Toast.makeText(view.context,"Selected Starting Hour is: ${tvTaskStartingHourTV.text}",Toast.LENGTH_LONG).show()
+                Toast.makeText(view.context,resources.getString(R.string.selected_starting_hour)+tvTaskStartingHourTV.text,Toast.LENGTH_LONG).show()
                 //Toast.makeText(view.context,"Selected Starting Hour in Millis: $toDateToLong",Toast.LENGTH_LONG).show()
-                println(toDateToLong)
+                //println(toDateToLong)
                 taskObject?.taskStartingHourMillis = pickedDateTime.timeInMillis
                 taskObject?.let { it1 ->
                     tasksCollectionRef.document(currentUserID.toString()).collection("tasks")
                         .document(it1.taskId).update("taskStartingHourMillis", it1.taskStartingHourMillis)
                 }
-                Toast.makeText(view.context, "Edit saved ✔", Toast.LENGTH_SHORT).show()
+                Toast.makeText(view.context, resources.getString(R.string.edit_saved_check), Toast.LENGTH_SHORT).show()
             }, startHour, startMinute, false).show()
         } //cvStartingHourCV.setOnClickListener
 
@@ -307,7 +303,7 @@ class TaskDetailsDialogFragment: DialogFragment() {
                     val sdf = SimpleDateFormat("h:mm a", Locale.getDefault())
                     tvTaskEndHourTV.text = sdf.format(calendar.time)
                     val toDateToLong = calendar.timeInMillis
-                    Toast.makeText(view.context,"Selected Ending Hour is: ${tvTaskEndHourTV.text}",Toast.LENGTH_LONG).show()
+                    Toast.makeText(view.context,resources.getString(R.string.selected_ending_hour)+tvTaskEndHourTV.text,Toast.LENGTH_LONG).show()
                     //Toast.makeText(view.context,"Selected Ending Hour in Millis: $toDateToLong",Toast.LENGTH_LONG).show()
                     println(toDateToLong)
                     taskObject?.taskEndingHourMillis = calendar.timeInMillis
@@ -317,18 +313,18 @@ class TaskDetailsDialogFragment: DialogFragment() {
                                 it1.taskId
                             ).update("taskEndingHourMillis", it1.taskEndingHourMillis)
                     }
-                    Toast.makeText(view.context, "Edit saved ✔", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(view.context, resources.getString(R.string.edit_saved_check), Toast.LENGTH_SHORT).show()
                 }, endHour, endMinute, false).show()
         } //cvEndingHourCV.setOnClickListener
 
         // DELETE
         mcvDeleteTaskMCV.setOnClickListener {
             val alertDialogBuilder = AlertDialog.Builder(view.context)
-            alertDialogBuilder.setMessage("Delete this task? (deletion cannot be undone)")
-                .setTitle("Task Delete Conformation")
+            alertDialogBuilder.setMessage(resources.getString(R.string.alert_dialog_message))
+                .setTitle(resources.getString(R.string.alert_dialog_title))
                 // if the dialog is cancelable
                 .setCancelable(true)
-                .setPositiveButton("Yes") { confirmDialog, _ ->
+                .setPositiveButton(resources.getString(R.string.alert_dialog_yes)) { confirmDialog, _ ->
                     taskObject?.let { it1 ->
                         tasksCollectionRef.document(currentUserID.toString()).collection("tasks")
                             .document(it1.taskId).delete()
@@ -344,7 +340,7 @@ class TaskDetailsDialogFragment: DialogFragment() {
                     /*.removeAt(position)
                     notifyItemRemoved(position)*/
                 }
-                .setNegativeButton("No") { confirmDialog, _ ->
+                .setNegativeButton(resources.getString(R.string.alert_dialog_no)) { confirmDialog, _ ->
                     confirmDialog.dismiss()
                 }
                 .show()
