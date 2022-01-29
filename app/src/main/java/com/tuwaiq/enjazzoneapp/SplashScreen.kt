@@ -23,6 +23,7 @@ const val wakeupSharedPrefLongKey = "WAKE_UP_LONG"
 const val milliSecondsInDay:Long = 86400000
 const val hasChangesSharedPrefBooleanKey = "HAS_CHANGED"
 const val numberOfTasksSharedPrefStringKey = "NUMBER_OF_TASKS"
+const val enterTaskDraftSharedPrefStringKey = "ENTER_TASK_DRAFT"
 
 @Suppress("DEPRECATION")
 class SplashScreen : AppCompatActivity() {

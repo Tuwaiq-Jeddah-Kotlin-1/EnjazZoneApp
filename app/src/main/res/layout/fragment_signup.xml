@@ -12,7 +12,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textEmailAddress"
-            android:hint="Username"
+            android:hint="@string/username"
             app:layout_constraintEnd_toEndOf="parent"
 
             app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textEmailAddress"
-            android:hint="Email"
+            android:hint="@string/email"
             app:layout_constraintEnd_toEndOf="parent"
 
             app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPassword"
-            android:hint="Password"
+            android:hint="@string/password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +50,7 @@
             android:layout_marginTop="28dp" />
 
     <CheckBox
-            android:text="Remember me"
+            android:text="@string/remember_me"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@+id/etPasswordSignup"
@@ -63,7 +63,7 @@
             android:id="@+id/btnSignup"
             android:layout_width="208dp"
             android:layout_height="wrap_content"
-            android:hint="Sign Up"
+            android:hint="@string/sign_up"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etPasswordSignup"
@@ -71,7 +71,7 @@
             android:layout_marginTop="80dp" />
 
     <TextView
-            android:text="Already signed up? Login"
+            android:text="@string/already_signed_up_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"

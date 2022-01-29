@@ -77,8 +77,8 @@ class ToDoFragment : Fragment() {
 
         val longCounterUntilFinished:Long = activeHoursCounter//if(counterBooleanSwitch) activeHoursCounter else sleepingHoursCounter
 
-        val activeHoursTimerHeader = "Enjaz Hours\uD83C\uDFC6 (${sharedPreferences.getString(wakeupSharedPrefStringKey, "5:00 AM")?.substringBefore(":")}am-${sharedPreferences.getString(getInBedSharedPrefStringKey, "11:00 PM")?.substringBefore(":")}pm)"
-        val sleepingHoursTimerHeader = "Sleeping Time\uD83D\uDCA4\uD83D\uDCA4 (${sharedPreferences.getString(getInBedSharedPrefStringKey, "11:00 PM")?.substringBefore(":")}pm-${sharedPreferences.getString(wakeupSharedPrefStringKey, "5:00 AM")?.substringBefore(":")}am)"
+        val activeHoursTimerHeader = view.resources.getString(R.string.enjaz_hours)+"\uD83C\uDFC6 (${sharedPreferences.getString(wakeupSharedPrefStringKey, "5:00 AM")?.substringBefore(":")}am-${sharedPreferences.getString(getInBedSharedPrefStringKey, "11:00 PM")?.substringBefore(":")}pm)"
+        val sleepingHoursTimerHeader = view.resources.getString(R.string.sleeping_time)+"\uD83D\uDCA4\uD83D\uDCA4 (${sharedPreferences.getString(getInBedSharedPrefStringKey, "11:00 PM")?.substringBefore(":")}pm-${sharedPreferences.getString(wakeupSharedPrefStringKey, "5:00 AM")?.substringBefore(":")}am)"
 
         tvDayTimerHeaderTV.text = activeHoursTimerHeader
         val activeHoursTimer = object: CountDownTimer(longCounterUntilFinished, 1000) {
@@ -120,7 +120,7 @@ class ToDoFragment : Fragment() {
         activeHoursTimer.start()
 
         tvDayTimerTV.setOnLongClickListener {
-            Toast.makeText(this.context, "Time remaining until bedtime hours\uD83D\uDCA4\uD83D\uDCA4", Toast.LENGTH_LONG).show()
+            Toast.makeText(this.context, view.resources.getString(R.string.time_remaining)+"\uD83D\uDCA4\uD83D\uDCA4", Toast.LENGTH_LONG).show()
             true
         }
 
@@ -181,7 +181,7 @@ class ToDoFragment : Fragment() {
         sendIB = view.findViewById(R.id.sendIB)
 
         etEnterTaskET = view.findViewById(R.id.enterATaskET)
-        etEnterTaskET.setText(sharedPreferences.getString("ENTER_TASK_DRAFT", null))
+        etEnterTaskET.setText(sharedPreferences.getString(enterTaskDraftSharedPrefStringKey, null))
         if (imm.isAcceptingText) {
             etEnterTaskET.requestFocus()
         }/* else {
@@ -198,7 +198,7 @@ class ToDoFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 sendIB.isEnabled = etEnterTaskET.text.isNotBlank()
-                sharedPreferences.edit().putString("ENTER_TASK_DRAFT", etEnterTaskET.text.toString()).apply()
+                sharedPreferences.edit().putString(enterTaskDraftSharedPrefStringKey, etEnterTaskET.text.toString()).apply()
                 sendIBSetTint()
             }
         })

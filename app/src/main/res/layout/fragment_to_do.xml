@@ -23,10 +23,10 @@
             app:cardUseCompatPadding="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/rvTodoRecyclerView"
             android:layout_marginTop="1dp"
             android:layout_marginStart="1dp"
-            android:layout_marginEnd="1dp">
+            android:layout_marginEnd="1dp"
+            app:layout_constraintBottom_toTopOf="@+id/clBottomCL">
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clEnjazMotivatorZone"
@@ -42,7 +42,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:gravity="center"
-                    android:hint="Timer Header"
+                    android:hint="@string/timer_header"
                     android:clickable="true"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:textColor="@color/primary_blue"
@@ -53,7 +53,7 @@
 
             <TextView
                     android:id="@+id/tvDayRemainingTimer"
-                    android:hint="hh:mm:ss"
+                    android:hint="@string/hh_mm_ss"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:gravity="center"
@@ -69,7 +69,7 @@
 
             <TextView
                     android:id="@+id/tvTodayDetailedDate"
-                    android:hint="Today's Date"
+                    android:hint="@string/today_s_date"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:gravity="center"
@@ -84,7 +84,7 @@
 
             <android.widget.TextClock
                     android:id="@+id/tvDigitalTextClock"
-                    android:hint="Digital Clock"
+                    android:hint="@string/digital_clock"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:clickable="true"
@@ -117,6 +117,7 @@
 <!--    app:layout_constraintBottom_toTopOf="@id/cvEnterTaskCV"-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clBottomCL"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"

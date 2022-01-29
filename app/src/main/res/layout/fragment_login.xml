@@ -12,7 +12,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textEmailAddress"
-            android:hint="Email"
+            android:hint="@string/email"
             app:layout_constraintEnd_toEndOf="parent"
 
             app:layout_constraintStart_toStartOf="parent"
@@ -25,14 +25,14 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPassword"
-            android:hint="Password"
+            android:hint="@string/password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etEmailLogin" />
 
     <CheckBox
-            android:text="Remember me"
+            android:text="@string/remember_me"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             app:layout_constraintStart_toStartOf="@+id/etPasswordLogin"
@@ -41,7 +41,7 @@
             app:layout_constraintTop_toBottomOf="@+id/etPasswordLogin"
             app:layout_constraintHorizontal_bias="0.0" />
     <CheckBox
-            android:text="Keep me signed in"
+            android:text="@string/keep_me_signed_in"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             app:layout_constraintStart_toStartOf="@+id/chbRememberMe"
@@ -54,7 +54,7 @@
             android:id="@+id/btnLogin"
             android:layout_width="208dp"
             android:layout_height="46dp"
-            android:text="Login"
+            android:text="@string/login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etPasswordLogin"
@@ -62,7 +62,7 @@
             android:layout_marginTop="72dp" />
 
     <TextView
-            android:text="Don't have an account? Sign Up"
+            android:text="@string/don_t_have_an_account_sign_up"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"

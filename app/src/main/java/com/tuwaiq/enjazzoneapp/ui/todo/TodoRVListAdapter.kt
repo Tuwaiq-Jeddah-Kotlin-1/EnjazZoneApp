@@ -100,17 +100,17 @@ class TodoRVListAdapter(private var mList: MutableList<TasksDataClass>, private 
             }*/
             (view.context.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager?)?.setPrimaryClip(
                 ClipData.newPlainText("Task Title", holder.tvTaskTitle.text.toString().substringAfter(". ")))
-            Toast.makeText(view.context, "Text copied to clipboard", Toast.LENGTH_SHORT).show()
+            Toast.makeText(view.context, view.resources.getString(R.string.text_copied_to_clipboard), Toast.LENGTH_SHORT).show()
             true
         }
 
         holder.deleteIB.setOnClickListener {
             val alertDialogBuilder = AlertDialog.Builder(view.context)
-            alertDialogBuilder.setMessage("Delete this task? (deletion cannot be undone)")
-                .setTitle("Task Delete Conformation")
+            alertDialogBuilder.setMessage(view.resources.getString(R.string.alert_dialog_message))
+                .setTitle(view.resources.getString(R.string.alert_dialog_title))
                 // if the dialog is cancelable
                 .setCancelable(true)
-                .setPositiveButton("Yes") { dialog, _ ->
+                .setPositiveButton(view.resources.getString(R.string.alert_dialog_yes)) { dialog, _ ->
                     tasksCollectionRef.document(currentUserID.toString()).collection("tasks")
                         .document(taskInAdapter.taskId).delete()
                     if (mList.lastIndex == 0) {
@@ -125,7 +125,7 @@ class TodoRVListAdapter(private var mList: MutableList<TasksDataClass>, private 
                     }
                     dialog.dismiss()
                 }
-                .setNegativeButton("No") { dialog, _ ->
+                .setNegativeButton(view.resources.getString(R.string.alert_dialog_no)) { dialog, _ ->
                     dialog.dismiss()
                 }
                 .show()
@@ -135,7 +135,7 @@ class TodoRVListAdapter(private var mList: MutableList<TasksDataClass>, private 
             alert.show()*/
         }
         holder.editIB.setOnClickListener {
-            Toast.makeText(view.context, "\"Edit Button\" has been pressed!", Toast.LENGTH_LONG).show()
+            Toast.makeText(view.context, view.resources.getString(R.string.edit_button_pressed), Toast.LENGTH_LONG).show()
             holder.tvTaskTitle.visibility = View.INVISIBLE
             holder.etTodoRow.visibility = View.VISIBLE
             holder.editIB.visibility = View.GONE
@@ -159,7 +159,7 @@ class TodoRVListAdapter(private var mList: MutableList<TasksDataClass>, private 
         holder.ibShareTaskTitleIB.setOnClickListener {
             val shareIntent = Intent()
             shareIntent.action = Intent.ACTION_SEND
-            shareIntent.putExtra(Intent.EXTRA_TEXT, "a Task that's in my schedule: ${taskInAdapter.taskTitle}")
+            shareIntent.putExtra(Intent.EXTRA_TEXT, view.resources.getString(R.string.share_task)+taskInAdapter.taskTitle)
             shareIntent.type = "text/plain"
             ContextCompat.startActivity(view.context, shareIntent, null)
         }

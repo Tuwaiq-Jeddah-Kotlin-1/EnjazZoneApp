@@ -77,7 +77,7 @@ class LoginFragment : Fragment() {
 
                     if (task.isSuccessful) {
                         val firebaseUser: FirebaseUser = task.result!!.user!!
-                        Toast.makeText(loginFragmentContext, "Logged in", Toast.LENGTH_LONG).show()
+                        Toast.makeText(loginFragmentContext, resources.getString(R.string.message_after_logging), Toast.LENGTH_LONG).show()
                         //val intent = Intent(this, SecondActivity::class.java) //this line is replaced by:
                         val actionNavigateToToDoFragment = LoginFragmentDirections.actionLoginFragmentToNavigationToDo()
                         //remember!!.setOnClickListener {
@@ -111,15 +111,15 @@ class LoginFragment : Fragment() {
                     }//else Toast.makeText(this@LoginActivity, "Error: Task is not successful!", Toast.LENGTH_LONG).show() //commented; replaced by ".addOnFailureListener"
                 }
                 .addOnFailureListener {
-                    Toast.makeText(loginFragmentContext, "Error: ${it.localizedMessage}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(loginFragmentContext, resources.getString(R.string.login_failure_message)+it.localizedMessage, Toast.LENGTH_LONG).show()
                 }
                 .addOnCanceledListener {
-                    Toast.makeText(loginFragmentContext, "Login Error: Login cancelled", Toast.LENGTH_LONG).show()
+                    Toast.makeText(loginFragmentContext, resources.getString(R.string.login_cancel), Toast.LENGTH_LONG).show()
                 }
                 .addOnSuccessListener {
-                    Toast.makeText(loginFragmentContext, "Login result: $it", Toast.LENGTH_LONG).show()
+                    Toast.makeText(loginFragmentContext, resources.getString(R.string.login_success_result)+it, Toast.LENGTH_LONG).show()
                 }
-        }else Toast.makeText(loginFragmentContext, "Error: Email or Password can't be empty", Toast.LENGTH_LONG).show()
+        }else Toast.makeText(loginFragmentContext, resources.getString(R.string.username_and_password_cannot_be_empty), Toast.LENGTH_LONG).show()
     }
 
 }

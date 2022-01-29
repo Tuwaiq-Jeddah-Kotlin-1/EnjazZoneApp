@@ -72,7 +72,7 @@ class TasksViewFragment : Fragment() {
         vmViewModel.getAllTasksSortedByDescendingDueDate().observe(viewLifecycleOwner) {
             //it.sortByDescending { list -> list.dueDate }
             recyclerView.adapter = TasksViewRecyclerViewAdapter(it, view, vmViewModel)
-            tvFragmentHeader.text = "All Tasks (${it.size}) \"due-date\" sorted:"
+            tvFragmentHeader.text = resources.getString(R.string.all_tasks)+it.size+resources.getString(R.string.due_date_sorted)
         }
     }
 }
