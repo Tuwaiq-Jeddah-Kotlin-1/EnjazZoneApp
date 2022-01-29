@@ -24,4 +24,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="notification_channel_description">"Number of current all tasks is: "</string>
+    <string name="notification_header">Notification</string>
+    <string name="notification_title">Reminder Notification</string>
+    <string name="notification_message">"The Number of all tasks is: "</string>
 </resources>
