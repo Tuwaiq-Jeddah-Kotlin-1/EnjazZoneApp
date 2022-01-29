@@ -2,6 +2,7 @@ package com.tuwaiq.enjazzoneapp.data
 
 import android.os.Parcelable
 import com.tuwaiq.enjazzoneapp.milliSecondsInDay
+import com.tuwaiq.enjazzoneapp.ui.tasks_view.sixHoursInMilliSeconds
 import com.tuwaiq.enjazzoneapp.ui.todo.threeHoursInMilliSeconds
 import kotlinx.android.parcel.Parcelize
 import java.util.*
@@ -17,5 +18,5 @@ data class TasksDataClass(
     var numberingInList: Int = 0,
     var taskDescription: String = "Task description.",
     var taskStartingHourMillis: Long = System.currentTimeMillis(),
-    var taskEndingHourMillis: Long = System.currentTimeMillis()
+    var taskEndingHourMillis: Long = System.currentTimeMillis() + sixHoursInMilliSeconds
 ) : Parcelable

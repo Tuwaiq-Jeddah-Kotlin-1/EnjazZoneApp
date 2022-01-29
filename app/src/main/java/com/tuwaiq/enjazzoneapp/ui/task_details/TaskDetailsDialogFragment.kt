@@ -1,4 +1,4 @@
-package com.tuwaiq.enjazzoneapp.ui.todo
+package com.tuwaiq.enjazzoneapp.ui.task_details
 
 import android.app.Activity
 import android.app.DatePickerDialog
@@ -24,10 +24,16 @@ import android.view.WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE
 import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityCompat.recreate
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.card.MaterialCardView
+import com.tuwaiq.enjazzoneapp.hasChangesSharedPrefBooleanKey
+import com.tuwaiq.enjazzoneapp.sharedPreferences
+import com.tuwaiq.enjazzoneapp.ui.todo.ToDoViewModel
 
 
-class TaskDetailsFragment: DialogFragment() {
+class TaskDetailsDialogFragment: DialogFragment() {
+
+    private lateinit var vmViewModel:ToDoViewModel
 
     private lateinit var tvDialogFragmentHeaderTitleTV:TextView
 
@@ -62,11 +68,11 @@ class TaskDetailsFragment: DialogFragment() {
         super.onStart()
         dialog?.window?.setSoftInputMode(SOFT_INPUT_ADJUST_RESIZE)
 
-        dialog?.window?.setLayout(1050,2000)
+        dialog?.window?.setLayout(1050,1770)
         dialog?.window?.setBackgroundDrawableResource(R.drawable.radius)
         //dialog?.window?.setGravity(Gravity.BOTTOM)
         val params: WindowManager.LayoutParams? = dialog?.window?.attributes
-        params!!.verticalMargin = (0.045).toFloat()
+        params!!.verticalMargin = (0.0001).toFloat()
         dialog?.window?.attributes = params
     }
 
@@ -75,18 +81,26 @@ class TaskDetailsFragment: DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_task_details, container, false)
+        vmViewModel =
+            ViewModelProvider(this)[ToDoViewModel::class.java]
+        return inflater.inflate(R.layout.dialog_fragment_task_details, container, false)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 /*        val taskObject = arguments?.getParcelable<TasksDataClass>("taskInAdapter")
         tvTaskDetailsTV = view.findViewById(R.id.tvTaskDetailsTV)*/
 
+        val sharedEdit = sharedPreferences.edit()
+        sharedEdit.putBoolean(hasChangesSharedPrefBooleanKey, false).commit()
+
         val dateAndDaySimpleDateFormat = SimpleDateFormat("EE dd MMM yyyy")
         val hourSimpleDateFormat = SimpleDateFormat("h:mm a")
 
         taskPosition = arguments?.getInt("position")
         taskObject = arguments?.getParcelable("taskInAdapter")
+
+        val starterTaskTitle = taskObject?.taskTitle.toString()
+        val starterTaskDescription = taskObject?.taskDescription.toString()
 
         tvDialogFragmentHeaderTitleTV = view.findViewById(R.id.tvDialogFragmentHeaderTitleTV)
 
@@ -125,6 +139,7 @@ class TaskDetailsFragment: DialogFragment() {
         var descriptionCurrentText = etTaskDescriptionET.text.toString()
         mcvSaveChangesMCV.isEnabled = false
 
+        // Title
         etTaskTitleET.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
@@ -148,6 +163,15 @@ class TaskDetailsFragment: DialogFragment() {
                 }
             }
         })
+
+        // Description
+        etTaskDescriptionET.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                etTaskDescriptionET.setSelectAllOnFocus(true)
+                etTaskDescriptionET.selectAll()
+            }
+            //else
+        }
         etTaskDescriptionET.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
@@ -172,6 +196,7 @@ class TaskDetailsFragment: DialogFragment() {
             }
         })
 
+        // Save
         mcvSaveChangesMCV.setOnClickListener {
             taskObject?.taskTitle = etTaskTitleET.text.toString()
             taskObject?.taskDescription = etTaskDescriptionET.text.toString()
@@ -183,6 +208,8 @@ class TaskDetailsFragment: DialogFragment() {
                             it1.taskId
                         ).update("taskTitle", it1.taskTitle)
                 }
+                //sharedEdit.putBoolean(hasChangedSharedPrefBooleanKey, true).commit()
+
                 titleCurrentText = taskObject?.taskTitle.toString()
                 Toast.makeText(view.context, "Task title changes are saved", Toast.LENGTH_LONG).show()
             }
@@ -194,14 +221,18 @@ class TaskDetailsFragment: DialogFragment() {
                             it1.taskId
                         ).update("taskDescription", it1.taskDescription)
                 }
+                //sharedEdit.putBoolean(hasChangedSharedPrefBooleanKey, true).commit()
                 descriptionCurrentText = taskObject?.taskDescription.toString()
                 Toast.makeText(view.context, "Task description changes are saved", Toast.LENGTH_LONG).show()
+                Toast.makeText(view.context, "Edit saved ✔", Toast.LENGTH_SHORT).show()
             }
+            sharedEdit.putBoolean(hasChangesSharedPrefBooleanKey, true).commit()
             mcvSaveChangesMCV.isEnabled = false
             tvSaveChangesTV.setTextColor(resources.getColor(R.color.grey))
             mcvSaveChangesMCV.cardElevation = 0F
         }
 
+        // DUE-DATE
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
@@ -238,6 +269,8 @@ class TaskDetailsFragment: DialogFragment() {
                 }, year, month, day
             ).show()
         }
+
+        // STARTING HOUR
         val startHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
         val startMinute = Calendar.getInstance().get(Calendar.MINUTE)
         cvStartingHourCV.setOnClickListener {
@@ -251,7 +284,7 @@ class TaskDetailsFragment: DialogFragment() {
                 tvTaskStartingHourTV.text = sdf.format(pickedDateTime.time)
                 val toDateToLong = pickedDateTime.timeInMillis
                 Toast.makeText(view.context,"Selected Starting Hour is: ${tvTaskStartingHourTV.text}",Toast.LENGTH_LONG).show()
-                Toast.makeText(view.context,"Selected Starting Hour in Millis: $toDateToLong",Toast.LENGTH_LONG).show()
+                //Toast.makeText(view.context,"Selected Starting Hour in Millis: $toDateToLong",Toast.LENGTH_LONG).show()
                 println(toDateToLong)
                 taskObject?.taskStartingHourMillis = pickedDateTime.timeInMillis
                 taskObject?.let { it1 ->
@@ -262,6 +295,7 @@ class TaskDetailsFragment: DialogFragment() {
             }, startHour, startMinute, false).show()
         } //cvStartingHourCV.setOnClickListener
 
+        // ENDING HOUR
         val endHour = calendar.get(Calendar.HOUR_OF_DAY)
         val endMinute = calendar.get(Calendar.MINUTE)
         cvEndingHourCV.setOnClickListener {
@@ -274,7 +308,7 @@ class TaskDetailsFragment: DialogFragment() {
                     tvTaskEndHourTV.text = sdf.format(calendar.time)
                     val toDateToLong = calendar.timeInMillis
                     Toast.makeText(view.context,"Selected Ending Hour is: ${tvTaskEndHourTV.text}",Toast.LENGTH_LONG).show()
-                    Toast.makeText(view.context,"Selected Ending Hour in Millis: $toDateToLong",Toast.LENGTH_LONG).show()
+                    //Toast.makeText(view.context,"Selected Ending Hour in Millis: $toDateToLong",Toast.LENGTH_LONG).show()
                     println(toDateToLong)
                     taskObject?.taskEndingHourMillis = calendar.timeInMillis
                     taskObject?.let { it1 ->
@@ -287,6 +321,7 @@ class TaskDetailsFragment: DialogFragment() {
                 }, endHour, endMinute, false).show()
         } //cvEndingHourCV.setOnClickListener
 
+        // DELETE
         mcvDeleteTaskMCV.setOnClickListener {
             val alertDialogBuilder = AlertDialog.Builder(view.context)
             alertDialogBuilder.setMessage("Delete this task? (deletion cannot be undone)")
@@ -301,6 +336,8 @@ class TaskDetailsFragment: DialogFragment() {
                     confirmDialog.dismiss()
                     //view.findNavController().navigate(R.id.navigation_ToDo)
                     dismiss()
+                    //sharedEdit.putBoolean(hasChangesSharedPrefBooleanKey, true).commit()
+
                     recreate(context as Activity)
                     /*activity?.supportFragmentManager?.beginTransaction()
                         ?.replace(R.id.activity_main_container, ToDoFragment.newInstance())?.commit()*/
@@ -351,9 +388,16 @@ class TaskDetailsFragment: DialogFragment() {
     }
 
     override fun onDismiss(dialog: DialogInterface) {
+/*
+        if (sharedPreferences.getBoolean(HasChangedSharedPrefBooleanKey, false)) {
+//            view?.findNavController()?.navigate(R.id.navigation_ToDo)
+            recreate(context as Activity)
+        }
+        else
+*/
         super.onDismiss(dialog)
 /*        Toast.makeText(view?.context, "Any changes made are directly saved", Toast.LENGTH_SHORT)
             .show()*/
-        //recreate(context as Activity)
+
     }
 }

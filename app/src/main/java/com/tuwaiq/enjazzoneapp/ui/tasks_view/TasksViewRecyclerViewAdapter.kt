@@ -20,6 +20,9 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
+const val aDayInMilliSeconds = 86400000
+const val threeHoursInMilliSeconds = 10800000
+const val sixHoursInMilliSeconds = 21600000
 
 class TasksViewRecyclerViewHolder(itemView: View,
     //                              private val clickListener: (position: Int) -> Unit)
@@ -77,9 +80,9 @@ class TasksViewRecyclerViewAdapter(private var tasksMutableList: List<TasksDataC
         taskCalendar.timeInMillis = taskInAdapter.dueDate
 
         val defaultTaskDescription = "Task description."
-        var defaultTaskStartingHourText = SimpleDateFormat("h:mm a", Locale.getDefault()).format(Date(taskInAdapter.taskStartingHourMillis)).lowercase()+" - "
-        var defaultTaskEndingHourText = SimpleDateFormat("h:mm a", Locale.getDefault()).format(Date(taskInAdapter.taskEndingHourMillis)).lowercase()
-        var defaultTaskDuaDateText = SimpleDateFormat("EEE dd MMM yyyy", Locale.getDefault()).format(Date(taskInAdapter.dueDate))
+        val defaultTaskStartingHourText = SimpleDateFormat("h:mm a", Locale.getDefault()).format(Date(taskInAdapter.taskStartingHourMillis)).lowercase()+" - "
+        val defaultTaskEndingHourText = SimpleDateFormat("h:mm a", Locale.getDefault()).format(Date(taskInAdapter.taskEndingHourMillis)).lowercase()
+        val defaultTaskDuaDateText = SimpleDateFormat("EEE dd MMM yyyy", Locale.getDefault()).format(Date(taskInAdapter.dueDate))
 
         val colorPrimaryBlue = ContextCompat.getColor(view.context, R.color.primary_blue)
         val colorBlack = ContextCompat.getColor(view.context, R.color.black)
@@ -89,7 +92,7 @@ class TasksViewRecyclerViewAdapter(private var tasksMutableList: List<TasksDataC
         val colorLighterGrey = ContextCompat.getColor(view.context, R.color.lighter_gray)
         val colorLighterBlueTransparent = ContextCompat.getColor(view.context, R.color.lighter_blue_transparent)
 
-
+        // Task
         holder.clTaskViewCL.setBackgroundColor(
             when {
                 holder.chbIsDoneCheckBox.isChecked || taskInAdapter.dueDate < Calendar.getInstance(Locale.getDefault()).timeInMillis -> colorLighterGrey
@@ -99,20 +102,18 @@ class TasksViewRecyclerViewAdapter(private var tasksMutableList: List<TasksDataC
                 else -> colorLighterBlueTransparent
             }
         )
-
+        // Card Elevation
         holder.cvTaskCardView.cardElevation =
             when {
                 holder.chbIsDoneCheckBox.isChecked -> 0F
-                taskDueDateIsThisWeek(taskCalendar, calendar)
-                -> defaultCardElevation+4F
-                taskDueDateIsToday(taskCalendar, calendar)
-                -> defaultCardElevation+8F
-                taskDueDateIsThisHour(taskCalendar, calendar)
-                -> defaultCardElevation+defaultCardElevation
+                taskDueDateIsThisWeek(taskCalendar, calendar) -> defaultCardElevation+4F
+                taskDueDateIsToday(taskCalendar, calendar) -> defaultCardElevation+8F
+                taskDueDateIsThisHour(taskCalendar, calendar) -> defaultCardElevation+defaultCardElevation
                 //!holder.chbIsDoneCheckBox.isChecked -> defaultCardElevation
                 else -> defaultCardElevation
             }
 
+        // Title
         holder.tvTaskTitle.setTextColor(
             when {
                 holder.chbIsDoneCheckBox.isChecked || taskInAdapter.dueDate < Calendar.getInstance(Locale.getDefault()).timeInMillis
@@ -121,7 +122,6 @@ class TasksViewRecyclerViewAdapter(private var tasksMutableList: List<TasksDataC
                 else -> colorPrimaryBlue
             }
         )
-
         holder.tvTaskTitle.paintFlags =
             when {
             holder.chbIsDoneCheckBox.isChecked -> holder.tvTaskTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
@@ -129,17 +129,25 @@ class TasksViewRecyclerViewAdapter(private var tasksMutableList: List<TasksDataC
             else -> holder.tvTaskTitle.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
         }
 
+        // Description
         holder.tvTaskDescriptionTV.setTextColor(
             when {
                 holder.tvTaskDescriptionTV.text != defaultTaskDescription -> colorBlack
                 else -> colorLighterGrey
             }
         )
+        holder.tvTaskDescriptionTV.paintFlags =
+            when {
+                holder.chbIsDoneCheckBox.isChecked -> holder.tvTaskDescriptionTV.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                // !holder.chbIsDoneCheckBox.isChecked -> holder.tvTaskTitle.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+                else -> holder.tvTaskTitle.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+            }
 
+        // Starting Hour
         holder.tvTaskStartingHourTV.setTextColor(
             when {
-                holder.tvTaskStartingHourTV.text != defaultTaskStartingHourText -> colorBlack
-                else -> colorLighterGrey
+                holder.tvTaskStartingHourTV.text == SimpleDateFormat("h:mm a", Locale.getDefault()).format(Date(System.currentTimeMillis())).lowercase()+" - " -> colorLighterGrey
+                else -> colorBlack
             }
         )
         holder.tvTaskStartingHourTV.text =
@@ -147,32 +155,43 @@ class TasksViewRecyclerViewAdapter(private var tasksMutableList: List<TasksDataC
                 defaultTaskStartingHourText -> "$defaultTaskEndingHourText - "
                 else -> "$defaultTaskEndingHourText - " //==
             }
-
+        
+        // Ending Hour
         holder.tvTaskEndingHourTV.setTextColor(
             when {
-                holder.tvTaskStartingHourTV.text != defaultTaskEndingHourText -> colorBlack
-                else -> colorLighterGrey
+                holder.tvTaskEndingHourTV.text == SimpleDateFormat("h:mm a", Locale.getDefault()).format(Date(System.currentTimeMillis()+sixHoursInMilliSeconds)).lowercase()+" - " -> colorLighterGrey
+                else -> colorBlack
             }
         )
+        holder.tvTaskEndingHourTV.text = "${holder.tvTaskEndingHourTV.text}"
+        //holder.tvTaskEndingHourTV.text = "${holder.tvTaskEndingHourTV.text} (Duration: ${SimpleDateFormat("h:mm a", Locale.getDefault()).format(Date((taskInAdapter.taskEndingHourMillis - taskInAdapter.taskStartingHourMillis)))})"
 
+        // Due date
         holder.tvTaskDueDateTV.setTextColor(
             when {
-                taskCalendar.time < calendar.time -> colorBlack
-                taskDueDateIsThisWeek(taskCalendar, calendar) -> colorPrimaryBlue //colorGreen
-                taskDueDateIsToday(taskCalendar, calendar) -> colorYellow
+                taskCalendar.time < calendar.time || holder.chbIsDoneCheckBox.isChecked -> colorBlack
                 taskDueDateIsThisHour(taskCalendar, calendar) -> colorRed
+                taskDueDateIsToday(taskCalendar, calendar) -> colorYellow
+                taskDueDateIsThisWeek(taskCalendar, calendar) -> colorGreen //colorGreen
                 //taskCalendar.time >= calendar.time -> ContextCompat.getColor(view.context, R.color.primary_blue)
-                else -> colorGreen //colorPrimaryBlue
+                else -> colorPrimaryBlue
             }
         )
         holder.tvTaskDueDateTV.text =
             when {
-                taskCalendar.time < calendar.time -> "$defaultTaskDuaDateText (Past due date)"
-                taskDueDateIsThisWeek(taskCalendar, calendar) -> "$defaultTaskDuaDateText (This Week)"
-                taskDueDateIsTomorrow(taskCalendar, calendar) -> "$defaultTaskDuaDateText (Tomorrow)"
-                taskDueDateIsToday(taskCalendar, calendar) -> "$defaultTaskDuaDateText (Today)"
                 taskDueDateIsThisHour(taskCalendar, calendar) -> "$defaultTaskDuaDateText (This Hour)"
-                else -> "$defaultTaskDuaDateText (Upcoming week+)"
+                taskDueDateIsToday(taskCalendar, calendar) -> "$defaultTaskDuaDateText (Today)"
+                taskDueDateIsTomorrow(taskCalendar, calendar) -> "$defaultTaskDuaDateText (Tomorrow)"
+                taskDueDateIsThisWeek(taskCalendar, calendar) -> "$defaultTaskDuaDateText (This Week)"
+                taskDueDateIsMoreThanWeek(taskCalendar, calendar) -> "$defaultTaskDuaDateText (Upcoming week+)"
+                taskInAdapter.dueDate < Calendar.getInstance(Locale.getDefault()).timeInMillis -> "$defaultTaskDuaDateText (Past due date)"
+                else -> holder.tvTaskDueDateTV.text
+            }
+        holder.tvTaskDueDateTV.paintFlags =
+            when {
+                holder.chbIsDoneCheckBox.isChecked || taskInAdapter.dueDate < Calendar.getInstance(Locale.getDefault()).timeInMillis -> holder.tvTaskDueDateTV.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                // !holder.chbIsDoneCheckBox.isChecked -> holder.tvTaskTitle.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+                else -> holder.tvTaskTitle.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
             }
 
         holder.chbIsDoneCheckBox.setOnCheckedChangeListener { _, isChecked ->
@@ -210,7 +229,8 @@ class TasksViewRecyclerViewAdapter(private var tasksMutableList: List<TasksDataC
             && taskCalendar.get(Calendar.DAY_OF_WEEK_IN_MONTH) == calendar.get(Calendar.DAY_OF_YEAR)
             && taskCalendar.get(Calendar.DAY_OF_WEEK) == calendar.get(Calendar.DAY_OF_WEEK)
             && taskCalendar.get(Calendar.DAY_OF_MONTH) == calendar.get(Calendar.DAY_OF_MONTH)
-            && taskCalendar.get(Calendar.DAY_OF_YEAR) == calendar.get(Calendar.DAY_OF_YEAR))
+            && taskCalendar.get(Calendar.DAY_OF_YEAR) == calendar.get(Calendar.DAY_OF_YEAR)
+            )
 
     private fun taskDueDateIsTomorrow(
         taskCalendar: Calendar,
@@ -218,7 +238,8 @@ class TasksViewRecyclerViewAdapter(private var tasksMutableList: List<TasksDataC
     ) = (taskCalendar.get(Calendar.DAY_OF_WEEK_IN_MONTH+1) == calendar.get(Calendar.DAY_OF_YEAR+1)
             && taskCalendar.get(Calendar.DAY_OF_WEEK+1) == calendar.get(Calendar.DAY_OF_WEEK+1)
             && taskCalendar.get(Calendar.DAY_OF_MONTH+1) == calendar.get(Calendar.DAY_OF_MONTH+1)
-            && taskCalendar.get(Calendar.DAY_OF_YEAR+1) == calendar.get(Calendar.DAY_OF_YEAR)+1)
+            && taskCalendar.get(Calendar.DAY_OF_YEAR+1) == calendar.get(Calendar.DAY_OF_YEAR+1)
+            )
 
 
     private fun taskDueDateIsToday(
@@ -227,7 +248,8 @@ class TasksViewRecyclerViewAdapter(private var tasksMutableList: List<TasksDataC
     ) = (taskCalendar.get(Calendar.DAY_OF_WEEK_IN_MONTH) == calendar.get(Calendar.DAY_OF_YEAR)
             && taskCalendar.get(Calendar.DAY_OF_WEEK) == calendar.get(Calendar.DAY_OF_WEEK)
             && taskCalendar.get(Calendar.DAY_OF_MONTH) == calendar.get(Calendar.DAY_OF_MONTH)
-            && taskCalendar.get(Calendar.DAY_OF_YEAR) == calendar.get(Calendar.DAY_OF_YEAR))
+            && taskCalendar.get(Calendar.DAY_OF_YEAR) == calendar.get(Calendar.DAY_OF_YEAR)
+            )
 
     private fun taskDueDateIsThisWeek(
         taskCalendar: Calendar,
@@ -237,7 +259,19 @@ class TasksViewRecyclerViewAdapter(private var tasksMutableList: List<TasksDataC
             && taskCalendar.get(Calendar.DAY_OF_WEEK_IN_MONTH) == calendar.get(Calendar.DAY_OF_YEAR)
             && taskCalendar.get(Calendar.DAY_OF_WEEK) == calendar.get(Calendar.DAY_OF_WEEK)
             && taskCalendar.get(Calendar.DAY_OF_MONTH) == calendar.get(Calendar.DAY_OF_MONTH)
-            && taskCalendar.get(Calendar.DAY_OF_YEAR) == calendar.get(Calendar.DAY_OF_YEAR))
+            && taskCalendar.get(Calendar.DAY_OF_YEAR) == calendar.get(Calendar.DAY_OF_YEAR)
+            )
+
+    private fun taskDueDateIsMoreThanWeek(
+        taskCalendar: Calendar,
+        calendar: Calendar
+    ) = (taskCalendar.get(Calendar.WEEK_OF_MONTH) > calendar.get(Calendar.WEEK_OF_MONTH)
+            && taskCalendar.get(Calendar.WEEK_OF_YEAR) > calendar.get(Calendar.WEEK_OF_YEAR)
+            && taskCalendar.get(Calendar.DAY_OF_WEEK_IN_MONTH) != calendar.get(Calendar.DAY_OF_YEAR)
+            && taskCalendar.get(Calendar.DAY_OF_WEEK) != calendar.get(Calendar.DAY_OF_WEEK)
+            && taskCalendar.get(Calendar.DAY_OF_MONTH) != calendar.get(Calendar.DAY_OF_MONTH)
+            && taskCalendar.get(Calendar.DAY_OF_YEAR) != calendar.get(Calendar.DAY_OF_YEAR)
+            )
 
     override fun getItemCount(): Int = tasksMutableList.size
 }

@@ -8,12 +8,20 @@ import kotlinx.coroutines.launch
 
 class ToDoViewModel(context: Application) : AndroidViewModel(context) {
     private val repo = Repository()
-    val tasks = MutableLiveData<MutableList<TasksDataClass>>()
 
-    fun getAllTasks() : LiveData<MutableList<TasksDataClass>>{
+    fun getAllTasksSortedByDescendingNowDate() : LiveData<MutableList<TasksDataClass>>{
+        val tasks = MutableLiveData<MutableList<TasksDataClass>>()
         //tasks.value?.clear()
         viewModelScope.launch {
-                tasks.postValue(repo.getAllTasksFromDB())
+                tasks.postValue(repo.getAllTasksFromDBSortedByDescendingNowDate())
+        }
+        return tasks
+    }
+    fun getAllTasksSortedByDescendingDueDate() : LiveData<MutableList<TasksDataClass>>{
+        val tasks = MutableLiveData<MutableList<TasksDataClass>>()
+        //tasks.value?.clear()
+        viewModelScope.launch {
+                tasks.postValue(repo.getAllTasksFromDBSortedByDescendingDueDate())
         }
         return tasks
     }
