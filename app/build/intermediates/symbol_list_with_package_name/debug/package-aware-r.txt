@@ -1206,6 +1206,9 @@ attr yearStyle
 attr yearTodayStyle
 bool abc_action_bar_embed_tabs
 bool abc_config_actionMenuItemAllCaps
+bool enable_system_alarm_service_default
+bool enable_system_foreground_service_default
+bool enable_system_job_service_default
 bool m3_sys_typescale_body_large_text_all_caps
 bool m3_sys_typescale_body_medium_text_all_caps
 bool m3_sys_typescale_body_small_text_all_caps
@@ -1222,6 +1225,7 @@ bool m3_sys_typescale_title_large_text_all_caps
 bool m3_sys_typescale_title_medium_text_all_caps
 bool m3_sys_typescale_title_small_text_all_caps
 bool mtrl_btn_textappearance_all_caps
+bool workmanager_test_configuration
 color abc_background_cache_hint_selector_material_dark
 color abc_background_cache_hint_selector_material_light
 color abc_btn_colored_borderless_text_material
@@ -2580,6 +2584,7 @@ drawable ic_icons_delete
 drawable ic_icons_delete_32
 drawable ic_icons_edit
 drawable ic_keyboard_black_24dp
+drawable ic_launcher_achieve
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_m3_chip_check
@@ -3215,6 +3220,8 @@ id tvTodayDetailedDate
 id tvUsernameHeaderTV
 id tvUsernameTV
 id tvWelcomingMessage
+id txtMsgView
+id txtTitleView
 id unchecked
 id uniform
 id unlabeled
@@ -3344,6 +3351,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
+layout activity_result
 layout activity_splash_screen
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
@@ -3635,6 +3643,10 @@ string mtrl_picker_toggle_to_year_selection
 string mtrl_timepicker_confirm
 string nav_app_bar_navigate_up_description
 string nav_app_bar_open_drawer_description
+string notification_channel_description
+string notification_header
+string notification_message
+string notification_title
 string ok
 string open
 string password_toggle_content_description

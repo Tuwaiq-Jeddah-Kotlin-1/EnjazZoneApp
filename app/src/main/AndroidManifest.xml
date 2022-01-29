@@ -9,6 +9,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.EnjazZoneApp">
+
         <activity
                 android:name=".SplashScreen"
                 android:exported="true"
@@ -19,19 +20,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
                 android:name=".MainActivity"
                 android:exported="true"
-                android:label="@string/launcher_name"
+                android:label="@string/launcher_name">
 
-                >
-<!--            <intent-filter>
+            <!--
+                <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
+        <receiver
+                android:name=".notifications.AlarmReceiver"
+                android:enabled="true" />
+
+        <service
+                android:name=".notifications.NotificationService"
+                android:enabled="true" />
+
+        <activity
+                android:name=".notifications.ResultActivity"
+                android:excludeFromRecents="true"
+                android:label="@string/notification_header"
+                android:launchMode="singleTask"
+                android:taskAffinity="" />
     </application>
 
 </manifest>

@@ -153,6 +153,7 @@ class ToDoFragment : Fragment() {
         vmViewModel.getAllTasksSortedByDescendingNowDate().observe(viewLifecycleOwner) {
             rvAdapter = TodoRVListAdapter(it, view)
             recyclerView.adapter = rvAdapter
+            sharedPreferences.edit().putString(numberOfTasksSharedPrefStringKey, it.size.toString()).apply()
         }
 /*        todoRecyclerView.setOnClickListener {
             vmViewModel.resumeToFragmentDirectionSpecification.observe(viewLifecycleOwner) {
