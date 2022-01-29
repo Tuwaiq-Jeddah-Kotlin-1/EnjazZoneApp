@@ -52,9 +52,9 @@
 
     <dialog
             android:id="@+id/taskDetailsFragment"
-            android:name="com.tuwaiq.enjazzoneapp.ui.todo.TaskDetailsFragment"
+            android:name="com.tuwaiq.enjazzoneapp.ui.task_details.TaskDetailsDialogFragment"
             android:label="TaskDetailsFragment"
-            tools:layout="@layout/fragment_task_details">
+            tools:layout="@layout/dialog_fragment_task_details">
         <argument
                 android:name="PassedTaskObject"
                 app:argType="com.tuwaiq.enjazzoneapp.data.TasksDataClass" />

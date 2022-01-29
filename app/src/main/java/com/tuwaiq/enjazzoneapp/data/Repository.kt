@@ -14,7 +14,7 @@ class Repository {
     private val db = FirebaseFirestore.getInstance()
     private val tasksCollectionRef = Firebase.firestore.collection("users")
 
-    suspend fun getAllTasksFromDB(): MutableList<TasksDataClass> = withContext(
+    suspend fun getAllTasksFromDBSortedByDescendingNowDate(): MutableList<TasksDataClass> = withContext(
         Dispatchers.IO) {
         val newTasksList = mutableListOf<TasksDataClass>()
         //newTasksList = arrayListOf()
@@ -33,6 +33,31 @@ class Repository {
                             newTasksList.add(dc.document.toObject(TasksDataClass::class.java))
                     }
                     newTasksList.sortByDescending { list -> list.nowDate }
+                    //tasksList = tasksArrayList
+                }
+            })
+        return@withContext newTasksList
+    }
+
+    suspend fun getAllTasksFromDBSortedByDescendingDueDate(): MutableList<TasksDataClass> = withContext(
+        Dispatchers.IO) {
+        val newTasksList = mutableListOf<TasksDataClass>()
+        //newTasksList = arrayListOf()
+
+        db.collection("users").document(currentUserID).collection("tasks")
+            .addSnapshotListener(object :
+                EventListener<QuerySnapshot> {
+
+                override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
+                    if (error != null) {
+                        Log.e("Firestore", error.message.toString())
+                        return
+                    }
+                    for (dc: DocumentChange in value?.documentChanges!!) {
+                        if (dc.type == DocumentChange.Type.ADDED)
+                            newTasksList.add(dc.document.toObject(TasksDataClass::class.java))
+                    }
+                    newTasksList.sortByDescending { list -> list.dueDate }
                     //tasksList = tasksArrayList
                 }
             })

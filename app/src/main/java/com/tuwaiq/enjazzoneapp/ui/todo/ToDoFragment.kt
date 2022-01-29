@@ -2,13 +2,12 @@ package com.tuwaiq.enjazzoneapp.ui.todo
 
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.os.Handler
-import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
@@ -23,8 +22,7 @@ import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
-
+import android.content.Context
 
 const val welcomingMessageString = "Plan your day, Achieve more!"
 const val aDayInMilliSeconds = 86400000
@@ -38,11 +36,11 @@ class ToDoFragment : Fragment() {
     private lateinit var tvTodayDateTV: TextView
     private lateinit var tcDigitalTextClock: TextClock
 
-    private lateinit var todoRecyclerView: RecyclerView
+    private lateinit var recyclerView: RecyclerView
 
     private lateinit var rvAdapter:RecyclerView.Adapter<*>
 
-    private lateinit var toDoViewModel: ToDoViewModel
+    private lateinit var vmViewModel: ToDoViewModel
 
     private lateinit var etEnterTaskET: EditText
     private lateinit var sendIB: ImageButton
@@ -56,12 +54,15 @@ class ToDoFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        vmViewModel =
+            ViewModelProvider(this)[ToDoViewModel::class.java]
         return inflater.inflate(R.layout.fragment_to_do, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
         tvDayTimerHeaderTV = view.findViewById(R.id.tvTimerHeader)
         tvDayTimerTV = view.findViewById(R.id.tvDayRemainingTimer)
@@ -140,19 +141,24 @@ class ToDoFragment : Fragment() {
         }
 
 
-        todoRecyclerView = view.findViewById(R.id.rvTodoRecyclerView)
+        recyclerView = view.findViewById(R.id.rvTodoRecyclerView)
 
 
 
-        todoRecyclerView.layoutManager = LinearLayoutManager(this.context)
-        toDoViewModel = ViewModelProvider(this)[ToDoViewModel::class.java]
+        //vmViewModel = ViewModelProvider(this)[ToDoViewModel::class.java]
 
-        toDoViewModel.getAllTasks()
-        toDoViewModel.tasks.observe(viewLifecycleOwner) {
+        /*toDoViewModel.getAllTasks()
+        toDoViewModel.tasks.observe(viewLifecycleOwner) {*/
+        recyclerView.layoutManager = LinearLayoutManager(this.context)
+        vmViewModel.getAllTasksSortedByDescendingNowDate().observe(viewLifecycleOwner) {
             rvAdapter = TodoRVListAdapter(it, view)
-
-            todoRecyclerView.adapter = rvAdapter
+            recyclerView.adapter = rvAdapter
         }
+/*        todoRecyclerView.setOnClickListener {
+            vmViewModel.resumeToFragmentDirectionSpecification.observe(viewLifecycleOwner) {
+                if (it == 1) view.findNavController().navigate(R.id.navigation_ToDo)
+            }
+        }*/
 
         /*toDoViewModel.tasks.value?.clear()
         toDoViewModel.getAllTasks()
@@ -175,6 +181,11 @@ class ToDoFragment : Fragment() {
 
         etEnterTaskET = view.findViewById(R.id.enterATaskET)
         etEnterTaskET.setText(sharedPreferences.getString("ENTER_TASK_DRAFT", null))
+        if (imm.isAcceptingText) {
+            etEnterTaskET.requestFocus()
+        }/* else {
+
+        }*/
         sendIB.isEnabled = etEnterTaskET.text.isNotBlank()
         sendIBSetTint()
         etEnterTaskET.addTextChangedListener(object : TextWatcher {
@@ -197,17 +208,16 @@ class ToDoFragment : Fragment() {
             todoTask.taskTitle = taskTitle
             //todoTask.taskId = UUID.randomUUID().toString()
 
-            toDoViewModel.createTask(todoTask)
+            vmViewModel.createTask(todoTask)
 
             etEnterTaskET.text = null
 
             view.findNavController().navigate(R.id.navigation_ToDo)
         }
-
     } // onViewCreated END
 
     private fun loadTasksList() {
-        toDoViewModel.getAllTasks()
+        vmViewModel.getAllTasksSortedByDescendingNowDate()
     }
 
     private fun sendIBSetTint() {
@@ -226,11 +236,6 @@ class ToDoFragment : Fragment() {
         }
     }
 
-    private fun editEditTextHeight() {
-        if (etEnterTaskET.lineCount == etEnterTaskET.maxLines) {
-            etEnterTaskET.maxLines = etEnterTaskET.lineCount+1
-        }
-    }
 }
 
 fun welcomeText(taskList: List<TasksDataClass>, tvWelcomeText: TextView) {

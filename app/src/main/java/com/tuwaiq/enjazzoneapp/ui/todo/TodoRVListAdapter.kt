@@ -113,8 +113,16 @@ class TodoRVListAdapter(private var mList: MutableList<TasksDataClass>, private 
                 .setPositiveButton("Yes") { dialog, _ ->
                     tasksCollectionRef.document(currentUserID.toString()).collection("tasks")
                         .document(taskInAdapter.taskId).delete()
-                    mList.removeAt(position)
-                    notifyItemRemoved(position)
+                    if (mList.lastIndex == 0) {
+                        mList.removeAt(0)
+                        notifyItemRemoved(0)
+                        notifyDataSetChanged()
+                    }
+                    else {
+                        mList.removeAt(position)
+                        notifyItemRemoved(position)
+                        notifyDataSetChanged()
+                    }
                     dialog.dismiss()
                 }
                 .setNegativeButton("No") { dialog, _ ->

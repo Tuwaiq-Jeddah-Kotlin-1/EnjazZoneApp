@@ -21,17 +21,17 @@ class MainActivity : AppCompatActivity() {
     private lateinit var bottomNavView: BottomNavigationView
     private lateinit var navView: NavigationView
     lateinit var toggle: ActionBarDrawerToggle
-    private lateinit var drawerLayout:DrawerLayout
+    //private lateinit var drawerLayout:DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        drawerLayout = findViewById(R.id.activity_main_container)
+        //drawerLayout = findViewById(R.id.activity_main_container)
         navView = findViewById(R.id.nav_view)
-        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
+        //toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
+        //drawerLayout.addDrawerListener(toggle)
+        //toggle.syncState()
 
 /*        navView.setNavigationItemSelectedListener {
             when(it.itemId) {
@@ -69,20 +69,20 @@ class MainActivity : AppCompatActivity() {
             when(destination.id) {
                 R.id.navigation_login-> {
                     bottomNavView.visibility = View.GONE
-                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
-                    drawerLayout.close()
-                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                    //supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                    //drawerLayout.close()
+                    //drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
                 }
                 R.id.navigation_signup-> {
                     bottomNavView.visibility = View.GONE
-                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
-                    drawerLayout.close()
-                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                    //supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                    //drawerLayout.close()
+                    //drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
                 }
                 else -> {
                     bottomNavView.visibility = View.VISIBLE
-                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
-                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                    //drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+                    //supportActionBar?.setDisplayHomeAsUpEnabled(true)
                 }
             }
             //navController.saveState()
@@ -108,8 +108,8 @@ class MainActivity : AppCompatActivity() {
         } // when() {}
     } //fun onBackPressed()
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+/*    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) return true
         return super.onOptionsItemSelected(item)
-    }
+    }*/
 }
