@@ -13,6 +13,7 @@
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.15925925925925927" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.15925925925925927" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/ic_icons_delete.xml" value="0.1296875" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/ic_launcher_ez_foreground.xml" value="0.1395" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/paper-plane_24 - blue.xml" value="0.11388888888888889" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/paper_plane_24.xml" value="0.136" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/drawable/paper_plane_24_blue.xml" value="0.8" />
@@ -54,6 +55,12 @@
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/layout/todo_r_v_item_row.xml" value="0.264" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2766990291262136" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/menu/nav_drawer_menu.xml" value="0.20300751879699247" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_ez.xml" value="0.107" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_ez_cropped.xml" value="0.107" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_ez_cropped_round.xml" value="0.107" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_ez_largest.xml" value="0.107" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_ez_largest_round.xml" value="0.107" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/EnjazZoneApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_ez_round.xml" value="0.107" />
       </map>
     </option>
   </component>

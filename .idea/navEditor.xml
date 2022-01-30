@@ -29,18 +29,6 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="navigation_enjaz_zone">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="433" />
-                            <option name="y" value="498" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
                   <entry key="navigation_login">
                     <value>
                       <LayoutPositions>
@@ -95,6 +83,18 @@
                           <Point>
                             <option name="x" value="453" />
                             <option name="y" value="-51" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="navigation_user_profile">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
                           </Point>
                         </option>
                       </LayoutPositions>

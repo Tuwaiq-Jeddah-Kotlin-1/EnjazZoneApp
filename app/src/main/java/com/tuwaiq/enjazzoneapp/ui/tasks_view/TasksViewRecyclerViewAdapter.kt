@@ -11,7 +11,9 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.tuwaiq.enjazzoneapp.R
 import com.tuwaiq.enjazzoneapp.data.TasksDataClass
@@ -92,6 +94,10 @@ class TasksViewRecyclerViewAdapter(private var tasksMutableList: List<TasksDataC
         val colorLighterGrey = ContextCompat.getColor(view.context, R.color.lighter_gray)
         val colorLighterBlueTransparent = ContextCompat.getColor(view.context, R.color.lighter_blue_transparent)
 
+        holder.cvTaskCardView.setOnClickListener {
+            toTaskDetailsDialogFragment(taskInAdapter, position)
+        }
+
         // Task
         holder.clTaskViewCL.setBackgroundColor(
             when {
@@ -152,8 +158,8 @@ class TasksViewRecyclerViewAdapter(private var tasksMutableList: List<TasksDataC
         )
         holder.tvTaskStartingHourTV.text =
             when (holder.tvTaskStartingHourTV.text) {
-                defaultTaskStartingHourText -> "$defaultTaskEndingHourText - "
-                else -> "$defaultTaskEndingHourText - " //==
+                defaultTaskStartingHourText -> "$defaultTaskStartingHourText - "
+                else -> "$defaultTaskStartingHourText - " //==
             }
         
         // Ending Hour
@@ -222,6 +228,14 @@ class TasksViewRecyclerViewAdapter(private var tasksMutableList: List<TasksDataC
         println("Hello")*/
     }
 
+    private fun toTaskDetailsDialogFragment(taskInAdapter: TasksDataClass, position: Int) {
+        val bundle = bundleOf(
+            "taskInAdapter" to taskInAdapter,
+            "position" to position
+        )
+        view.findNavController().navigate(R.id.taskDetailsFragment, bundle)
+    }
+
     private fun taskDueDateIsThisHour(
         taskCalendar: Calendar,
         calendar: Calendar
@@ -235,10 +249,10 @@ class TasksViewRecyclerViewAdapter(private var tasksMutableList: List<TasksDataC
     private fun taskDueDateIsTomorrow(
         taskCalendar: Calendar,
         calendar: Calendar
-    ) = (taskCalendar.get(Calendar.DAY_OF_WEEK_IN_MONTH+1) == calendar.get(Calendar.DAY_OF_YEAR+1)
-            && taskCalendar.get(Calendar.DAY_OF_WEEK+1) == calendar.get(Calendar.DAY_OF_WEEK+1)
-            && taskCalendar.get(Calendar.DAY_OF_MONTH+1) == calendar.get(Calendar.DAY_OF_MONTH+1)
-            && taskCalendar.get(Calendar.DAY_OF_YEAR+1) == calendar.get(Calendar.DAY_OF_YEAR+1)
+    ) = (taskCalendar.get(Calendar.DAY_OF_WEEK_IN_MONTH)+1 == calendar.get(Calendar.DAY_OF_YEAR)+1
+            && taskCalendar.get(Calendar.DAY_OF_WEEK)+1 == calendar.get(Calendar.DAY_OF_WEEK)+1
+            && taskCalendar.get(Calendar.DAY_OF_MONTH)+1 == calendar.get(Calendar.DAY_OF_MONTH)+1
+            && taskCalendar.get(Calendar.DAY_OF_YEAR)+1 == calendar.get(Calendar.DAY_OF_YEAR)+1
             )
 
 

@@ -9,7 +9,7 @@
         android:icon="@drawable/ic_baseline_format_list_numbered_24"
         android:title="@string/to_do" />
     <item
-        android:id="@+id/navigation_enjaz_zone"
+        android:id="@+id/navigation_user_profile"
         android:icon="@drawable/ic_baseline_person_profile_24"
         android:title="@string/user_profile" />
 </menu>
