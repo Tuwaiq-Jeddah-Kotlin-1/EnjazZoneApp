@@ -2,11 +2,13 @@ package com.tuwaiq.enjazzoneapp.ui.login
 
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.SpannableStringBuilder
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.text.color
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -19,6 +21,7 @@ class LoginFragment : Fragment() {
     private lateinit var emailET:EditText// = view?.findViewById<EditText>(R.id.etEmailLogin)
     private lateinit var passwordET:EditText// = view?.findViewById<EditText>(R.id.etEmailLogin)
     private lateinit var rememberChB:CheckBox
+    private lateinit var tvSignupLinkTV:TextView
     //private val passwordET = view?.findViewById<EditText>(R.id.etPasswordLogin)
 
     private val isRemembered = sharedPreferences.getBoolean(rememberMeKeyInSharedPref, false)
@@ -31,8 +34,7 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_login, container, false)
-        return view
+        return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,6 +45,7 @@ class LoginFragment : Fragment() {
         emailET = view.findViewById(R.id.etEmailLogin)
         passwordET = view.findViewById(R.id.etPasswordLogin)
         rememberChB = view.findViewById(R.id.chbRememberMe)
+        tvSignupLinkTV = view.findViewById(R.id.tvSignupLinkTV)
         //if (isRemembered && emailInSharedPref!=null && passwordInSharedPref !=null) {
             //Toast.makeText(this.context, "REMEMBER ME IS APPLIED", Toast.LENGTH_LONG).show()
             emailET.setText(emailInSharedPref)
@@ -52,16 +55,27 @@ class LoginFragment : Fragment() {
         val btnLogin = view.findViewById<Button>(R.id.btnLogin)
 
         // create instance of navigate button
-        val navigateTVSignupLink: TextView = view.findViewById(R.id.tvSignupLink)
+        //val navigateTVSignupLink: TextView = view.findViewById(R.id.tvSignupLinkTV)
 
         btnLogin.setOnClickListener {
             loginUser()
         }
 
-        navigateTVSignupLink.setOnClickListener {
+        tvSignupLinkTV.setOnClickListener {
             val actionNavigateToSignupFragment = LoginFragmentDirections.actionLoginFragmentToSignupFragment()
             findNavController().navigate(actionNavigateToSignupFragment)
         }
+
+        val deLimiter = if(tvSignupLinkTV.text.contains("؟")) "؟ " else "? "
+        val spannableString = SpannableStringBuilder()
+            .append(tvSignupLinkTV.text.toString().substringBefore(deLimiter))
+            .append(deLimiter)
+            .color(resources.getColor(R.color.primary_blue, resources.newTheme()))
+            {append(tvSignupLinkTV.text.toString().substringAfter(deLimiter))}
+            /*{ scale(1.5f, { append("Second Part By Bold And Resize " }) }
+            .append("Third Part Not Bold And No Resize")
+*/
+        tvSignupLinkTV.text = spannableString
     }
 
     private fun loginUser() {

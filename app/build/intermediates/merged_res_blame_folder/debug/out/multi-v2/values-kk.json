@@ -57,20 +57,20 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\7be863545648e0969fab927cfd3dbb8d\\transformed\\navigation-ui-2.3.5\\res\\values-kk\\values-kk.xml",
+                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\e99d73e6dddc3b31d51d73725780961c\\transformed\\jetified-navigation-dynamic-features-fragment-2.4.0\\res\\values-kk\\values-kk.xml",
                     "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,168",
-                        "endColumns": "112,117",
-                        "endOffsets": "163,281"
+                        "startLines": "2,3,4,5,6,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,159,249,345,414,498",
+                        "endColumns": "103,89,95,68,83,72",
+                        "endOffsets": "154,244,340,409,493,566"
                     },
                     "to": {
-                        "startLines": "107,108",
-                        "startColumns": "4,4",
-                        "startOffsets": "10178,10291",
-                        "endColumns": "112,117",
-                        "endOffsets": "10286,10404"
+                        "startLines": "58,59,60,109,111,112",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "6269,6373,6463,10409,10562,10646",
+                        "endColumns": "103,89,95,68,83,72",
+                        "endOffsets": "6368,6458,6554,10473,10641,10714"
                     }
                 },
                 {
@@ -108,20 +108,20 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\e9d25e1c801edcfc903d0634c9661df7\\transformed\\jetified-navigation-dynamic-features-fragment-2.3.5\\res\\values-kk\\values-kk.xml",
+                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\2da69366faa5e138c98b1275afb5a305\\transformed\\navigation-ui-2.4.0\\res\\values-kk\\values-kk.xml",
                     "from": {
-                        "startLines": "2,3,4,5,6,7",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "55,159,249,345,414,498",
-                        "endColumns": "103,89,95,68,83,72",
-                        "endOffsets": "154,244,340,409,493,566"
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,168",
+                        "endColumns": "112,117",
+                        "endOffsets": "163,281"
                     },
                     "to": {
-                        "startLines": "58,59,60,109,111,112",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "6269,6373,6463,10409,10562,10646",
-                        "endColumns": "103,89,95,68,83,72",
-                        "endOffsets": "6368,6458,6554,10473,10641,10714"
+                        "startLines": "107,108",
+                        "startColumns": "4,4",
+                        "startOffsets": "10178,10291",
+                        "endColumns": "112,117",
+                        "endOffsets": "10286,10404"
                     }
                 }
             ]

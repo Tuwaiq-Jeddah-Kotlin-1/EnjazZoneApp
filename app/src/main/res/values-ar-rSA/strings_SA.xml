@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Enjaz Zone🏆</string>
-    <string name="title_activity_main">Enjaz Zone🏆</string>
+    <string name="app_name">إنجاز زون</string>
+    <string name="title_activity_main">إنجاز زون</string>
     <string name="launcher_name">إنجاز زون</string>
     <string name="to_do">كتابة المهام</string>
     <string name="to_do_list">قائمة مهام</string>
@@ -49,7 +49,7 @@
     <string name="alert_dialog_yes">نعم</string>
     <string name="alert_dialog_no">لا</string>
     <string name="all_tasks">جميع المهام (</string>
-    <string name="due_date_sorted">مرتبة بحسب "تاريخ انتهاء المهمة":</string>
+    <string name="due_date_sorted">) مرتبة بحسب "تاريخ انتهاء المهمة":</string>
     <string name="task_Description">وصف المهمة.</string>
     <string name="this_hour">(هذه الساعة)</string>
     <string name="today">" (اليوم)"</string>

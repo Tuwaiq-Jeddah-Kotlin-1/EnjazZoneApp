@@ -133,12 +133,29 @@
             </intent-filter>
         </service>
 
+        <uses-library
+            android:name="androidx.window.extensions"
+            android:required="false" />
+        <uses-library
+            android:name="androidx.window.sidecar"
+            android:required="false" />
+
+        <activity
+            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
             android:authorities="com.tuwaiq.enjazzoneapp.firebaseinitprovider"
             android:directBootAware="true"
             android:exported="false"
             android:initOrder="100" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
         <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="com.tuwaiq.enjazzoneapp.androidx-startup"
@@ -246,15 +263,6 @@
             </intent-filter>
         </receiver>
 
-        <activity
-            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-            android:exported="false"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-
         <service
             android:name="androidx.room.MultiInstanceInvalidationService"
             android:directBootAware="true"
@@ -268,7 +276,6 @@
             android:stateNotNeeded="true" />
         <activity
             android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity"
-            android:enabled="false"
             android:exported="false"
             android:stateNotNeeded="true"
             android:theme="@style/Theme.PlayCore.Transparent" /> <!-- The services will be merged into the manifest of the hosting app. -->
@@ -278,7 +285,7 @@
             android:exported="true" >
             <meta-data
                 android:name="com.google.android.play.core.assetpacks.versionCode"
-                android:value="10901" />
+                android:value="11002" />
         </service>
         <service
             android:name="com.google.android.play.core.assetpacks.ExtractionForegroundService"

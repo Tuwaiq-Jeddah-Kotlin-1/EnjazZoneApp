@@ -4,24 +4,7 @@
             "outputFile": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-pt\\values-pt.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\e9d25e1c801edcfc903d0634c9661df7\\transformed\\jetified-navigation-dynamic-features-fragment-2.3.5\\res\\values-pt\\values-pt.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "55,157,255,353,417,495",
-                        "endColumns": "101,97,97,63,77,80",
-                        "endOffsets": "152,250,348,412,490,571"
-                    },
-                    "to": {
-                        "startLines": "29,30,31,34,35,36",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "2843,2945,3043,3373,3437,3515",
-                        "endColumns": "101,97,97,63,77,80",
-                        "endOffsets": "2940,3038,3136,3432,3510,3591"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\7be863545648e0969fab927cfd3dbb8d\\transformed\\navigation-ui-2.3.5\\res\\values-pt\\values-pt.xml",
+                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\2da69366faa5e138c98b1275afb5a305\\transformed\\navigation-ui-2.4.0\\res\\values-pt\\values-pt.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -69,6 +52,23 @@
                         "startOffsets": "3682",
                         "endColumns": "100",
                         "endOffsets": "3778"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\e99d73e6dddc3b31d51d73725780961c\\transformed\\jetified-navigation-dynamic-features-fragment-2.4.0\\res\\values-pt\\values-pt.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,157,255,353,417,495",
+                        "endColumns": "101,97,97,63,77,80",
+                        "endOffsets": "152,250,348,412,490,571"
+                    },
+                    "to": {
+                        "startLines": "29,30,31,34,35,36",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "2843,2945,3043,3373,3437,3515",
+                        "endColumns": "101,97,97,63,77,80",
+                        "endOffsets": "2940,3038,3136,3432,3510,3591"
                     }
                 }
             ]
