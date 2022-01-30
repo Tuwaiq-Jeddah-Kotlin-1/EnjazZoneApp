@@ -4,7 +4,24 @@
             "outputFile": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-mr\\values-mr.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\7be863545648e0969fab927cfd3dbb8d\\transformed\\navigation-ui-2.3.5\\res\\values-mr\\values-mr.xml",
+                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\e99d73e6dddc3b31d51d73725780961c\\transformed\\jetified-navigation-dynamic-features-fragment-2.4.0\\res\\values-mr\\values-mr.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,159,259,360,425,500",
+                        "endColumns": "103,99,100,64,74,82",
+                        "endOffsets": "154,254,355,420,495,578"
+                    },
+                    "to": {
+                        "startLines": "58,59,60,109,111,112",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "6202,6306,6406,10332,10475,10550",
+                        "endColumns": "103,99,100,64,74,82",
+                        "endOffsets": "6301,6401,6502,10392,10545,10628"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\2da69366faa5e138c98b1275afb5a305\\transformed\\navigation-ui-2.4.0\\res\\values-mr\\values-mr.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -35,23 +52,6 @@
                         "startOffsets": "4474",
                         "endColumns": "201",
                         "endOffsets": "4671"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\e9d25e1c801edcfc903d0634c9661df7\\transformed\\jetified-navigation-dynamic-features-fragment-2.3.5\\res\\values-mr\\values-mr.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "55,159,259,360,425,500",
-                        "endColumns": "103,99,100,64,74,82",
-                        "endOffsets": "154,254,355,420,495,578"
-                    },
-                    "to": {
-                        "startLines": "58,59,60,109,111,112",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "6202,6306,6406,10332,10475,10550",
-                        "endColumns": "103,99,100,64,74,82",
-                        "endOffsets": "6301,6401,6502,10392,10545,10628"
                     }
                 },
                 {

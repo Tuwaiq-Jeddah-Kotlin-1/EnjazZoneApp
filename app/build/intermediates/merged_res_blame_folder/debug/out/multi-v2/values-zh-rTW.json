@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\Hp\\AndroidStudioProjects\\EnjazZoneApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh-rTW\\values-zh-rTW.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\7be863545648e0969fab927cfd3dbb8d\\transformed\\navigation-ui-2.3.5\\res\\values-zh-rTW\\values-zh-rTW.xml",
+                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\2da69366faa5e138c98b1275afb5a305\\transformed\\navigation-ui-2.4.0\\res\\values-zh-rTW\\values-zh-rTW.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -18,23 +18,6 @@
                         "startOffsets": "9093,9192",
                         "endColumns": "98,99",
                         "endOffsets": "9187,9287"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\e9d25e1c801edcfc903d0634c9661df7\\transformed\\jetified-navigation-dynamic-features-fragment-2.3.5\\res\\values-zh-rTW\\values-zh-rTW.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "55,142,225,309,373,444",
-                        "endColumns": "86,82,83,63,70,66",
-                        "endOffsets": "137,220,304,368,439,506"
-                    },
-                    "to": {
-                        "startLines": "58,59,60,109,111,112",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "5667,5754,5837,9292,9425,9496",
-                        "endColumns": "86,82,83,63,70,66",
-                        "endOffsets": "5749,5832,5916,9351,9491,9558"
                     }
                 },
                 {
@@ -105,6 +88,23 @@
                         "startOffsets": "4181",
                         "endColumns": "161",
                         "endOffsets": "4338"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\e99d73e6dddc3b31d51d73725780961c\\transformed\\jetified-navigation-dynamic-features-fragment-2.4.0\\res\\values-zh-rTW\\values-zh-rTW.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,142,225,309,373,444",
+                        "endColumns": "86,82,83,63,70,66",
+                        "endOffsets": "137,220,304,368,439,506"
+                    },
+                    "to": {
+                        "startLines": "58,59,60,109,111,112",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "5667,5754,5837,9292,9425,9496",
+                        "endColumns": "86,82,83,63,70,66",
+                        "endOffsets": "5749,5832,5916,9351,9491,9558"
                     }
                 },
                 {

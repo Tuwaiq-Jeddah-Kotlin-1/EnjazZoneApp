@@ -1,12 +1,14 @@
 package com.tuwaiq.enjazzoneapp.ui.signup
 
 import android.os.Bundle
+import android.text.SpannableStringBuilder
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.text.color
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -40,6 +42,16 @@ class SignupFragment : Fragment() {
             val actionNavigateToLoginFragment = SignupFragmentDirections.actionSignupFragmentToLoginFragment()
             findNavController().navigate(actionNavigateToLoginFragment)
         }
+        val deLimiter = if(tvLoginLink.text.contains("؟")) "؟ " else "? "
+        val spannableString = SpannableStringBuilder()
+            .append(tvLoginLink.text.toString().substringBefore(deLimiter))
+            .append(deLimiter)
+            .color(resources.getColor(R.color.primary_blue, resources.newTheme()))
+            {append(tvLoginLink.text.toString().substringAfter(deLimiter))}
+        /*{ scale(1.5f, { append("Second Part By Bold And Resize " }) }
+        .append("Third Part Not Bold And No Resize")
+*/
+        tvLoginLink.text = spannableString
     }
 
     private fun signupUser() {

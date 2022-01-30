@@ -21,23 +21,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\e9d25e1c801edcfc903d0634c9661df7\\transformed\\jetified-navigation-dynamic-features-fragment-2.3.5\\res\\values-hr\\values-hr.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "55,160,263,360,428,505",
-                        "endColumns": "104,102,96,67,76,70",
-                        "endOffsets": "155,258,355,423,500,571"
-                    },
-                    "to": {
-                        "startLines": "59,60,61,110,112,113",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "6339,6444,6547,10558,10706,10783",
-                        "endColumns": "104,102,96,67,76,70",
-                        "endOffsets": "6439,6542,6639,10621,10778,10849"
-                    }
-                },
-                {
                     "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\33d27498f7e974f877f79f4f0524f0e8\\transformed\\jetified-play-services-basement-17.1.0\\res\\values-hr\\values.xml",
                     "from": {
                         "startLines": "4",
@@ -55,23 +38,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\7be863545648e0969fab927cfd3dbb8d\\transformed\\navigation-ui-2.3.5\\res\\values-hr\\values-hr.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,158",
-                        "endColumns": "102,124",
-                        "endOffsets": "153,278"
-                    },
-                    "to": {
-                        "startLines": "108,109",
-                        "startColumns": "4,4",
-                        "startOffsets": "10330,10433",
-                        "endColumns": "102,124",
-                        "endOffsets": "10428,10553"
-                    }
-                },
-                {
                     "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\119ecfcdce2d8b9b7858b3341a165340\\transformed\\jetified-play-services-base-17.1.0\\res\\values-hr\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
@@ -86,6 +52,40 @@
                         "startOffsets": "3431,3539,3728,3860,3972,4188,4320,4465,4792,5001,5110,5298,5428,5634,5807,5905,5997",
                         "endColumns": "107,188,131,111,215,131,144,135,208,108,187,129,205,172,97,91,109",
                         "endOffsets": "3534,3723,3855,3967,4183,4315,4460,4596,4996,5105,5293,5423,5629,5802,5900,5992,6102"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\e99d73e6dddc3b31d51d73725780961c\\transformed\\jetified-navigation-dynamic-features-fragment-2.4.0\\res\\values-hr\\values-hr.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,160,263,360,428,505",
+                        "endColumns": "104,102,96,67,76,70",
+                        "endOffsets": "155,258,355,423,500,571"
+                    },
+                    "to": {
+                        "startLines": "59,60,61,110,112,113",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "6339,6444,6547,10558,10706,10783",
+                        "endColumns": "104,102,96,67,76,70",
+                        "endOffsets": "6439,6542,6639,10621,10778,10849"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\2da69366faa5e138c98b1275afb5a305\\transformed\\navigation-ui-2.4.0\\res\\values-hr\\values-hr.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,158",
+                        "endColumns": "102,124",
+                        "endOffsets": "153,278"
+                    },
+                    "to": {
+                        "startLines": "108,109",
+                        "startColumns": "4,4",
+                        "startOffsets": "10330,10433",
+                        "endColumns": "102,124",
+                        "endOffsets": "10428,10553"
                     }
                 },
                 {

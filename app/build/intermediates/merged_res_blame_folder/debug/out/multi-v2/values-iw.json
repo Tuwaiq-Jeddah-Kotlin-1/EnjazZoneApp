@@ -38,6 +38,40 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\e99d73e6dddc3b31d51d73725780961c\\transformed\\jetified-navigation-dynamic-features-fragment-2.4.0\\res\\values-iw\\values-iw.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,149,240,340,407,483",
+                        "endColumns": "93,90,99,66,75,75",
+                        "endOffsets": "144,235,335,402,478,554"
+                    },
+                    "to": {
+                        "startLines": "60,61,62,111,113,114",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "6170,6264,6355,10174,10316,10392",
+                        "endColumns": "93,90,99,66,75,75",
+                        "endOffsets": "6259,6350,6450,10236,10387,10463"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\2da69366faa5e138c98b1275afb5a305\\transformed\\navigation-ui-2.4.0\\res\\values-iw\\values-iw.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,161",
+                        "endColumns": "105,119",
+                        "endOffsets": "156,276"
+                    },
+                    "to": {
+                        "startLines": "109,110",
+                        "startColumns": "4,4",
+                        "startOffsets": "9948,10054",
+                        "endColumns": "105,119",
+                        "endOffsets": "10049,10169"
+                    }
+                },
+                {
                     "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\24af6f16d76f18d13f42a83f1c72e389\\transformed\\appcompat-1.4.1\\res\\values-iw\\values-iw.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
@@ -52,23 +86,6 @@
                         "startOffsets": "369,474,574,682,766,868,984,1063,1141,1232,1326,1420,1514,1614,1707,1802,1895,1986,2078,2159,2264,2367,2465,2570,2672,2774,2928,10468",
                         "endColumns": "104,99,107,83,101,115,78,77,90,93,93,93,99,92,94,92,90,91,80,104,102,97,104,101,101,153,96,81",
                         "endOffsets": "469,569,677,761,863,979,1058,1136,1227,1321,1415,1509,1609,1702,1797,1890,1981,2073,2154,2259,2362,2460,2565,2667,2769,2923,3020,10545"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\e9d25e1c801edcfc903d0634c9661df7\\transformed\\jetified-navigation-dynamic-features-fragment-2.3.5\\res\\values-iw\\values-iw.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "55,149,240,340,407,483",
-                        "endColumns": "93,90,99,66,75,75",
-                        "endOffsets": "144,235,335,402,478,554"
-                    },
-                    "to": {
-                        "startLines": "60,61,62,111,113,114",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "6170,6264,6355,10174,10316,10392",
-                        "endColumns": "93,90,99,66,75,75",
-                        "endOffsets": "6259,6350,6450,10236,10387,10463"
                     }
                 },
                 {
@@ -88,23 +105,6 @@
                         "endLines": "7,35,36,37,38,57,58,59,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,112",
                         "endColumns": "12,76,92,112,79,64,87,69,62,91,59,58,62,60,58,101,56,58,57,67,110,80,81,101,70,72,87,66,65,72,75,85,69,74,81,67,84,69,89,90,73,72,88,50,66,81,84,61,63,62,93,94,89,95,74",
                         "endOffsets": "364,3097,3190,3303,3383,6007,6095,6165,6513,6605,6665,6724,6787,6848,6907,7009,7066,7125,7183,7251,7362,7443,7525,7627,7698,7771,7859,7926,7992,8065,8141,8227,8297,8372,8454,8522,8607,8677,8767,8858,8932,9005,9094,9145,9212,9294,9379,9441,9505,9568,9662,9757,9847,9943,10311"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-3\\7be863545648e0969fab927cfd3dbb8d\\transformed\\navigation-ui-2.3.5\\res\\values-iw\\values-iw.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,161",
-                        "endColumns": "105,119",
-                        "endOffsets": "156,276"
-                    },
-                    "to": {
-                        "startLines": "109,110",
-                        "startColumns": "4,4",
-                        "startOffsets": "9948,10054",
-                        "endColumns": "105,119",
-                        "endOffsets": "10049,10169"
                     }
                 },
                 {
