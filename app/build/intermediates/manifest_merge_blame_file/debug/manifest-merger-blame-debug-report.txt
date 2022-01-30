@@ -28,18 +28,18 @@
 16
 17    <application
 17-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:5:5-50:19
-18        android:allowBackup="true"
-18-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:6:13-39
+18        android:allowBackup="false"
+18-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:6:13-40
 19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 19-->[androidx.core:core:1.7.0] C:\Users\Hp\.gradle\caches\transforms-3\5882c6b09949e6ab81f2751ae7c4688d\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
 20        android:debuggable="true"
 21        android:extractNativeLibs="false"
-22        android:icon="@mipmap/ic_launcher"
-22-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:7:13-47
+22        android:icon="@mipmap/ic_launcher_ez_largest"
+22-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:7:13-58
 23        android:label="@string/app_name"
 23-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:8:13-45
-24        android:roundIcon="@mipmap/ic_launcher_round"
-24-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:9:13-58
+24        android:roundIcon="@mipmap/ic_launcher_ez_largest_round"
+24-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:9:13-69
 25        android:supportsRtl="true"
 25-->C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:10:13-39
 26        android:testOnly="true"

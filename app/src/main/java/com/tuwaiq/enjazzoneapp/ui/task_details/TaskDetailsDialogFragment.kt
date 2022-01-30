@@ -380,17 +380,17 @@ class TaskDetailsDialogFragment: DialogFragment() {
     override fun onCancel(dialog: DialogInterface) { // equivalent to onBackPressed()
 /*        Toast.makeText(view?.context, "Cancelling Task Details Dialog Fragment", Toast.LENGTH_SHORT)
             .show()*/
+
         super.onCancel(dialog)
     }
 
     override fun onDismiss(dialog: DialogInterface) {
-/*
-        if (sharedPreferences.getBoolean(HasChangedSharedPrefBooleanKey, false)) {
+        if (sharedPreferences.getBoolean(hasChangesSharedPrefBooleanKey, false)) {
 //            view?.findNavController()?.navigate(R.id.navigation_ToDo)
+            sharedPreferences.edit().putBoolean(hasChangesSharedPrefBooleanKey, false).apply()
             recreate(context as Activity)
         }
         else
-*/
         super.onDismiss(dialog)
 /*        Toast.makeText(view?.context, "Any changes made are directly saved", Toast.LENGTH_SHORT)
             .show()*/

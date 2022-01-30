@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_tasks_view" />
 
     <fragment
-        android:id="@+id/navigation_enjaz_zone"
+        android:id="@+id/navigation_user_profile"
         android:name="com.tuwaiq.enjazzoneapp.ui.user_profile_and_settings.UserProfileAndSettingsFragment"
         android:label="@string/user_profile"
         tools:layout="@layout/fragment_user_profile_and_settings"

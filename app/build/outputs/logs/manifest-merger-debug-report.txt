@@ -162,11 +162,11 @@ MERGED from [com.google.android.play:core:1.9.1] C:\Users\Hp\.gradle\caches\tran
 	android:label
 		ADDED from C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:8:13-45
 	android:roundIcon
-		ADDED from C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:9:13-58
+		ADDED from C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:9:13-69
 	android:icon
-		ADDED from C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:7:13-47
+		ADDED from C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:7:13-58
 	android:allowBackup
-		ADDED from C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:6:13-39
+		ADDED from C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:6:13-40
 	android:theme
 		ADDED from C:\Users\Hp\AndroidStudioProjects\EnjazZoneApp\app\src\main\AndroidManifest.xml:11:13-54
 activity#com.tuwaiq.enjazzoneapp.SplashScreen

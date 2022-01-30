@@ -1,19 +1,14 @@
 package com.tuwaiq.enjazzoneapp
 
 import android.os.Bundle
-import android.util.Log
-import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.*
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.auth.FirebaseAuth
 import com.tuwaiq.enjazzoneapp.notifications.NotificationUtils
 import java.util.*
 
@@ -26,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     //private lateinit var drawerLayout:DrawerLayout
 
     // Notification
-    private val mNotificationTime:Long = Calendar.getInstance().timeInMillis + 5000 //milliSecondsInDay //Set after a day from the current time.
+    private val mNotificationTime:Long = Calendar.getInstance().timeInMillis + 50000 //milliSecondsInDay //Set after a day from the current time.
     private var mNotified = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -107,7 +102,7 @@ class MainActivity : AppCompatActivity() {
         when(navController.currentDestination?.id) {
             R.id.navigation_ToDo -> finish()
             R.id.navigation_tasks_view -> navController.navigate(R.id.navigation_ToDo)
-            R.id.navigation_enjaz_zone -> navController.navigate(R.id.navigation_ToDo)
+            R.id.navigation_user_profile -> navController.navigate(R.id.navigation_ToDo)
             R.id.navigation_login -> finish()
             R.id.navigation_signup -> finish()
 /*            R.id.taskDetailsFragment -> {

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">EnjazZoneApp</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="app_name">Enjaz Zone🏆</string>
+    <string name="title_activity_main">Enjaz Zone🏆</string>
     <string name="launcher_name">إنجاز زون</string>
     <string name="to_do">كتابة المهام</string>
     <string name="to_do_list">قائمة مهام</string>
 
     <string name="tasks_view">عرض المهام</string>
-    <string name="user_profile">User Profile</string>
+    <string name="user_profile">ملف المستخدم</string>
     <string name="send_button">زر الإرسال</string>
     <string name="enter_a_task_hint">أي مهام لليوم لكتابتها؟</string>
 
@@ -68,7 +68,7 @@
     <string name="alert_dialog_message_logout">أمتأكد أنك تريد تسجيل الخروج؟</string>
     <string name="alert_dialog_title_logout">تأكيد تسجيل الخروج</string>
 
-    <string name="waiting_for_the_notification">بانتظار التنبيه...</string>
+    <string name="waiting_for_the_notification">بانتظار التنبيه…</string>
     <string name="description">الوصف</string>
     <string name="save_changes">حفظ التغييرات</string>
     <string name="pick_due_date">اختر تاريخ انتهاء المهمة</string>
