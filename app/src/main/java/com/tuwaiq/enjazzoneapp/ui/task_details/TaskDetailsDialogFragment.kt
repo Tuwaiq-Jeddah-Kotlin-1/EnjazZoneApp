@@ -99,8 +99,10 @@ class TaskDetailsDialogFragment: DialogFragment() {
         taskPosition = arguments?.getInt("position")
         taskObject = arguments?.getParcelable("taskInAdapter")
 
-        val starterTaskTitle = taskObject?.taskTitle.toString()
-        val starterTaskDescription = taskObject?.taskDescription.toString()
+        val starterDueDate = taskObject?.dueDate
+        val starterStartingHour = taskObject?.taskStartingHourMillis
+        val starterEndingHour = taskObject?.taskEndingHourMillis
+
 
         tvDialogFragmentHeaderTitleTV = view.findViewById(R.id.tvDialogFragmentHeaderTitleTV)
 
@@ -262,8 +264,9 @@ class TaskDetailsDialogFragment: DialogFragment() {
                     // Display Selected date in TextView
                     //tvTaskDueDateTV.text = "$dayOfMonth $monthOfYear $year"
                     Toast.makeText(view.context, resources.getString(R.string.edit_saved_check), Toast.LENGTH_SHORT).show()
-                }, year, month, day
-            ).show()
+                    if (taskObject?.dueDate != starterDueDate)
+                        sharedEdit.putBoolean(hasChangesSharedPrefBooleanKey, true).commit()
+                }, year, month, day).show()
         }
 
         // STARTING HOUR
@@ -288,6 +291,8 @@ class TaskDetailsDialogFragment: DialogFragment() {
                         .document(it1.taskId).update("taskStartingHourMillis", it1.taskStartingHourMillis)
                 }
                 Toast.makeText(view.context, resources.getString(R.string.edit_saved_check), Toast.LENGTH_SHORT).show()
+                if (taskObject?.taskStartingHourMillis != starterStartingHour)
+                    sharedEdit.putBoolean(hasChangesSharedPrefBooleanKey, true).commit()
             }, startHour, startMinute, false).show()
         } //cvStartingHourCV.setOnClickListener
 
@@ -314,6 +319,8 @@ class TaskDetailsDialogFragment: DialogFragment() {
                             ).update("taskEndingHourMillis", it1.taskEndingHourMillis)
                     }
                     Toast.makeText(view.context, resources.getString(R.string.edit_saved_check), Toast.LENGTH_SHORT).show()
+                    if (taskObject?.taskEndingHourMillis != starterEndingHour)
+                        sharedEdit.putBoolean(hasChangesSharedPrefBooleanKey, true).commit()
                 }, endHour, endMinute, false).show()
         } //cvEndingHourCV.setOnClickListener
 

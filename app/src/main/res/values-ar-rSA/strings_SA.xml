@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">إنجاز زون</string>
-    <string name="title_activity_main">إنجاز زون</string>
+    <string name="app_name">إنجاز زون🏆</string>
     <string name="launcher_name">إنجاز زون</string>
     <string name="to_do">كتابة المهام</string>
     <string name="to_do_list">قائمة مهام</string>

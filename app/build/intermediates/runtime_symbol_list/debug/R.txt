@@ -3755,7 +3755,6 @@ int string this_hour 0x7f1100f7
 int string this_week 0x7f1100f8
 int string time_remaining 0x7f1100f9
 int string timer_header 0x7f1100fa
-int string title_activity_main 0x7f1100fb
 int string to_do 0x7f1100fc
 int string to_do_list 0x7f1100fd
 int string today 0x7f1100fe

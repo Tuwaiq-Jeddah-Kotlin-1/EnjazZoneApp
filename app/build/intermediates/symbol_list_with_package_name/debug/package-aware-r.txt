@@ -3756,7 +3756,6 @@ string this_hour
 string this_week
 string time_remaining
 string timer_header
-string title_activity_main
 string to_do
 string to_do_list
 string today

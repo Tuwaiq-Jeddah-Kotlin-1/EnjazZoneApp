@@ -131,7 +131,7 @@ class LoginFragment : Fragment() {
                     Toast.makeText(loginFragmentContext, resources.getString(R.string.login_cancel), Toast.LENGTH_LONG).show()
                 }
                 .addOnSuccessListener {
-                    Toast.makeText(loginFragmentContext, resources.getString(R.string.login_success_result)+it, Toast.LENGTH_LONG).show()
+                    //Toast.makeText(loginFragmentContext, resources.getString(R.string.login_success_result)+it, Toast.LENGTH_LONG).show()
                 }
         }else Toast.makeText(loginFragmentContext, resources.getString(R.string.username_and_password_cannot_be_empty), Toast.LENGTH_LONG).show()
     }
