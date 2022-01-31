@@ -82,7 +82,7 @@ class TasksViewRecyclerViewAdapter(private var tasksMutableList: List<TasksDataC
         taskCalendar.timeInMillis = taskInAdapter.dueDate
 
         val defaultTaskDescription = view.resources.getString(R.string.task_Description)
-        val defaultTaskStartingHourText = SimpleDateFormat("h:mm a", Locale.getDefault()).format(Date(taskInAdapter.taskStartingHourMillis)).lowercase()+" - "
+        val defaultTaskStartingHourText = SimpleDateFormat("h:mm a", Locale.getDefault()).format(Date(taskInAdapter.taskStartingHourMillis)).lowercase()
         val defaultTaskEndingHourText = SimpleDateFormat("h:mm a", Locale.getDefault()).format(Date(taskInAdapter.taskEndingHourMillis)).lowercase()
         val defaultTaskDuaDateText = SimpleDateFormat("EEE dd MMM yyyy", Locale.getDefault()).format(Date(taskInAdapter.dueDate))
 

@@ -89,7 +89,7 @@ class NotificationService : IntentService("NotificationService") {
                 mNotification = Notification.Builder(this, CHANNEL_ID)
                     // Set the intent that will fire when the user taps the notification
                     .setContentIntent(pendingIntent)
-                    .setSmallIcon(R.mipmap.ic_launcher_ez_largest_round)
+                    .setSmallIcon(R.mipmap.ic_launcher_ez_largest)
                     .setLargeIcon(BitmapFactory.decodeResource(res, R.mipmap.ic_launcher_ez_largest))
                     .setAutoCancel(true)
                     .setContentTitle(title)
@@ -101,7 +101,7 @@ class NotificationService : IntentService("NotificationService") {
                 mNotification = Notification.Builder(this)
                     // Set the intent that will fire when the user taps the notification
                     .setContentIntent(pendingIntent)
-                    .setSmallIcon(R.mipmap.ic_launcher_ez_largest_round)
+                    .setSmallIcon(R.mipmap.ic_launcher_ez_largest)
                     .setLargeIcon(BitmapFactory.decodeResource(res, R.mipmap.ic_launcher_ez_largest))
                     .setAutoCancel(true)
                     .setPriority(Notification.PRIORITY_MAX)
